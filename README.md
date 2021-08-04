@@ -4,6 +4,6 @@
 ### Barks&Rec
 
 ## Team Member
-- Shunuan Hu
-- John Nelson-Alden
-- Ian Terada
+- Shunuan Hu!
+- John Nelson-Alden!
+- Ian Terada!
