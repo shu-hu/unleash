@@ -19,7 +19,7 @@ const featureSchema = new Schema({
 })
 
 const commentSchema = new Schema({
-    author: {type: mongoose.Schema.Types.ObjectId, ref: "Profile"},
+    author: {type: Schema.Types.ObjectId, ref: "Profile"},
     features: [featureSchema],
     genComments: String,
     likes: String,
