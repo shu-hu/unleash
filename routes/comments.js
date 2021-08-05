@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import * as commentsCtrl from '../controllers/posts.js'
-import { decodeUserFromToken, checkAuth } from '../middleware/comments.js'
+import * as commentsCtrl from '../controllers/comments.js'
+import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
 
