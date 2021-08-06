@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const profileSchema = new Schema({
-    name: String,
+    name: {type: String, required: true},
     avatar: String,
     dogNames: {type: Schema.Types.ObjectId, ref: "Dog"},
     location: String,

@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-  name: String,
+  handle: String,
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   profile: {type: Schema.Types.ObjectId, ref: "Profile"}
