@@ -6,7 +6,7 @@ const createPark = async (req, res) => {
         const park = await new Park(req.body)
         await park.save()
         await Profile.updateOne(
-            { _id: req.user._id },
+            { _id: req.user.profile._id },
             { $push: { yourParks: park } }
         )
         return res.status(201).json(park)
