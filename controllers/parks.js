@@ -1,8 +1,7 @@
-import { User } from '../models/user.js'
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
-
-const create = async (req, res) => {
+// req.user._id???
+const createPark = async (req, res) => {
     try {
         const park = await new Park(req.body)
         await park.save()
@@ -16,6 +15,19 @@ const create = async (req, res) => {
     }
 }
 
+const createComment = async (req, res) => {
+    try {
+        const park = await Park.findById(req.params.park_id)
+        park.comments.unshift(req.body)
+        await park.save()
+        const newComment = park.comments[0]
+        return res.status(201).json(newComment)
+    } catch (err) {
+        res.status(400).send(err.message)
+    }
+}
+
 export {
-    create,
+    createPark,
+    createComment,
 }

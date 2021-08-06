@@ -8,7 +8,6 @@ import cors from 'cors'
 import { router as authRouter } from './routes/auth.js'
 import { router as usersRouter } from './routes/users.js'
 import { router as parksRouter} from './routes/parks.js'
-import { router as commentsRouter} from './routes/comments.js'
 
 const app = express()
 
@@ -21,7 +20,7 @@ app.use(express.json())
 app.use('/api/users', usersRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/parks', parksRouter)
-app.use('/api/comments', commentsRouter)
+
 
 app.get('/*', function (req, res) {
   res.sendFile(

@@ -1,4 +1,5 @@
 import { User } from '../models/user.js'
+import { Profile } from '../models/profile.js'
 import jwt from 'jsonwebtoken'
 
 const SECRET = process.env.SECRET
@@ -8,9 +9,18 @@ const createJWT = (user) => {
 }
 
 const register = async (req, res) => {
-    const user = new User(req.body)
+  const user = new User(req.body)
+  const newProfile = new Profile({
+    name: user.handle,
+
+  }) 
+
+  user.profile = newProfile._id
+
+
     try {
         await user.save()
+        await newProfile.save()
         const token = createJWT(user)
         res.json({ token })
     } catch (error) {
