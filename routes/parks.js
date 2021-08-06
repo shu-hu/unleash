@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as parksCtrl from '../controllers/parks.js'
+import * as parkCtrl from '../controllers/parks.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
@@ -10,7 +10,7 @@ const router = Router()
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
-
+router.post('/', checkAuth, parkCtrl.create)
 
 export {
     router
