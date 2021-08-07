@@ -7,7 +7,7 @@ const SignupForm = (props) => {
   const history = useHistory()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
-    name: '',
+    handle: '',
     email: '',
     password: '',
     passwordConf: '',
@@ -29,8 +29,8 @@ const SignupForm = (props) => {
   }
 
   useEffect(() => {
-    const { name, email, password, passwordConf } = formData
-    const isFormInvalid = !(name && email && password === passwordConf)
+    const { handle, email, password, passwordConf } = formData
+    const isFormInvalid = !(handle && email && password === passwordConf)
 		setValidForm(isFormInvalid)
 	}, [formData])
 
@@ -41,15 +41,15 @@ const SignupForm = (props) => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>
+        <label htmlFor="handle" className={styles.label}>
           Name
         </label>
         <input
           type="text"
           autoComplete="off"
-          id="name"
-          value={formData.name}
-          name="name"
+          id="handle"
+          value={formData.handle}
+          name="handle"
           onChange={handleChange}
         />
       </div>
