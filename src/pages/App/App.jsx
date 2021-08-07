@@ -20,8 +20,9 @@ const App = () => {
 			<Route exact path='/login'>
 				{user ? <Redirect to='/' /> : <Login />}
 			</Route>
+			
 		</>
 	)
 }
- 
+
 export default App
