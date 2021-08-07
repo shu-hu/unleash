@@ -5,7 +5,7 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 // ========= Public Routes ========= 
-router.get('/results', parkCtrl.indexPark)
+router.get('/:page', parkCtrl.indexPark)
 
 
 // ========= Protected Routes ========= 
