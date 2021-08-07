@@ -49,7 +49,7 @@ export const deletePark = async parkId => {
     try {
         await fetch(`${BASE_URL}${parkId}`, {
             method: 'DELETE',
-            headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+            headers: { 'Authorization': `Bearer ${tokenService.getToken()}`}
         }, { mode: "cors" })
     } catch (error) {
         throw error
