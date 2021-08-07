@@ -6,6 +6,7 @@ import Login from '../Login/Login'
 import Landing from '../Landing/Landing'
 
 import {getUser, logout} from '../../services/authService'
+import Home from '../Home'
 
 
 const App = () => {
@@ -45,8 +46,15 @@ const App = () => {
 		<>
 			<NavBar user={user} />
 			<Route exact path='/'>
-				<Landing user={user} />
+				<Redirect to='/home'/>
 			</Route>
+
+			<Route exact path='/home'>
+				<Home 
+				user={user}
+				handleLogout={handleLogout}/>
+			</Route>
+
 			<Route exact path='/signup'>
 				{user ? <Redirect to='/' /> : <Signup handleSignupOrLogin/>}
 			</Route>
