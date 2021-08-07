@@ -18,7 +18,7 @@ const createPark = async (req, res) => {
 
 const indexPark = async (req, res) => {
     const limitNum = 10
-    const skipCount = parseInt(req.params.page) * parseInt(limitNum)
+    const skipCount = parseInt(req.params.page) * limitNum
     try {
         const posts = await Park.find({})
             .populate('added_by')
@@ -30,6 +30,23 @@ const indexPark = async (req, res) => {
         throw error
     }
 }
+
+const updatePark = async (req, res) => {
+    try {
+        const updatedPark = await Park.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        )
+        return res.status(200).json(updatedPark)
+    } catch (error) {
+        throw error
+    }
+}
+
+
+
+
 
 const createComment = async (req, res) => {
     try {
@@ -46,4 +63,5 @@ const createComment = async (req, res) => {
 export {
     createPark,
     createComment,
+    indexPark,
 }
