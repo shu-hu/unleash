@@ -49,8 +49,8 @@ const updatePark = async (req, res) => {
 const deletePark = async (req, res) => {
     try {  
         const removedPark = await Park.findByIdAndDelete(req.params.park_id)
-        const profile = await Profile.findById(req.profile._id)
-        profile.parks.remove({ _id: req.params.park_id })
+        const profile = await Profile.findById(req.user.profile)
+        profile.yourParks.remove({ _id: req.params.park_id })
         await profile.save()
         return res.status(200).json(removedPark)
     } catch (error) {
