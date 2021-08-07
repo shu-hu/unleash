@@ -44,6 +44,17 @@ const updatePark = async (req, res) => {
     }
 }
 
+const deletePark = async (req, res) => {
+    try {  
+        const removedPark = await Park.findByIdAndDelete(req.params.id)
+        const profile = await Profile.findById(req.profile._id)
+        profile.parks.remove({ _id: req.params.id })
+        await profile.save()
+        return res.status(200).json(removedPark)
+    } catch (error) {
+        res.json(err)
+    }
+}
 
 
 
