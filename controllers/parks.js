@@ -95,6 +95,19 @@ const updateComment = async (req, res) => {
     }
 }
 
+const deleteComment = async (req, res) => {
+    try{
+        const park = await Park.findById(req.params.park_id)
+        const idx = park.comments.findIndex(comment => 
+            comment._id.equals(req.params.comment_id)
+        )
+        const removedComment = park.comments.splice(idx, 1)
+        await park.save()
+        return res.status(200).json(removedComment)
+    } catch (err) {
+        res.json(err)
+    }
+}
 
 export {
     createPark,
@@ -105,4 +118,5 @@ export {
     createComment,
     indexComment,
     updateComment,
+    deleteComment,
 }
