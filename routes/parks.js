@@ -15,6 +15,7 @@ router.get('/:park_id/comments', checkAuth, parkCtrl.indexComment)
 router.post('/:park_id/comments', checkAuth, parkCtrl.createComment)
 router.put('/:park_id/comments/:comment_id', checkAuth, parkCtrl.updateComment)
 router.put('/:park_id', checkAuth, parkCtrl.updatePark)
+router.delete('/:park_id/comments/:comment_id', checkAuth, parkCtrl.deleteComment)
 router.delete('/:park_id', checkAuth, parkCtrl.deletePark)
 
 export {
