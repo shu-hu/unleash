@@ -1,6 +1,7 @@
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
 // req.user._id???
+
 const createPark = async (req, res) => {
     try {
         const park = await new Park(req.body)
@@ -12,6 +13,21 @@ const createPark = async (req, res) => {
         return res.status(201).json(park)
     } catch (err) {
         return res.status(500).json({ err: err.message })
+    }
+}
+
+const indexPark = async (req, res) => {
+    const limitNum = 10
+    const skipCount = parseInt(req.params.page) * parseInt(limitNum)
+    try {
+        const posts = await Park.find({})
+            .populate('added_by')
+            .limit(limitNum)
+            .skip(skipCount)
+            .sort({ createdAt: 'desc' })
+            return res.status(200).json(posts)
+    } catch (error) {
+        throw error
     }
 }
 

@@ -30,7 +30,7 @@ const commentSchema = new Schema({
 })
 
 const parkSchema = new Schema ({
-    author: {type: Schema.Types.ObjectId, ref: "Profile"},
+    added_by: {type: Schema.Types.ObjectId, ref: "Profile"},
     parkName: {type: String, required: true},
     address: {type: String, required: true},
     description: String,
