@@ -71,10 +71,21 @@ const createComment = async (req, res) => {
     }
 }
 
+const indexComment = async (req, res) => {
+    try {
+        const park = await Park.findById(req.params.park_id)
+        return res.status(200).json(park.comments)
+    } catch (error) {
+        return res.status(500).send(error.message, 'No Comments')
+    }
+}
+
 export {
     createPark,
-    createComment,
     indexPark,
     updatePark,
     deletePark,
+
+    createComment,
+    indexComment,
 }
