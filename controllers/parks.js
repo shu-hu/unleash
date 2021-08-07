@@ -65,16 +65,44 @@ const createComment = async (req, res) => {
         park.comments.unshift(req.body)
         await park.save()
         const newComment = park.comments[0]
+        newComment.author = req.user.profile
         return res.status(201).json(newComment)
     } catch (err) {
         res.status(400).send(err.message)
     }
 }
 
+const indexComment = async (req, res) => {
+    try {
+        const park = await Park.findById(req.params.park_id)
+        return res.status(200).json(park.comments)
+    } catch (error) {
+        return res.status(500).send(error.message, 'No Comments')
+    }
+}
+
+const updateComment = async (req, res) => {
+    try {
+        const updatedPark = await Park.findById(req.params.park_id)
+        const idx = await updatedPark.comments.findIndex(comment => {
+            return comment._id.equals(req.params.comment_id)
+        })
+        Object.assign(updatedPark.comments[idx], req.body)
+        await updatedPark.save()
+        return res.status(200).json(updatedPark)
+    } catch (error) {
+        throw error
+    }
+}
+
+
 export {
     createPark,
-    createComment,
     indexPark,
     updatePark,
     deletePark,
+
+    createComment,
+    indexComment,
+    updateComment,
 }
