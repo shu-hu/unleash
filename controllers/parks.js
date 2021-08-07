@@ -1,13 +1,15 @@
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
-// req.user._id???
+
 
 const createPark = async (req, res) => {
     try {
         const park = await new Park(req.body)
+        park.added_by = req.user.profile
         await park.save()
+        console.log(req.body, 'after save')
         await Profile.updateOne(
-            { _id: req.user.profile._id },
+            { _id: req.user.profile },
             { $push: { yourParks: park } }
         )
         return res.status(201).json(park)
@@ -34,7 +36,7 @@ const indexPark = async (req, res) => {
 const updatePark = async (req, res) => {
     try {
         const updatedPark = await Park.findByIdAndUpdate(
-            req.params.id,
+            req.params.park_id,
             req.body,
             { new: true }
         )
@@ -46,17 +48,15 @@ const updatePark = async (req, res) => {
 
 const deletePark = async (req, res) => {
     try {  
-        const removedPark = await Park.findByIdAndDelete(req.params.id)
+        const removedPark = await Park.findByIdAndDelete(req.params.park_id)
         const profile = await Profile.findById(req.profile._id)
-        profile.parks.remove({ _id: req.params.id })
+        profile.parks.remove({ _id: req.params.park_id })
         await profile.save()
         return res.status(200).json(removedPark)
     } catch (error) {
-        res.json(err)
+        res.json(error)
     }
 }
-
-
 
 
 const createComment = async (req, res) => {
@@ -75,4 +75,6 @@ export {
     createPark,
     createComment,
     indexPark,
+    updatePark,
+    deletePark,
 }
