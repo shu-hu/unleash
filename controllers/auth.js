@@ -9,7 +9,6 @@ const createJWT = (user) => {
 }
 
 const register = async (req, res) => {
-    console.log("register in auth controller")
   const user = new User(req.body)
   const newProfile = new Profile({
     name: user.handle,
@@ -19,7 +18,6 @@ const register = async (req, res) => {
     try {
         await user.save()
         const token = createJWT(user)
-        console.log({ token }, 'token in register')
         res.json({ token })
     } catch (error) {
         let errMsg
@@ -37,19 +35,16 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email })
-        console.log(user)
         if (!user) return res.status(402).json({ error: 'bad credentials' })
         await user.comparePassword(req.body.password, (error, isMatch) => {
             if (isMatch) {
                 const token = createJWT(user)
-                console.log(token)
                 res.json({ token })
             } else {
                 return res.status(401).json({ error: 'bad credentials' })
             }
         })
     } catch (error) {
-        console.log(error)
         return res.status(401).json(error)
     }
 }
