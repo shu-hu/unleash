@@ -2,9 +2,9 @@ import * as tokenService from './tokenService'
 const BASE_URL = '/api/parks/'
 
 
-export const createPark = async park => {
+export const createPark = async (park) => {
     try {
-        const res = await fetch(BASE_URL, {
+        const res = await fetch(`${BASE_URL}comments`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
