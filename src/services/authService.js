@@ -8,7 +8,7 @@ function getUser() {
 function signup(user) {
   return fetch(`${BASE_URL}signup`, {
     method: 'POST',
-    headers: new Headers({ 'content-type': 'application/json' }),
+    headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(user),
   })
   .then(res => {
@@ -26,7 +26,7 @@ function signup(user) {
 const login = async (creds) => {
     const res = await fetch(`${BASE_URL}login`, {
         method: 'POST',
-        headers: new Headers({ 'content-type': 'application/json' }),
+        headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(creds)
     })
     if (res.ok) {

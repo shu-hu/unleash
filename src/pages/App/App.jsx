@@ -13,7 +13,6 @@ const App = () => {
 
 	const handleSignupOrLogin = async () => {
 		const user = getUser()
-		console.log(user)
 		setCurrentUser(user)
 		setAuthenticated(true)
 	}
