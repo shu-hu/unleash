@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styles from './SignupForm.module.css'
-import * as authService from '../../services/authService'
+import { signup } from '../../services/authService'
 
-const SignupForm = (props) => {
+const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
   const history = useHistory()
-  const [validForm, setValidForm] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
+  const [ validForm, setValidForm ] = useState(false)
+  const [ formData, setFormData ] = useState({
+    handle: '',
     email: '',
     password: '',
     passwordConf: '',
@@ -17,20 +17,26 @@ const SignupForm = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-  const handleSubmit = evt => {
-    evt.preventDefault()
-    authService.signup(formData)
-    .then(() => {
-      history.push('/')
-    })
-    .catch(err => {
-      props.updateMessage(err.message)
-    })
-  }
+   const handleSubmit = async e => {
+    e.preventDefault()
+    try {
+        await signup(formData)
+        await handleSignupOrLogin()
+        history.push('/')
+    } catch(error) {
+        updateMessage(error.message)
+        setFormData({
+            handle: '',
+            email: '',
+            password: '',
+            passwordConf: '',
+        })
+    }
+}
 
   useEffect(() => {
-    const { name, email, password, passwordConf } = formData
-    const isFormInvalid = !(name && email && password === passwordConf)
+    const { handle, email, password, passwordConf } = formData
+    const isFormInvalid = !(handle && email && password === passwordConf)
 		setValidForm(isFormInvalid)
 	}, [formData])
 
@@ -38,18 +44,17 @@ const SignupForm = (props) => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className={styles.container}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>
+      <div>
+        <label htmlFor="handle" className={styles.label}>
           Name
         </label>
         <input
           type="text"
           autoComplete="off"
-          id="name"
-          value={formData.name}
-          name="name"
+          id="handle"
+          value={formData.handle}
+          name="handle"
           onChange={handleChange}
         />
       </div>
@@ -90,8 +95,8 @@ const SignupForm = (props) => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <button disabled={validForm} className={styles.button}>Sign Up</button>
+      <div>
+        <button disabled={validForm}>Sign Up</button>
         <Link to="/">
           <button>Cancel</button>
         </Link>

@@ -3,11 +3,11 @@ import { Profile } from '../models/profile.js'
 
 
 const createPark = async (req, res) => {
+    console.log('createPark!')
     try {
         const park = await new Park(req.body)
         park.added_by = req.user.profile
         await park.save()
-        console.log(req.body, 'after save')
         await Profile.updateOne(
             { _id: req.user.profile },
             { $push: { yourParks: park } }
