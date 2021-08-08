@@ -3,63 +3,60 @@ import { Route, Redirect } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
-import Landing from '../Landing/Landing'
 
 import {getUser, logout} from '../../services/authService'
 import Home from '../Home'
 
-
 const App = () => {
-	const [user, setUser] = useState(null);
+	const [currentUser, setCurrentUser] = useState(null);
 	const [authenticated, setAuthenticated] = useState(false);
 
 	const handleSignupOrLogin = async () => {
 		const user = getUser()
-		setUser(user)
+		setCurrentUser(user)
 		setAuthenticated(true)
 	}
 
 	const handleLogout = () => {
 		logout()
-		setUser(null)
+		setCurrentUser(null)
 		setAuthenticated(false)
 	}
 
 	useEffect(() => {
-		const verifyToken = async () => {
-			const token = localStorage.getItem("token")
-			if (token) {
-        try {
-			const user = getUser()
-			setUser(user)
-			setAuthenticated(true)
-        } catch (error) {
-			localStorage.clear()
-        }
-		}
-    }
-    verifyToken()
-	}, [authenticated])
+		(async() => {
+		  const token = localStorage.getItem('token')
+		  if(token) {
+			try {
+			  const user = getUser()
+			  setCurrentUser(user)
+			  setAuthenticated(true)
+			} catch(error) {
+			  localStorage.clear()
+			}
+		  }
+		})()
+	  }, [authenticated])
 
 
 	return (
 		<>
-			<NavBar user={user} />
+			<NavBar user={currentUser} />
 			<Route exact path='/'>
 				<Redirect to='/home'/>
 			</Route>
 
 			<Route exact path='/home'>
 				<Home 
-				user={user}
+				user={currentUser}
 				handleLogout={handleLogout}/>
 			</Route>
 
 			<Route exact path='/signup'>
-				{user ? <Redirect to='/' /> : <Signup handleSignupOrLogin/>}
+				{currentUser ? <Redirect to='/' /> : <Signup handleSignupOrLogin={handleSignupOrLogin} />}
 			</Route>
 			<Route exact path='/login'>
-				{user ? <Redirect to='/' /> : <Login handleSignupOrLogin/>}
+				{currentUser ? <Redirect to='/' /> : <Login handleSignupOrLogin={handleSignupOrLogin} />}
 			</Route>
 			
 		</>

@@ -1,12 +1,12 @@
 import * as tokenService from '../services/tokenService'
-const BASE_URL = '/api/auth'
+const BASE_URL = '/api/auth/'
 
 function getUser() {
     return tokenService.getUserFromToken()
 }
 
 function signup(user) {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}signup`, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(user),

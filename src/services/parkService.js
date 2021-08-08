@@ -4,7 +4,7 @@ const BASE_URL = '/api/parks/'
 
 export const createPark = async (park) => {
     try {
-        const res = await fetch(`${BASE_URL}comments`, {
+        const res = await fetch(`${BASE_URL}`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -49,7 +49,7 @@ export const deletePark = async parkId => {
     try {
         await fetch(`${BASE_URL}${parkId}`, {
             method: 'DELETE',
-            headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+            headers: { 'Authorization': `Bearer ${tokenService.getToken()}`}
         }, { mode: "cors" })
     } catch (error) {
         throw error

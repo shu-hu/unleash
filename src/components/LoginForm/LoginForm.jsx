@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styles from './LoginForm.module.css'
 
-const LoginForm = () => {
+import { login } from '../../services/authService'
+
+const LoginForm = ({ handleSignupOrLogin }) => {
   const history = useHistory()
+  const [authError, setAuthError] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -13,16 +16,32 @@ const LoginForm = () => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault()
-    history.push('/')
+    try {
+        await login(formData)
+        handleSignupOrLogin()
+        history.push('/')
+    } catch (error) {
+        setAuthError(error.message)
+        setFormData({
+          email: '',
+          password: '',
+        })
+    }
   }
 
   return (
+    <div>
+      <h1>Login</h1>
+      {!authError ? 
+      <h3>Enter your login information</h3>
+        :
+      {authError}
+    }
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className={styles.container}
     >
       <div className={styles.inputContainer}>
         <label htmlFor="email-input" className={styles.label}>
@@ -51,12 +70,13 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <button className={styles.button}>Log In</button>
+        <button>Log In</button>
         <Link to="/">
           <button>Cancel</button>
         </Link>
       </div>
     </form>
+    </div>
   )
 }
  

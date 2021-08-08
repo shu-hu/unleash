@@ -10,6 +10,7 @@ router.get('/:page', parkCtrl.indexPark)
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
+
 router.post('/', checkAuth, parkCtrl.createPark)
 router.get('/:park_id/comments', checkAuth, parkCtrl.indexComment)
 router.post('/:park_id/comments', checkAuth, parkCtrl.createComment)
