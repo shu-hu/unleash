@@ -20,7 +20,6 @@ const ParkUpdateForm = (props) => {
     }
 
         return (
-                <>
             <form  className="create-form" onSubmit={handleSubmit}>
 
                 <div className="add-park-prompt">
@@ -77,7 +76,6 @@ const ParkUpdateForm = (props) => {
                 
                 <button type="submit">Submit</button>
             </form>
-        </> 
     )
 }
 

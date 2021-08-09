@@ -35,7 +35,6 @@ const CommentSection = (props) => {
 
     return (
         <div className="comment-section">
-
             <div className="header">
                 <h3>Comment Section</h3>
                 <div className="header-buttons">
@@ -52,7 +51,8 @@ const CommentSection = (props) => {
                     {...props}
                     handleCreateComment={handleCreateComment}
                     setToggleNewComment={setToggleNewComment}
-                ></CreateComment>}
+                ></CreateComment>
+            }
 
             <CommentList {...props} handleUpdateComment={handleUpdateComment} handleDeleteComment={handleDeleteComment} />
 
