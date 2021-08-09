@@ -11,6 +11,7 @@ import Home from '../Home'
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [authenticated, setAuthenticated] = useState(false);
+	const [ toggleMap, setToggleMap ] = useState(true)
 
 	const handleSignupOrLogin = async () => {
 		const user = getUser()
@@ -50,6 +51,8 @@ const App = () => {
 			<Route exact path='/home'>
 				<Home 
 				user={currentUser}
+				toggleMap={toggleMap}
+				setToggleMap={setToggleMap}
 				handleLogout={handleLogout}/>
 			</Route>
 
