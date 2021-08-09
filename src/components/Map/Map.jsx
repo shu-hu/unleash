@@ -21,9 +21,13 @@ const center = {
     lng: -73.79,
 };
 
+
+const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
+const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
+
 const Map = () => {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyBYbAlSWN1gUz5QMhkV9esGebDWDsg0ZCk",
+        googleMapsApiKey: googleMapsApiKey,
         libraries,
     });
     const [markers, setMarkers] = useState([]);
@@ -32,7 +36,7 @@ const Map = () => {
 
 
     useEffect(() => {
-        const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=40.69&lon=-73.79&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
+        const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=40.69&lon=-73.79&radius=1000&key=${tomtomApiKey}`
         const makeApiCall = async () => {
             const res = await fetch(tomtom);
             const dogParkData = await res.json();
