@@ -123,3 +123,5 @@ function Locate({ panTo }) {
 }
 
 export default Map;
+
+

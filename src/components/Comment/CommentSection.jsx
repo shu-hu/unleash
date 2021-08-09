@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import CommentList from './CommentList'
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
-import { createComment, deleteComment, } from '../../services/commentService'
+import { createComment, deleteComment, updateComment } from '../../services/commentService'
 
 const CommentSection = (props) => {
     const [toggleNewComment, setToggleNewComment] = useState(false)
@@ -25,9 +25,10 @@ const CommentSection = (props) => {
         }
     }
 
-    const handleUpdateComment = async (commentId) => {
+    const handleUpdateComment = async (commentId, parkData) => {
         try {
-            console.log("update comment works!")
+            await updateComment(props.park._id, commentId, parkData)
+            setToggleNewComment(false)
         } catch (err) {
             throw err
         }

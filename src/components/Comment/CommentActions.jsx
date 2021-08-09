@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CommentUpdateForm from './CommentUpdateForm'
 
 const CommentActions = (props) => {
+    const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
+
+    const handleToggle = () => {
+        setToggleUpdateForm(!toggleUpdateForm)
+    }
+
     return (
         props ?
         <div>
@@ -14,9 +21,12 @@ const CommentActions = (props) => {
             {
                 props.user &&
                 props.user.profile._id === props.park.added_by._id &&
-                <button onClick={() => props.handleUpdateComment(props.comment._id)}>
+                <button onClick={handleToggle}>
                     Edit
                 </button>
+            }
+            {toggleUpdateForm &&
+                <CommentUpdateForm handleUpdateComment={props.handleUpdateComment} {...props} />
             }
         </div>
         :
