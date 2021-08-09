@@ -55,7 +55,11 @@ const CommentSection = (props) => {
                 ></CreateComment>
             }
 
-            <CommentList {...props} handleUpdateComment={handleUpdateComment} handleDeleteComment={handleDeleteComment} />
+            <CommentList
+                {...props} 
+                handleUpdateComment={handleUpdateComment} 
+                handleDeleteComment={handleDeleteComment} 
+             />
 
         </div>
     )

@@ -9,7 +9,7 @@ const ParkCard = (props) => {
     const id = useParams()
     const [toggleUpdate, setToggleUpdate] = useState(false)
     const [park, setPark] = useState(null)
-    const [commentArray, setCommentArray] = useState([])
+    const [ commentArray, setCommentArray ] = useState([])
     const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const ParkCard = (props) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
-            setCommentArray({...commentArray, updatedPark})
+            setCommentArray([...commentArray, updatedPark])
             setToggleUpdate(false)
         } catch (error) {
             throw error
@@ -70,7 +70,11 @@ const ParkCard = (props) => {
             :
         park ?
             <>
-                <ParkUpdateForm park={park} handleUpdatePark={handleUpdatePark} />
+                <ParkUpdateForm 
+                    park={park} 
+                    handleUpdatePark={handleUpdatePark}
+                    commentArray={commentArray}
+                />
                 <button onClick={() => handleDeletePark(park._id)}>Delete</button>
             </>
         :
