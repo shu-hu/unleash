@@ -25,7 +25,7 @@ const CommentSection = (props) => {
         }
     }
 
-    const handleUpdateComment = async () => {
+    const handleUpdateComment = async (commentId) => {
         try {
             console.log("update comment works!")
         } catch (err) {

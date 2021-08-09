@@ -1,7 +1,6 @@
 import React from 'react'
 
 const CommentActions = (props) => {
-    console.log(props)
     return (
         props ?
         <div>

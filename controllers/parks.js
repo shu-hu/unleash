@@ -58,7 +58,6 @@ const deletePark = async (req, res) => {
     }
 }
 
-
 const createComment = async (req, res) => {
     try {
         const park = await Park.findById(req.params.park_id)
