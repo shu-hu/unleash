@@ -2,13 +2,12 @@ import React from 'react'
 import CommentUpdateForm from './CommentUpdateForm'
 
 const CommentActions = (props) => {
-    console.log(props)
     return (
         props ?
         <div>
             {
                 props.user &&
-                props.user.profile._id === props.comment.author._id &&
+                props.user.profile._id === props.comment.author &&
                 <button onClick={() => props.handleDeleteComment(props.comment._id)}>
                     Delete
                 </button>
