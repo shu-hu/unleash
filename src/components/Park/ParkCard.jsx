@@ -14,7 +14,7 @@ const ParkCard = (props) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
-            history.push('/')
+            history.push(`/api/parks/details${park._id}`)
         } catch (error) {
             throw error
         }
