@@ -1,9 +1,14 @@
 import React from 'react'
 
 const SideMenu = (props) => {
+
+    const handleClick = () => {
+        props.setToggleMap(!props.toggleMap)
+    }
+
     return (
         <div>
-            {/* <CreatePark user={props.user} handleCreatePark={handleCreatePark}/> */}
+            <button onClick={handleClick}>Create Park</button>
         </div>
     )
 }
