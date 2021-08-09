@@ -16,10 +16,10 @@ const options = {
     disableDefaultUI: true,
     zoomControl: true,
 };
-const center = {
-    lat: 40.69,
-    lng: -73.79,
-};
+// const center ={{
+// /: lat/    : lng}lat: 40.69,
+//     lng: -73.79,
+// };
 
 const Map = () => {
     const { isLoaded, loadError } = useLoadScript({
@@ -27,7 +27,7 @@ const Map = () => {
         libraries,
     });
     const [markers, setMarkers] = useState([]);
-    const [dogParks, setDogParks] = React.useState([])
+    const [dogParks, setDogParks] = useState([])
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
@@ -36,26 +36,31 @@ const Map = () => {
         (async() => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    console.log(position.coords.latitude, position.coords.longitude)
-                    setLat(position.coords.latitude)
-                    setLng(position.coords.longitude)
-                    panTo({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    });
+                    // console.log(position.coords.latitude, position.coords.longitude)
+                    setLat(parseFloat(position.coords.latitude))
+                    setLng(parseFloat(position.coords.longitude))
+                    // panTo({
+                    //     lat: lat,
+                    //     lng: lng,
+                    // });
                 },
                 () => null
                 )
         console.log('first', lat, lng)
     })()
-    })
+    }, [])
     useEffect(() => {
         console.log('second', lat, lng)
-        const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=41.85003&lon=-87.65005&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
+        console.log(typeof lat)
+        // const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=${lat}&lon=${lng}&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
         const makeApiCall = async () => {
-            const res = await fetch(tomtom);
+            console.log(`https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=${lat}&lon=${lng}&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`)
+            const res = await fetch(`https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=${lat}&lon=${lng}&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`)
+            // const res = await fetch(`https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=41.85003&lon=-87.65005&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`)
             const dogParkData = await res.json();
+            console.log(dogParkData)
             setDogParks(dogParkData.results)
+        // console.log(dogParks)
         };
         makeApiCall();
     }, [lng]);
@@ -93,13 +98,14 @@ const Map = () => {
                 id="map"
                 mapContainerStyle={mapContainerStyle}
                 zoom={8}
-                center={center}
+                center={{lat: lat, lng: lng}}
                 options={options}
                 onClick={onMapClick}
                 onLoad={onMapLoad}
 
             >
-                {dogParks.map((park) => (
+
+                {dogParks?.map((park) => (
                     <Marker
                         key={park.id}
                         position={{ lat: park.position.lat, lng: park.position.lon }}
