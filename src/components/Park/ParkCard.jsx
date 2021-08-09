@@ -10,6 +10,7 @@ const ParkCard = (props) => {
     const [toggleUpdate, setToggleUpdate] = useState(false)
     const [park, setPark] = useState(null)
     const [commentArray, setCommentArray] = useState([])
+    const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
 
     useEffect(() => {
         (async() => {
@@ -19,12 +20,13 @@ const ParkCard = (props) => {
         })()
         return () => { setPark(null) }
     }, [toggleUpdate, id.park_id])
-
+    
 
     const handleUpdatePark = async (id, formData) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
+            setCommentArray({...commentArray, updatedPark})
             setToggleUpdate(false)
         } catch (error) {
             throw error
@@ -38,6 +40,10 @@ const ParkCard = (props) => {
         } catch (error) {
             throw error
         }
+    }
+
+    const handleToggle = () => {
+        setToggleUpdateForm(!toggleUpdateForm)
     }
 
     const handleClick = () => {
@@ -54,7 +60,11 @@ const ParkCard = (props) => {
                     setPark={setPark}
                     user={props.user}
                     commentArray={commentArray}
-                    setCommentArray={setCommentArray} />
+                    setCommentArray={setCommentArray}
+                    handleToggle={handleToggle}
+                    toggleUpdateForm={toggleUpdateForm}
+                    setToggleUpdateForm={setToggleUpdateForm}
+                     />
                 <button onClick={handleClick}>Update</button>
             </div>
             :

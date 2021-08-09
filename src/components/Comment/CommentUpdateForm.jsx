@@ -13,6 +13,7 @@ const CommentUpdateForm = (props) => {
             dislikes: dislikes,
 		}
 		props.handleUpdateComment(props.comment._id, formData)
+        props.handleToggle()
     }
 
     return (
