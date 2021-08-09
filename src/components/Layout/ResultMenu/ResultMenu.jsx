@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {getPaginatedParks} from '../../../services/parkService'
-import ParkCard from '../../Park/ParkCard'
 import { Link } from 'react-router-dom'
 
 
