@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 const ParkUpdateForm = (props) => {
-    const [parkName, setParkName] = useState('')
-    const [address, setAddress] = useState('')
-    const [description, setDescription] = useState('')
-    const [openTime, setOpenTime] = useState('')
-    const [closeTime, setCloseTime] = useState('')
+    const [parkName, setParkName] = useState(props.park.parkName)
+    const [address, setAddress] = useState(props.park.address)
+    const [description, setDescription] = useState(props.park.description)
+    const [openTime, setOpenTime] = useState(props.park.openTime)
+    const [closeTime, setCloseTime] = useState(props.park.closeTime)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,7 +16,7 @@ const ParkUpdateForm = (props) => {
             openTime: openTime,
             closeTime: closeTime,
         }
-        props.handleUpdatePark(formData) // pass the formData up to Home.jsx
+        props.handleUpdatePark(formData)
     }
 
         return (
