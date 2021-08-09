@@ -2,13 +2,21 @@ import React, { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
+import { updatePark } from '../../services/parkService'
 
 const ParkCard = (props) => {
     const location = useLocation()
     const { park } = location.state
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
-    
-    // NEEDS handleUpdatePark!!!!!!!!!********!!!!!!!!!!
+
+    const handleUpdatePark = async (id, formData) => {
+        try {
+            const updatedPark = await updatePark(id, formData)
+            updatedPark.added_by = props.user
+        } catch (error) {
+            throw error
+        }
+    }
 
     const handleClick = () => {
         setToggleUpdate(!toggleUpdate)
@@ -25,7 +33,7 @@ const ParkCard = (props) => {
         </div>
         :
         <>
-        <ParkUpdateForm park={park} handleUpdatePark={props.handleUpdatePark} />
+        <ParkUpdateForm park={park} handleUpdatePark={handleUpdatePark} />
         </>
     )
 }

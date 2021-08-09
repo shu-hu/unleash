@@ -16,7 +16,7 @@ const ParkUpdateForm = (props) => {
             openTime: openTime,
             closeTime: closeTime,
         }
-        props.handleUpdatePark(formData)
+        props.handleUpdatePark(props.park._id, formData)
     }
 
         return (

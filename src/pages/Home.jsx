@@ -38,17 +38,8 @@ const Home = (props) => {
         }
     }
 
-    const handleUpdatePark = async (id, formData) => {
-        try {
-            const updatedPark = await updatePark(id, formData)
-            updatedPark.added_by = props.user
-        } catch (error) {
-            throw error
-        }
-    }
-
     return (
-        <Layout parks={parks} handleUpdatePark={handleUpdatePark} {...props}>
+        <Layout parks={parks} {...props}>
                 {props.toggleMap ? 
                 <Map />
                 :

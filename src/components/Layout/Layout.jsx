@@ -10,7 +10,7 @@ const Layout = (props) => {
         <div className="home-page">
             <SideMenu {...props} />
             {children}
-            <ResultMenu {...props} />
+            <ResultMenu handleUpdatePark={props.handleUpdatePark} {...props} />
         </div>
     )
 }
