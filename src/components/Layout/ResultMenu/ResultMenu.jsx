@@ -16,13 +16,10 @@ const ResultMenu = (props) => {
     let parks;
     if(parkList.length) {
         parks = parkList.map(park => {
-            console.log(park)
             return <Link 
                 key={park._id}
-                to={{
-                pathname: `api/parks/details/${park._id}`,
-                state: { park }
-        }}>{park.parkName}</Link>
+                to={`api/parks/details/${park._id}`}
+                >{park.parkName}</Link>
         })
     }
 
