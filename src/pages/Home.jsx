@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getPaginatedParks, createPark } from '../services/parkService'
+import { getPaginatedParks, createPark, updatePark } from '../services/parkService'
 import CreatePark from '../components/CreateComponents/CreatePark/CreatePark'
 import ResultMenu from '../components/Layout/ResultMenu/ResultMenu'
 
@@ -32,6 +32,15 @@ const Home = (props) => {
                 duplicate.splice(duplicate.length - 1, 1)
                     setParks(() => [newPark, ...duplicate])
             }
+        } catch (error) {
+            throw error
+        }
+    }
+
+    const handleUpdatePark = async (id, formData) => {
+        try {
+            const updatedPark = await updatePark(id, formData)
+            updatedPark.added_by = props.user
         } catch (error) {
             throw error
         }

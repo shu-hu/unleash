@@ -23,7 +23,7 @@ const ParkCard = () => {
         </div>
         :
         <>
-        <ParkUpdateForm />
+        <ParkUpdateForm park={park} />
         </>
     )
 }

@@ -29,7 +29,7 @@ export const getPaginatedParks = async page => {
     }
 }
 
-export const updatePark = async parkId => {
+export const updatePark = async (parkId, park) => {
     try {
         const res = await fetch(`${BASE_URL}${parkId}`, {
             method: "PUT",
@@ -37,6 +37,7 @@ export const updatePark = async parkId => {
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${tokenService.getToken()}`
             },
+            body: JSON.stringify(park)
         }, { mode: "cors" })
         const data = await res.json()
         return data
