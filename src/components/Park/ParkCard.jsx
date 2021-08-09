@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
-import { updatePark } from '../../services/parkService'
+import { updatePark, deletePark } from '../../services/parkService'
 
 const ParkCard = (props) => {
+    const history = useHistory()
     const location = useLocation()
     const { park } = location.state
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
@@ -12,7 +13,17 @@ const ParkCard = (props) => {
     const handleUpdatePark = async (id, formData) => {
         try {
             const updatedPark = await updatePark(id, formData)
-            updatedPark.added_by = props.user
+            updatedPark.added_by = props.user.profile._id
+            history.push('/')
+        } catch (error) {
+            throw error
+        }
+    }
+
+    const handleDeletePark = async (id) => {
+        try {
+            await deletePark(id)
+            history.push('/')
         } catch (error) {
             throw error
         }
@@ -34,6 +45,7 @@ const ParkCard = (props) => {
         :
         <>
         <ParkUpdateForm park={park} handleUpdatePark={handleUpdatePark} />
+        <button onClick={() => handleDeletePark(park._id)}>Delete</button>
         </>
     )
 }
