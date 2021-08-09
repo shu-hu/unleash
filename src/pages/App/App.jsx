@@ -41,7 +41,7 @@ const App = () => {
 
 	return (
 		<>
-			<NavBar user={currentUser} />
+			<NavBar user={currentUser} handleLogout={handleLogout} />
 			<Route exact path='/'>
 				<Redirect to='/home'/>
 			</Route>

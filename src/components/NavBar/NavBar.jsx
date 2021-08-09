@@ -7,19 +7,16 @@ const NavBar = ({ user, handleLogout }) => {
 			<div>
 			{user ? (
 				<ul>
-					<li>Welcome, {user.name}</li>
-					{/* <li>
-						<NavLink to="/users">Users</NavLink>
-					</li> */}
+					<li>Welcome, {user.handle}</li>
+					<li>
+						<NavLink to="/" onClick={handleLogout}>Sign Out</NavLink>
+					</li>
 				</ul>
 			) : (
 				<ul>
 					<li>
 						<NavLink to="/login">Log In</NavLink>
 					</li>
-					{/* <li>
-						<NavLink to="/users">Users</NavLink>
-					</li> */}
 					<li>
 						<NavLink to="/signup">Sign Up</NavLink>
 					</li>
