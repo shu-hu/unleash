@@ -24,6 +24,6 @@ function checkAuth(req, res, next) {
 }
 
 export {
-  decodeUserFromToken,
-  checkAuth,
+    decodeUserFromToken,
+    checkAuth,
 }
