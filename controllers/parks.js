@@ -109,6 +109,15 @@ const deleteComment = async (req, res) => {
     }
 }
 
+const showPark = async (req, res) => {
+    try {
+        const park = await Park.findById(req.params.park_id)
+        return res.status(200).json(park)
+    } catch (error) {
+        return res.status(500).send(error.message, 'Could not locate this park')
+    }
+}
+
 export {
     createPark,
     indexPark,
@@ -119,4 +128,5 @@ export {
     indexComment,
     updateComment,
     deleteComment,
+    showPark,
 }
