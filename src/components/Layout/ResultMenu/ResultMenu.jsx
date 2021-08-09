@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {getPaginatedParks} from '../../../services/parkService'
-
-
+import ParkCard from '../../Park/ParkCard'
+import { Link } from 'react-router-dom'
 
 
 const ResultMenu = () => {
@@ -17,10 +17,13 @@ const ResultMenu = () => {
     let parks;
     if(parkList.length) {
         parks = parkList.map(park => {
-            return <h1>{park.parkName}</h1>
+            return <Link 
+                to={{
+                pathname: `api/parks/details/${park._id}`,
+                state: { park }
+        }}>{park.parkName}</Link>
         })
     }
-
 
     return (
         <>

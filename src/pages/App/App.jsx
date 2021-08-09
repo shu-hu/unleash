@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
+import ParkCard from '../../components/Park/ParkCard'
 
 import {getUser, logout} from '../../services/authService'
 import Home from '../Home'
@@ -50,6 +51,12 @@ const App = () => {
 				<Home 
 				user={currentUser}
 				handleLogout={handleLogout}/>
+			</Route>
+
+			<Route path='/api/parks/details/:park_id'>
+				<ParkCard
+				user={currentUser}
+				/>
 			</Route>
 
 			<Route exact path='/signup'>
