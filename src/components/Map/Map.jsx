@@ -28,37 +28,38 @@ const Map = () => {
     });
     const [markers, setMarkers] = useState([]);
     const [dogParks, setDogParks] = React.useState([])
-    const [selected, setSelected] = useState(null);
-    // let lat
-    // let lng
-
-    
-    
+    const [selected, setSelected] = useState(null)
+    const [lat, setLat] = useState(null)
+    const [lng, setLng] = useState(null)
     
     useEffect(() => {
-        let lat = 1
-        let lng = 2
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position.coords.latitude, position.coords.longitude)
-                lat = position.coords.latitude
-                lng = position.coords.longitude
-                panTo({
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                });
-            },
-            () => null
-            );
-            console.log(lat, lng)
-            const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=41.85003&lon=-87.65005&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
+        (async() => {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log(position.coords.latitude, position.coords.longitude)
+                    lat = position.coords.latitude
+                    lng = position.coords.longitude
+                    panTo({
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    });
+                },
+                () => null
+                )
+                setLat(lat)
+                setLng(lng)
+        
+    })()
+    
+    useEffect(() => {
+        const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=41.85003&lon=-87.65005&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
         const makeApiCall = async () => {
             const res = await fetch(tomtom);
             const dogParkData = await res.json();
             setDogParks(dogParkData.results)
         };
         makeApiCall();
-    }, []);
+    }, [lng]);
 
     const onMapClick = React.useCallback((e) => {
         setMarkers((current) => [
@@ -119,26 +120,26 @@ const Map = () => {
     )
 }
 
-function Locate({ panTo }) {
-    return (
-        <button
-            className="locate"
-            onClick={() => {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        panTo({
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude,
-                        });
-                    },
-                    () => null
-                );
-            }}
+// function Locate({ panTo }) {
+//     return (
+//         <button
+//             className="locate"
+//             onClick={() => {
+//                 navigator.geolocation.getCurrentPosition(
+//                     (position) => {
+//                         panTo({
+//                             lat: position.coords.latitude,
+//                             lng: position.coords.longitude,
+//                         });
+//                     },
+//                     () => null
+//                 );
+//             }}
 
-        >
-            <h1>Your Location</h1>
-        </button>
-    );
-}
+//         >
+//             <h1>Your Location</h1>
+//         </button>
+//     );
+// }
 
-export default Map;
+export default Map
