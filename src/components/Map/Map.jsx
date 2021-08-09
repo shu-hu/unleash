@@ -37,8 +37,8 @@ const Map = () => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     console.log(position.coords.latitude, position.coords.longitude)
-                    lat = position.coords.latitude
-                    lng = position.coords.longitude
+                    setLat(position.coords.latitude)
+                    setLng(position.coords.longitude)
                     panTo({
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
@@ -46,12 +46,11 @@ const Map = () => {
                 },
                 () => null
                 )
-                setLat(lat)
-                setLng(lng)
-        
+        console.log('first', lat, lng)
     })()
-    
+    })
     useEffect(() => {
+        console.log('second', lat, lng)
         const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=41.85003&lon=-87.65005&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
         const makeApiCall = async () => {
             const res = await fetch(tomtom);
@@ -89,7 +88,7 @@ const Map = () => {
     return (
         <>
             <h1>MAP COMPONENT!</h1>
-            <Locate panTo={panTo} />
+            {/* <Locate panTo={panTo} /> */}
             <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
@@ -119,6 +118,7 @@ const Map = () => {
         </>
     )
 }
+
 
 // function Locate({ panTo }) {
 //     return (
