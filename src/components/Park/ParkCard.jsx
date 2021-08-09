@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
 import { updatePark, deletePark } from '../../services/parkService'
 
 const ParkCard = (props) => {
+    const history = useHistory()
     const location = useLocation()
     const { park } = location.state
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
@@ -13,6 +14,7 @@ const ParkCard = (props) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
+            history.push('/')
         } catch (error) {
             throw error
         }
@@ -21,6 +23,7 @@ const ParkCard = (props) => {
     const handleDeletePark = async (id) => {
         try {
             await deletePark(id)
+            history.push('/')
         } catch (error) {
             throw error
         }
