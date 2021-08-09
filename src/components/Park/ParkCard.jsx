@@ -44,14 +44,13 @@ const ParkCard = (props) => {
         setToggleUpdate(!toggleUpdate)
     }
 
-
     return (
         !toggleUpdate ?
         park &&
             <div>
                 <h1>{park.parkName}</h1>
                 <CommentSection
-                    parkDetail={park}
+                    park={park}
                     setPark={setPark}
                     user={props.user}
                     commentArray={commentArray}
@@ -59,11 +58,13 @@ const ParkCard = (props) => {
                 <button onClick={handleClick}>Update</button>
             </div>
             :
-        park &&
+        park ?
             <>
                 <ParkUpdateForm park={park} handleUpdatePark={handleUpdatePark} />
                 <button onClick={() => handleDeletePark(park._id)}>Delete</button>
             </>
+        :
+        <p>loading...</p>
     )
 }
 
