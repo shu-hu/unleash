@@ -1,8 +1,9 @@
 import React from 'react'
 
 const CommentActions = (props) => {
-
+    console.log(props)
     return (
+        props ?
         <div>
             {
                 props.user &&
@@ -19,6 +20,8 @@ const CommentActions = (props) => {
                 </button>
             }
         </div>
+        :
+        <p>loading...</p>
     )
 }
 

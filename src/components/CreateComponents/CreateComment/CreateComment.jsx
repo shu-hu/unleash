@@ -16,17 +16,13 @@ const CreateComment = (props) => {
             // author: props.profile._id,
 		}
 		props.handleCreateComment(formData)
+        props.setToggleNewComment(false)
     }
 
-    // TODO
-    // const handleCreateComment = (e) => {
-    //     e.preventDefault()
-    // }
-
     return (
-        <form  className="create-form">
+        <form  className="create-form" onSubmit={handleSubmit}>
             <div className="question-prompt">
-                    <label>Enter your Comment</label>
+                    <label>Enter Comment:</label>
             </div>
             
             <input
