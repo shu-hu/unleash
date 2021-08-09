@@ -3,7 +3,9 @@ import CommentList from './CommentList'
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import { createComment, deleteComment, } from '../../services/commentService'
 
-const CommentSection = () => {
+const CommentSection = (props) => {
+    const [toggleNewComment, setToggleNewComment] = useState(false)
+
     const handleCreateComment = async (formData) => {
         try {
             const newComment = await createComment(props.park._id, formData)
@@ -23,8 +25,38 @@ const CommentSection = () => {
         }
     }
 
+    const handleUpdateComment = async () => {
+        try {
+            console.log("update comment works!")
+        } catch (err) {
+            throw err
+        }
+    }
+
     return (
-        <h2>Comments go here</h2>
+        <div className="comment-section">
+
+            <div className="header">
+                <h3>Comment Section</h3>
+                <div className="header-buttons">
+                    {props.user &&
+                        <button onClick={() => setToggleNewComment(!toggleNewComment)}>
+                            New Comment
+                        </button>
+                    }
+                </div>
+            </div>
+
+            {toggleNewComment &&
+                <CreateComment
+                    {...props}
+                    handleCreateComment={handleCreateComment}
+                    setToggleNewComment={setToggleNewComment}
+                ></CreateComment>}
+
+            <CommentList {...props} handleUpdateComment={handleUpdateComment} handleDeleteComment={handleDeleteComment} />
+
+        </div>
     )
 }
 
