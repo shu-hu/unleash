@@ -5,7 +5,6 @@ import CommentSection from '../Comment/CommentSection'
 const ParkCard = () => {
     const location = useLocation()
     const { park } = location.state
-    console.log(park)
 
     return(
         <div>
