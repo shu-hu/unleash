@@ -48,12 +48,12 @@ const Home = (props) => {
     }
 
     return (
-        <Layout {...props}>
-            { props.toggleMap ? 
-            <Map />
-            :
-            <CreatePark />
-            }
+        <Layout parks={parks} handleUpdatePark={handleUpdatePark} {...props}>
+                {props.toggleMap ? 
+                <Map />
+                :
+                <CreatePark handleCreatePark={handleCreatePark} />
+                }
         </Layout>
     )
 }

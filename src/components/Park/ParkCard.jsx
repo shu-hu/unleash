@@ -3,10 +3,12 @@ import { useLocation, Link } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
 
-const ParkCard = () => {
+const ParkCard = (props) => {
     const location = useLocation()
     const { park } = location.state
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
+    
+    // NEEDS handleUpdatePark!!!!!!!!!********!!!!!!!!!!
 
     const handleClick = () => {
         setToggleUpdate(!toggleUpdate)
@@ -23,7 +25,7 @@ const ParkCard = () => {
         </div>
         :
         <>
-        <ParkUpdateForm park={park} />
+        <ParkUpdateForm park={park} handleUpdatePark={props.handleUpdatePark} />
         </>
     )
 }
