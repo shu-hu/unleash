@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { getPaginatedParks, createPark } from '../services/parkService'
+import { getPaginatedParks, createPark, updatePark } from '../services/parkService'
 import CreatePark from '../components/CreateComponents/CreatePark/CreatePark'
-import ResultMenu from '../components/Layout/ResultMenu/ResultMenu'
+import Layout from '../components/Layout/Layout'
+import Map from '../components/Map/Map'
 
 const Home = (props) => {
     const [parks, setParks] = useState([])
@@ -38,10 +39,13 @@ const Home = (props) => {
     }
 
     return (
-        <>
-            <ResultMenu />
-            <CreatePark user={props.user} handleCreatePark={handleCreatePark}/>
-        </>
+        <Layout parks={parks} {...props}>
+                {props.toggleMap ? 
+                <Map />
+                :
+                <CreatePark handleCreatePark={handleCreatePark} />
+                }
+        </Layout>
     )
 }
 
