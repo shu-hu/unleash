@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Button from '@material-ui/core/Button'
 
 const CreateComment = (props) => {
     const [text, setText] = useState('')
@@ -49,7 +50,9 @@ const CreateComment = (props) => {
             
             <div className="border"></div>
             
-            <button type="submit">Submit</button>
+            <Button type="submit" color="primary"> 
+                Submit
+            </Button>
         </form>
     )
 }

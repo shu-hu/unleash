@@ -27,7 +27,8 @@ const ResultCard = (props) => {
                     key={props.park._id}
                     className={resultStyles.link}
                     to={`api/parks/details/${props.park._id}`}
-                    > <Button size="small">Details</Button>
+                    > 
+                    <Button size="small">Details</Button>
                 </Link>
            </CardActions>
        </Card>

@@ -1,4 +1,6 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
+import * as sideMenuStyles from './SideMenu.module.css'
 
 const SideMenu = (props) => {
 
@@ -8,7 +10,9 @@ const SideMenu = (props) => {
 
     return (
         <div className="side-panel">
-            <button onClick={handleClick}>Create Park</button>
+            <Button variant="outlined" color="primary" onClick={handleClick}>
+                Create Park
+            </Button>
         </div>
     )
 }

@@ -35,6 +35,7 @@
     height: 100vh;
     background: #0b0b12;
     padding: 10px 10px 94px 10px;
+    overflow-y: auto;
   }
   
   .results{
@@ -44,15 +45,14 @@
     width: 30%;
     height: 100vh;
     background: #0b0b12;
-    padding: 10px 10px 94px 10px;
+    padding: 10px 10px 94px 0px;
   }
 
   .spacing-block {
     margin-bottom: 60px;
   }
 
- 
-  
+
   @media only screen and (max-width: 850px) {
     .side-panel{
       display: none;
