@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import Button from '@material-ui/core/Button'
+import * as CreateCommentStyles from './CreateComment.module.css'
 
 const CreateComment = (props) => {
     const [text, setText] = useState('')
@@ -11,16 +13,13 @@ const CreateComment = (props) => {
             genComments: text,
             likes: likes,
             dislikes: dislikes,
-            //TODO
-            // park_id: props.park._id,
-            // author: props.profile._id,
 		}
 		props.handleCreateComment(formData)
         props.setToggleNewComment(false)
     }
 
     return (
-        <form  className="create-form" onSubmit={handleSubmit}>
+        <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
             <div className="question-prompt">
                     <label>Enter Comment:</label>
             </div>
@@ -52,7 +51,9 @@ const CreateComment = (props) => {
             
             <div className="border"></div>
             
-            <button type="submit">Submit</button>
+            <Button type="submit" color="primary"> 
+                Submit
+            </Button>
         </form>
     )
 }

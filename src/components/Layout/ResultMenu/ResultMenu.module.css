@@ -1,3 +1,10 @@
+.root {
+    width: 90%;
+    min-height: 133px;
+    margin: .5rem;
+    border-radius: 5px;
+}
+
 .link {
     font-size: 1.3rem;
     color: white;
@@ -7,3 +14,4 @@
 .link:hover {
     text-decoration: underline;
 }
+

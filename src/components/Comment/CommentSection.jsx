@@ -1,5 +1,7 @@
 import React, { useState} from 'react'
 import CommentList from './CommentList'
+import Button from '@material-ui/core/Button'
+import CommentIcon from '@material-ui/icons/Comment';
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import { createComment, deleteComment, updateComment } from '../../services/commentService'
 
@@ -40,9 +42,14 @@ const CommentSection = (props) => {
                 <h3>Comment Section</h3>
                 <div className="header-buttons">
                     {props.user &&
-                        <button onClick={() => setToggleNewComment(!toggleNewComment)}>
-                            New Comment
-                        </button>
+                        <Button
+                        variant="contained"
+                        color="default"
+                        startIcon={<CommentIcon />}
+                        onClick={() => setToggleNewComment(!toggleNewComment)}
+                        >
+                        New Comment
+                        </Button>
                     }
                 </div>
             </div>

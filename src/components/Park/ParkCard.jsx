@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
+import Button from '@material-ui/core/Button'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 import { updatePark, deletePark, getParkById } from '../../services/parkService'
 
 const ParkCard = (props) => {
@@ -68,7 +71,14 @@ const ParkCard = (props) => {
                      />
                 { props.user &&
                   props.user.profile === park.added_by &&
-                    <button onClick={handleClick}>Update</button>
+                  <Button
+                  variant="contained"
+                  color="default"
+                  startIcon={<EditIcon />}
+                  onClick={handleClick}
+                    >
+                  Update
+                </Button>
                 }
             </div>
             :
@@ -79,7 +89,15 @@ const ParkCard = (props) => {
                     handleUpdatePark={handleUpdatePark}
                     commentArray={commentArray}
                 />
-                <button onClick={() => handleDeletePark(park._id)}>Delete</button>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<DeleteIcon />}
+                        onClick={() => handleDeletePark(park._id)}
+                        >
+                        Delete
+                    </Button>
+                
             </>
         :
         <p>loading...</p>
