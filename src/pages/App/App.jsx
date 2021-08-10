@@ -45,12 +45,12 @@ const App = () => {
 
 	return (
 		<>
-			<NavBar user={currentUser} handleLogout={handleLogout} />
 			<Route exact path='/'>
-				<Langding />
+				<Landing />
 			</Route>
 
 			<Route exact path='/home'>
+				<NavBar user={currentUser} handleLogout={handleLogout} />
 				<Home
 					user={currentUser}
 					toggleMap={toggleMap}
@@ -59,6 +59,7 @@ const App = () => {
 			</Route>
 
 			<Route path='/api/parks/details/:park_id'>
+				<NavBar user={currentUser} handleLogout={handleLogout} />
 				<ParkCard
 					user={currentUser}
 				/>

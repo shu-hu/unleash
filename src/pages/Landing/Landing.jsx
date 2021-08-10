@@ -1,12 +1,18 @@
-import styles from './Landing.module.css'
-import ResultMenu from '../../components/Layout/ResultMenu/ResultMenu'
+import './Landing.css'
+import { Link } from 'react-router-dom'
 
-const Landing = ({user}) => {
+const Landing = ({ user }) => {
   return (
-    <main className={styles.container}>
-        {/* hello, {user ? user.name : "dog lover"} */}
-        <ResultMenu/>
-    </main>
+    <div className="landing-page">
+      {/* hello, {user ? user.name : "dog lover"} */}
+      <div className="landing-elements">
+        <div className="landing-button-container">
+          <button><Link to="/signup">Sign Up</Link></button>
+          <button><Link to="/signin">Sign In</Link></button>
+        </div>
+      </div>
+
+    </div>
   )
 }
 
