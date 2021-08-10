@@ -1,14 +1,10 @@
 import 'date-fns'
-import React, {useState} from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField'
 import * as createParkStyles from '../Create.module.css'
-import DateFnsUtils from '@date-io/date-fns'
-import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
-
 
 const ParkForm = (props) => {
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <form  className={createParkStyles.createForm} onSubmit={props.handleSubmit}>
 
                 <div className="add-park-prompt">
@@ -49,12 +45,12 @@ const ParkForm = (props) => {
                     value={props.description}
                     onChange={(e) => props.setDescription(e.target.value)}>
                 </input>
-
+            <div>
                     <TextField
                         id="opens"
-                        label="Alarm clock"
+                        label="Opens"
                         type="time"
-                        defaultValue="07:00"
+                        value={props.openTime}
                         onChange={(e) => props.setOpenTime(e.target.value)}
                         InputLabelProps={{
                         shrink: true,
@@ -66,9 +62,9 @@ const ParkForm = (props) => {
 
                     <TextField
                         id="closes"
-                        label="Alarm clock"
+                        label="Closes"
                         type="time"
-                        defaultValue="22:00"
+                        value={props.closeTime}
                         onChange={(e) => props.setCloseTime(e.target.value)}
                         InputLabelProps={{
                         shrink: true,
@@ -77,12 +73,11 @@ const ParkForm = (props) => {
                         step: 300,
                         }}
                     />
-                
+        </div>
                 <div className={createParkStyles.border}></div>
                 
                 <button type="submit">Submit</button>
             </form>
-        </MuiPickersUtilsProvider>
     )
 }
 

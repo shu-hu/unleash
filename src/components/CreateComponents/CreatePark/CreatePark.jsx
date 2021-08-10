@@ -8,10 +8,11 @@ const CreatePark = (props) => {
     const [parkName, setParkName] = useState('')
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
-    const [openTime, setOpenTime] = useState('')
-    const [closeTime, setCloseTime] = useState('')
+    const [openTime, setOpenTime] = useState("07:00")
+    const [closeTime, setCloseTime] = useState("22:00")
 
     const handleSubmit = (e) => {
+        console.log(openTime, closeTime)
         e.preventDefault()
         const formData = {
             parkName: parkName,
