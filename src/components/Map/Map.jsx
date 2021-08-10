@@ -48,7 +48,6 @@ const Map = () => {
         const makeApiCall = async () => {
             const res = await fetch(tomtom)
             const {results} = await res.json();
-            console.log(results)
             setDogParks(results)
         };
         makeApiCall();
@@ -71,6 +70,7 @@ const Map = () => {
     }, []);
 
     const panTo = React.useCallback(({ lat, lng }) => {
+        console.log("mapRef.current", mapRef.current)
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
