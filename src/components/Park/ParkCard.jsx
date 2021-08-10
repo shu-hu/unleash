@@ -7,9 +7,10 @@ import { updatePark, deletePark, getParkById } from '../../services/parkService'
 const ParkCard = (props) => {
     const history = useHistory()
     const id = useParams()
-    const [toggleUpdate, setToggleUpdate] = useState(false)
-    const [park, setPark] = useState(null)
-    const [commentArray, setCommentArray] = useState([])
+    const [ toggleUpdate, setToggleUpdate ] = useState(false)
+    const [ park, setPark ] = useState(null)
+    const [ commentArray, setCommentArray ] = useState([])
+    const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
 
     useEffect(() => {
         (async() => {
@@ -19,12 +20,13 @@ const ParkCard = (props) => {
         })()
         return () => { setPark(null) }
     }, [toggleUpdate, id.park_id])
-
+    
 
     const handleUpdatePark = async (id, formData) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
+            setCommentArray([...commentArray, updatedPark])
             setToggleUpdate(false)
         } catch (error) {
             throw error
@@ -40,6 +42,10 @@ const ParkCard = (props) => {
         }
     }
 
+    const handleToggle = () => {
+        setToggleUpdateForm(!toggleUpdateForm)
+    }
+
     const handleClick = () => {
         setToggleUpdate(!toggleUpdate)
     }
@@ -49,18 +55,30 @@ const ParkCard = (props) => {
         park &&
             <div>
                 <h1>{park.parkName}</h1>
+                <h2>{park.address}</h2>
                 <CommentSection
                     park={park}
                     setPark={setPark}
                     user={props.user}
                     commentArray={commentArray}
-                    setCommentArray={setCommentArray} />
-                <button onClick={handleClick}>Update</button>
+                    setCommentArray={setCommentArray}
+                    handleToggle={handleToggle}
+                    toggleUpdateForm={toggleUpdateForm}
+                    setToggleUpdateForm={setToggleUpdateForm}
+                     />
+                { props.user &&
+                  props.user.profile === park.added_by &&
+                    <button onClick={handleClick}>Update</button>
+                }
             </div>
             :
         park ?
             <>
-                <ParkUpdateForm park={park} handleUpdatePark={handleUpdatePark} />
+                <ParkUpdateForm 
+                    park={park} 
+                    handleUpdatePark={handleUpdatePark}
+                    commentArray={commentArray}
+                />
                 <button onClick={() => handleDeletePark(park._id)}>Delete</button>
             </>
         :

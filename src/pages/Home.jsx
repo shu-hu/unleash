@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getPaginatedParks, createPark, updatePark } from '../services/parkService'
+import { getPaginatedParks, createPark} from '../services/parkService'
 import CreatePark from '../components/CreateComponents/CreatePark/CreatePark'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map/Map'
@@ -43,7 +43,7 @@ const Home = (props) => {
                 {props.toggleMap ? 
                 <Map />
                 :
-                <CreatePark handleCreatePark={handleCreatePark} />
+                <CreatePark handleCreatePark={handleCreatePark} {...props} />
                 }
         </Layout>
     )
