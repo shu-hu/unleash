@@ -4,6 +4,7 @@ import CreatePark from '../components/CreateComponents/CreatePark/CreatePark'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map/Map'
 
+
 const Home = (props) => {
     const [parks, setParks] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
@@ -40,11 +41,13 @@ const Home = (props) => {
 
     return (
         <Layout parks={parks} {...props}>
+            <div className="layout">
                 {props.toggleMap ? 
                 <Map />
                 :
                 <CreatePark handleCreatePark={handleCreatePark} {...props} />
                 }
+            </div>
         </Layout>
     )
 }

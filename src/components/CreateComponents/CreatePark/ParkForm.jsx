@@ -1,10 +1,11 @@
 import React from 'react';
+import * as createParkStyles from '../Create.module.css'
 
 const ParkForm = (props) => {
 
     return (
         <>
-            <form  className="create-form" onSubmit={props.handleSubmit}>
+            <form  className={createParkStyles.createForm} onSubmit={props.handleSubmit}>
 
                 <div className="add-park-prompt">
                         <label>Add a Park</label>
@@ -58,7 +59,7 @@ const ParkForm = (props) => {
 
                 
                 
-                <div className="border"></div>
+                <div className={createParkStyles.border}></div>
                 
                 <button type="submit">Submit</button>
             </form>

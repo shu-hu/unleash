@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import * as createParkStyles from '../Create.module.css'
 
 // Components
 import ParkForm from './ParkForm'
@@ -24,7 +25,7 @@ const CreatePark = (props) => {
     }
 
     return (
-        <>
+        <div className={createParkStyles.background}>
             <ParkForm
                 parkName = {parkName}
                 setParkName = {setParkName}
@@ -38,7 +39,7 @@ const CreatePark = (props) => {
                 setCloseTime = {setCloseTime}
                 handleSubmit = {handleSubmit}
             />
-        </>
+        </div>
     )
 }
 

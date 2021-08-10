@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import ParkCard from '../../components/Park/ParkCard'
+import './App.css'
 
 import {getUser, logout} from '../../services/authService'
 import Home from '../Home'
