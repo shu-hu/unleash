@@ -26,11 +26,13 @@ const Map = () => {
         googleMapsApiKey: googleMapsApiKey,
         libraries,
     });
-    const [markers, setMarkers] = useState([]);
+    // const [markers, setMarkers] = useState([]);
     const [dogParks, setDogParks] = useState([])
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
+    const [inputLat, setInputLat] = useState()
+    const [inputLng, setInputLng] = useState()
     
     useEffect(() => {
         (async() => {
@@ -43,8 +45,23 @@ const Map = () => {
                 )
     })()
     }, [])
+
+    // useEffect(() => {
+    //     const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
+    //     const makeApiCall = async () => {
+            // const res = await fetch(geocode)
+            // const {results} = await res.json()
+            // console.log('LOOKHERE!!!!', results)
+            // setInputLat(results[0].position.lat)
+            // setInputLng(results[0].position.lon)
+            // setLat(inputLat)
+            // setLng(inputLng)
+    //     }
+    //     makeApiCall()
+    // }, [inputLng])
+
     useEffect(() => {
-        const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
+        const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
         const makeApiCall = async () => {
             const res = await fetch(tomtom)
             const {results} = await res.json();

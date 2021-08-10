@@ -1,6 +1,8 @@
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
 
+const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
+
 
 const createPark = async (req, res) => {
     console.log('createPark!')
@@ -117,6 +119,18 @@ const showPark = async (req, res) => {
     }
 }
 
+
+const searchParks = async (req, res) => {
+    const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
+    res = await fetch(geocode)
+    const {results} = await res.json()
+    console.log('LOOKHERE!!!!', results)
+    // setInputLat(results[0].position.lat)
+    // setInputLng(results[0].position.lon)
+    // setLat(inputLat)
+    // setLng(inputLng)
+} 
+
 export {
     createPark,
     indexPark,
@@ -128,4 +142,5 @@ export {
     updateComment,
     deleteComment,
     showPark,
+    searchParks,
 }
