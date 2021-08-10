@@ -11,9 +11,6 @@ const CreateComment = (props) => {
             genComments: text,
             likes: likes,
             dislikes: dislikes,
-            //TODO
-            // park_id: props.park._id,
-            // author: props.profile._id,
 		}
 		props.handleCreateComment(formData)
         props.setToggleNewComment(false)

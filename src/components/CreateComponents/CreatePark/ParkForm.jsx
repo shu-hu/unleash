@@ -10,18 +10,24 @@ const ParkForm = (props) => {
                 <div className="add-park-prompt">
                         <label>Add a Park</label>
                 </div>
+
+                <div className={createParkStyles.border}></div>
                 
+                <label for="park-name">Park Name:</label>
                 <input
                     required
+                    id="park-name"
                     autoComplete='off'
-                    placeholder="Park Name"
+                    placeholder="Enter a name"
                     name="parkName"
                     value={props.parkName}
                     onChange={(e) => props.setParkName(e.target.value)}>
                 </input>
 
+                <label for="address">Address:</label>
                 <input
                     required
+                    id="address"
                     autoComplete='off'
                     placeholder="Address"
                     name="address"
@@ -29,34 +35,36 @@ const ParkForm = (props) => {
                     onChange={(e) => props.setAddress(e.target.value)}>
                 </input>
 
+                <label for="description">Description:</label>
                 <input
                     required
+                    id="description"
                     autoComplete='off'
-                    placeholder="Description"
+                    placeholder="What's the park like?"
                     name="description"
                     value={props.description}
                     onChange={(e) => props.setDescription(e.target.value)}>
                 </input>
 
+                <label for="openTime">Opens:</label>
                 <input
                     required
+                    id="open-time"
                     autoComplete='off'
-                    placeholder="OpenTime"
                     name="openTime"
                     value={props.openTime}
                     onChange={(e) => props.setOpenTime(e.target.value)}>
                 </input>
 
+                <label for="closeTime">Closes:</label>
                 <input
                     required
+                    id="closeTime"
                     autoComplete='off'
-                    placeholder="CloseTime"
                     name="closeTime"
                     value={props.closeTime}
                     onChange={(e) => props.setCloseTime(e.target.value)}>
                 </input>
-                
-
                 
                 
                 <div className={createParkStyles.border}></div>
