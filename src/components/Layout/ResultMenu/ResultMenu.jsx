@@ -22,7 +22,6 @@ const ResultMenu = (props) => {
                 >{park.parkName}</Link>
         })
     }
-
     return (
         <div>
             <h1>ResultMenu</h1>

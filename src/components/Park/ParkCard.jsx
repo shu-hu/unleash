@@ -7,8 +7,8 @@ import { updatePark, deletePark, getParkById } from '../../services/parkService'
 const ParkCard = (props) => {
     const history = useHistory()
     const id = useParams()
-    const [toggleUpdate, setToggleUpdate] = useState(false)
-    const [park, setPark] = useState(null)
+    const [ toggleUpdate, setToggleUpdate ] = useState(false)
+    const [ park, setPark ] = useState(null)
     const [ commentArray, setCommentArray ] = useState([])
     const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
 
@@ -55,6 +55,7 @@ const ParkCard = (props) => {
         park &&
             <div>
                 <h1>{park.parkName}</h1>
+                <h2>{park.address}</h2>
                 <CommentSection
                     park={park}
                     setPark={setPark}
@@ -65,7 +66,10 @@ const ParkCard = (props) => {
                     toggleUpdateForm={toggleUpdateForm}
                     setToggleUpdateForm={setToggleUpdateForm}
                      />
-                <button onClick={handleClick}>Update</button>
+                { props.user &&
+                  props.user.profile === park.added_by &&
+                    <button onClick={handleClick}>Update</button>
+                }
             </div>
             :
         park ?
