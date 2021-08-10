@@ -43,3 +43,7 @@ body {
     text-decoration: none;
     color: white;
 }
+
+.team-logo-img {
+    max-width: 20vw;
+}
