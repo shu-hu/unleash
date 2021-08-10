@@ -60,6 +60,7 @@ const ParkUpdateForm = (props) => {
                         id="opens"
                         label="Opens"
                         type="time"
+                        varient="outlined"
                         value={openTime}
                         onChange={(e) => setOpenTime(e.target.value)}
                         InputLabelProps={{
@@ -74,6 +75,7 @@ const ParkUpdateForm = (props) => {
                         id="closes"
                         label="Closes"
                         type="time"
+                        varient="outlined"
                         value={closeTime}
                         onChange={(e) => setCloseTime(e.target.value)}
                         InputLabelProps={{
