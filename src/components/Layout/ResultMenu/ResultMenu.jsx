@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {getPaginatedParks} from '../../../services/parkService'
 import ResultCard from './ResultCard'
 
-
 const ResultMenu = (props) => {
     const [parkList, setParkList] = useState(props.parks)
 

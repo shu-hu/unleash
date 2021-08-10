@@ -1,9 +1,20 @@
 * {
     box-sizing: border-box;
   }
+
+  body {
+    margin: 0;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    overflow-y: scroll; 
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; 
+  }
   
   #root{
-    overflow-y: hidden;
+    overflow-y: none;
     height: 100vh;
     background: black;
     color: whitesmoke;
@@ -12,14 +23,15 @@
   .home-page{
     display: flex;
     width: 100vw;
+    overflow: hidden;
   }
   
   .layout{
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 90vh;
-    overflow-y: auto;
+    height: 100vh;
+    overflow: hidden;
     position: relative; 
   }
 
@@ -44,9 +56,12 @@
     align-items: center;
     width: 30%;
     height: 100vh;
+    overflow-y: auto;
     background: #0b0b12;
     padding: 10px 10px 94px 0px;
   }
+
+
 
   .spacing-block {
     margin-bottom: 60px;
