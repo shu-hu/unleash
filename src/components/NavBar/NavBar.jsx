@@ -1,27 +1,27 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import LogoDesktop from '../../assets/logo/logo-desktop.png'
 
 const NavBar = ({ user, handleLogout }) => {
 	return (
-		<nav>
+		<nav className="nav-bar">
 			<div>
-			{user ? (
+			{user ?
 				<ul>
+					<NavLink className="logo" to="/home">
+						<img src={LogoDesktop} alt="unleash-logo"></img>
+					</NavLink>
 					<li>Welcome, {user.handle}</li>
 					<li>
 						<NavLink to="/" onClick={handleLogout}>Sign Out</NavLink>
 					</li>
 				</ul>
-			) : (
-				<ul>
-					<li>
+			: 
+			<>
 						<NavLink to="/login">Log In</NavLink>
-					</li>
-					<li>
 						<NavLink to="/signup">Sign Up</NavLink>
-					</li>
-				</ul>
-			)}
+			</>
+			}
 			</div>
 		</nav>
 	)
