@@ -7,7 +7,7 @@ const SideMenu = (props) => {
     }
 
     return (
-        <div>
+        <div className="side-panel">
             <button onClick={handleClick}>Create Park</button>
         </div>
     )

@@ -23,10 +23,9 @@ const ResultMenu = (props) => {
         })
     }
     return (
-        <div>
-            <h1>ResultMenu</h1>
+            <div className="results">
             {parks}
-        </div>
+            </div>
     );
 }
 
