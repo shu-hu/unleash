@@ -1,5 +1,6 @@
 .root {
     width: 90%;
+    min-height: 133px;
     margin: .5rem;
     border-radius: 5px;
 }

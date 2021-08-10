@@ -23,14 +23,13 @@ const ResultCard = (props) => {
             subheader={props.park.address}
            />
            <CardActions>
-           <Link 
-                key={props.park._id}
-                className={resultStyles.link}
-                to={`api/parks/details/${props.park._id}`}
-                > <Button size="small">Details</Button>
-            </Link>
+                <Link 
+                    key={props.park._id}
+                    className={resultStyles.link}
+                    to={`api/parks/details/${props.park._id}`}
+                    > <Button size="small">Details</Button>
+                </Link>
            </CardActions>
-       
        </Card>
    )
 }
