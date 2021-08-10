@@ -49,7 +49,7 @@ const CreateComment = (props) => {
                 onChange={(e) => setDislikes(e.target.value)}>
             </input>
             
-            <div className="border"></div>
+            <div className={CreateCommentStyles.border}></div>
             
             <Button type="submit" color="primary"> 
                 Submit
