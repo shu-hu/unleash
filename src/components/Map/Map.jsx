@@ -31,8 +31,8 @@ const Map = () => {
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
-    const [inputLat, setInputLat] = useState()
-    const [inputLng, setInputLng] = useState()
+    // const [inputLat, setInputLat] = useState()
+    // const [inputLng, setInputLng] = useState()
     
     useEffect(() => {
         (async() => {
@@ -73,11 +73,6 @@ const Map = () => {
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
-    }, []);
-
-    const panTo = React.useCallback(({ lat, lng }) => {
-        mapRef.current.panTo({ lat, lng });
-        mapRef.current.setZoom(14);
     }, []);
 
     if (loadError) return "Error";

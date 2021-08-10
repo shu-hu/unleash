@@ -1,5 +1,6 @@
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
+import axios from 'axios'
 
 const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
@@ -121,14 +122,20 @@ const showPark = async (req, res) => {
 
 
 const searchParks = async (req, res) => {
-    const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
-    res = await fetch(geocode)
-    const {results} = await res.json()
-    console.log('LOOKHERE!!!!', results)
-    // setInputLat(results[0].position.lat)
-    // setInputLng(results[0].position.lon)
-    // setLat(inputLat)
-    // setLng(inputLng)
+    try {
+        const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
+        const res = await axios.get(geocode)
+        console.log(res.data)
+        return res.data.results.position
+        // const {results} = await res.json()
+        // console.log('LOOKHERE!!!!', results)
+        // return res.status(200).json(results)
+        // setLat(results[0].position.lat)
+        // setLng(results[0].position.lon)
+    } catch (error) {
+        throw error
+    }
+    
 } 
 
 export {
