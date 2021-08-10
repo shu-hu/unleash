@@ -1,22 +1,12 @@
 import 'date-fns'
 import React, {useState} from 'react';
+import TextField from '@material-ui/core/TextField'
 import * as createParkStyles from '../Create.module.css'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
 
 
 const ParkForm = (props) => {
-    const [selectedOpen, setSelectedOpen] = useState(new Date('2014-08-18T21:11:54'));
-    const [selectedClose, setSelectedClose] = useState(new Date('2014-08-18T21:11:54'));
-
-    const handleOpenChange = (date) => {
-        setSelectedOpen(date);
-      };
-    const handleCloseChange = (date) => {
-        setSelectedClose(date);
-      };
-
-
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <form  className={createParkStyles.createForm} onSubmit={props.handleSubmit}>
@@ -60,52 +50,33 @@ const ParkForm = (props) => {
                     onChange={(e) => props.setDescription(e.target.value)}>
                 </input>
 
-                {/* <label for="openTime">Opens:</label>
-                <input
-                    required
-                    id="open-time"
-                    autoComplete='off'
-                    name="openTime"
-                    value={props.openTime}
-                    onChange={(e) => props.setOpenTime(e.target.value)}>
-                </input> */}
+                    <TextField
+                        id="opens"
+                        label="Alarm clock"
+                        type="time"
+                        defaultValue="07:00"
+                        onChange={(e) => props.setOpenTime(e.target.value)}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        inputProps={{
+                        step: 300,
+                        }}
+                    />
 
-                <KeyboardTimePicker
-                    required
-                    margin="normal"
-                    id="open-time"
-                    label="Opens:"
-                    name="openTime"
-                    value={selectedOpen}
-                    onChange={handleOpenChange}
-                    KeyboardButtonProps={{
-                        'aria-label': 'change time',
-                    }}
-                />
-
-                {/* <label for="closeTime">Closes:</label>
-                <input
-                    required
-                    id="closeTime"
-                    autoComplete='off'
-                    name="closeTime"
-                    value={props.closeTime}
-                    onChange={(e) => props.setCloseTime(e.target.value)}>
-                </input>
-                 */}
-
-<KeyboardTimePicker
-                    required
-                    margin="normal"
-                    id="close-time"
-                    label="closes:"
-                    name="closeTime"
-                    value={selectedClose}
-                    onChange={handleCloseChange}
-                    KeyboardButtonProps={{
-                        'aria-label': 'change time',
-                    }}
-                />
+                    <TextField
+                        id="closes"
+                        label="Alarm clock"
+                        type="time"
+                        defaultValue="22:00"
+                        onChange={(e) => props.setCloseTime(e.target.value)}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        inputProps={{
+                        step: 300,
+                        }}
+                    />
                 
                 <div className={createParkStyles.border}></div>
                 
