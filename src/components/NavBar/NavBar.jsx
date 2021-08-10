@@ -1,28 +1,30 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import './NavBar.css'
 import LogoDesktop from '../../assets/logo/logo-desktop.png'
 
 const NavBar = ({ user, handleLogout }) => {
 	return (
 		<nav className="nav-bar">
-			<div>
-			{user ?
-				<ul>
+			
+				<div className="nav-bar-right">
 					<NavLink className="logo" to="/home">
 						<img src={LogoDesktop} alt="unleash-logo"></img>
 					</NavLink>
-					<li>Welcome, {user.handle}</li>
-					<li>
-						<NavLink to="/" onClick={handleLogout}>Sign Out</NavLink>
-					</li>
-				</ul>
+				</div>
+			{user ?
+				<div className="nav-bar-left">
+					Welcome, {user.handle}
+					<NavLink to="/" onClick={handleLogout}>Sign Out</NavLink>
+				</div>
 			: 
-			<>
+			
+				<div className="nav-bar-left">
 						<NavLink to="/login">Log In</NavLink>
 						<NavLink to="/signup">Sign Up</NavLink>
-			</>
+				</div>
+		
 			}
-			</div>
 		</nav>
 	)
 }
