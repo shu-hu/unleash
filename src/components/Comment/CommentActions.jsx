@@ -2,7 +2,6 @@ import React from 'react'
 import CommentUpdateForm from './CommentUpdateForm'
 
 const CommentActions = (props) => {
-
     return (
         props ?
         <div>

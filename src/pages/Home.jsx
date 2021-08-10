@@ -43,7 +43,7 @@ const Home = (props) => {
                 {props.toggleMap ? 
                 <Map />
                 :
-                <CreatePark handleCreatePark={handleCreatePark} />
+                <CreatePark handleCreatePark={handleCreatePark} {...props} />
                 }
         </Layout>
     )

@@ -19,7 +19,8 @@ const CreatePark = (props) => {
             openTime: openTime,
             closeTime: closeTime,
         }
-        props.handleCreatePark(formData) // pass the formData up to Home.jsx
+        props.handleCreatePark(formData)
+        props.setToggleMap(true)
     }
 
     return (
