@@ -58,14 +58,13 @@ const deletePark = async (req, res) => {
     }
 }
 
-
 const createComment = async (req, res) => {
     try {
         const park = await Park.findById(req.params.park_id)
         park.comments.unshift(req.body)
-        await park.save()
         const newComment = park.comments[0]
         newComment.author = req.user.profile
+        await park.save()
         return res.status(201).json(newComment)
     } catch (err) {
         res.status(400).send(err.message)

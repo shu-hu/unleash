@@ -34,7 +34,7 @@ export const indexCommentsByParkId = async parkId => {
     }
 }
 
-export const updateComment = async (parkId, commentId) => {
+export const updateComment = async (parkId, commentId, parkData) => {
     try {
         const res = await fetch(`${BASE_URL}${parkId}/comments/${commentId}`, {
             method: 'PUT',
@@ -42,6 +42,7 @@ export const updateComment = async (parkId, commentId) => {
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${tokenService.getToken()}`
             },
+            body: JSON.stringify(parkData)
         }, {mode: "cors"})
         const data = await res.json()
         return data

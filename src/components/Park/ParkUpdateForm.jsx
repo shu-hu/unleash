@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from '@material-ui/core/Button'
 
 const ParkUpdateForm = (props) => {
     const [parkName, setParkName] = useState(props.park.parkName)
@@ -20,7 +21,6 @@ const ParkUpdateForm = (props) => {
     }
 
         return (
-                <>
             <form  className="create-form" onSubmit={handleSubmit}>
 
                 <div className="add-park-prompt">
@@ -75,9 +75,14 @@ const ParkUpdateForm = (props) => {
                 
                 <div className="border"></div>
                 
-                <button type="submit">Submit</button>
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    type="submit">
+                Submit
+                </Button>
+
             </form>
-        </> 
     )
 }
 

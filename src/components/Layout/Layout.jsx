@@ -5,7 +5,6 @@ import SideMenu from './SideMenu/SideMenu'
 
 const Layout = (props) => {
     const { children } = props
-
     return (
         <div className="home-page">
             <SideMenu {...props} />

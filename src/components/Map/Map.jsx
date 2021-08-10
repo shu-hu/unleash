@@ -17,9 +17,13 @@ const options = {
     zoomControl: true,
 };
 
+
+const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
+const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
+
 const Map = () => {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyBYbAlSWN1gUz5QMhkV9esGebDWDsg0ZCk",
+        googleMapsApiKey: googleMapsApiKey,
         libraries,
     });
     const [markers, setMarkers] = useState([]);
@@ -34,17 +38,13 @@ const Map = () => {
                 (position) => {
                     setLat(parseFloat(position.coords.latitude))
                     setLng(parseFloat(position.coords.longitude))
-                    // panTo({
-                    //     lat: position.coords.latitude,
-                    //     lng: position.coords.longitude,
-                    // });
                 },
                 () => null
                 )
     })()
     }, [])
     useEffect(() => {
-        const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
+        const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
         const makeApiCall = async () => {
             const res = await fetch(tomtom)
             const {results} = await res.json();
@@ -53,24 +53,12 @@ const Map = () => {
         makeApiCall();
     }, [lng]);
 
-    // const onMapClick = React.useCallback((e) => {
-    //     setMarkers((current) => [
-    //         ...current,
-    //         {
-    //             lat: e.latLng.lat(),
-    //             lng: e.latLng.lng(),
-    //             time: new Date(),
-    //         },
-    //     ]);
-    // }, []);
-
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
     }, []);
 
     const panTo = React.useCallback(({ lat, lng }) => {
-        console.log("mapRef.current", mapRef.current)
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
@@ -81,16 +69,13 @@ const Map = () => {
 
     return (
         <>
-            <h1>MAP COMPONENT!</h1>
             <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
                 zoom={14}
                 center={{lat: lat, lng: lng}}
                 options={options}
-                // onClick={onMapClick}
                 onLoad={onMapLoad}
-
             >
 
                 {dogParks?.map((park) => (
@@ -113,4 +98,5 @@ const Map = () => {
     )
 }
 
-export default Map
+export default Map;
+

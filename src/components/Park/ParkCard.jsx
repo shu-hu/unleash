@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
+import Button from '@material-ui/core/Button'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 import { updatePark, deletePark, getParkById } from '../../services/parkService'
 
 const ParkCard = (props) => {
@@ -9,18 +12,24 @@ const ParkCard = (props) => {
     const id = useParams()
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
     const [ park, setPark ] = useState(null)
+    const [ commentArray, setCommentArray ] = useState([])
+    const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
 
     useEffect(() => {
         (async() => {
             const parkData = await getParkById(id.park_id)
-            setPark(parkData)
+            await setPark(parkData)
+            setCommentArray(parkData.comments)
         })()
-    }, [toggleUpdate])
+        return () => { setPark(null) }
+    }, [toggleUpdate, id.park_id])
+    
 
     const handleUpdatePark = async (id, formData) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
+            setCommentArray([...commentArray, updatedPark])
             setToggleUpdate(false)
         } catch (error) {
             throw error
@@ -36,25 +45,62 @@ const ParkCard = (props) => {
         }
     }
 
+    const handleToggle = () => {
+        setToggleUpdateForm(!toggleUpdateForm)
+    }
+
     const handleClick = () => {
         setToggleUpdate(!toggleUpdate)
     }
 
-    return(
+    return (
         !toggleUpdate ?
         park &&
-        <div>
-        <h1>{park.parkName}</h1>
-        <CommentSection />
-        <button onClick={handleClick}>Update</button>
-        
-        </div>
+            <div>
+                <h1>{park.parkName}</h1>
+                <h2>{park.address}</h2>
+                <CommentSection
+                    park={park}
+                    setPark={setPark}
+                    user={props.user}
+                    commentArray={commentArray}
+                    setCommentArray={setCommentArray}
+                    handleToggle={handleToggle}
+                    toggleUpdateForm={toggleUpdateForm}
+                    setToggleUpdateForm={setToggleUpdateForm}
+                     />
+                { props.user &&
+                  props.user.profile === park.added_by &&
+                  <Button
+                  variant="contained"
+                  color="default"
+                  startIcon={<EditIcon />}
+                  onClick={handleClick}
+                    >
+                  Update
+                </Button>
+                }
+            </div>
+            :
+        park ?
+            <>
+                <ParkUpdateForm 
+                    park={park} 
+                    handleUpdatePark={handleUpdatePark}
+                    commentArray={commentArray}
+                />
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<DeleteIcon />}
+                        onClick={() => handleDeletePark(park._id)}
+                        >
+                        Delete
+                    </Button>
+                
+            </>
         :
-        park &&
-        <>
-        <ParkUpdateForm park={park} handleUpdatePark={handleUpdatePark} />
-        <button onClick={() => handleDeletePark(park._id)}>Delete</button>
-        </>
+        <p>loading...</p>
     )
 }
 

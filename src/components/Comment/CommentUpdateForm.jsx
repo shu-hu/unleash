@@ -1,11 +1,9 @@
 import React, { useState } from "react"
-import Button from '@material-ui/core/Button'
-import * as CreateCommentStyles from './CreateComment.module.css'
 
-const CreateComment = (props) => {
-    const [text, setText] = useState('')
-    const [likes, setLikes] = useState('')
-    const [dislikes, setDislikes] = useState('')
+const CommentUpdateForm = (props) => {
+    const [text, setText] = useState(props.comment.genComments)
+    const [likes, setLikes] = useState(props.comment.likes)
+    const [dislikes, setDislikes] = useState(props.comment.dislikes)
 
     const handleSubmit = (e) => {
 		e.preventDefault()
@@ -14,12 +12,12 @@ const CreateComment = (props) => {
             likes: likes,
             dislikes: dislikes,
 		}
-		props.handleCreateComment(formData)
-        props.setToggleNewComment(false)
+		props.handleUpdateComment(props.comment._id, formData)
+        props.handleToggle()
     }
 
     return (
-        <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
+        <form  className="create-form" onSubmit={handleSubmit}>
             <div className="question-prompt">
                     <label>Enter Comment:</label>
             </div>
@@ -51,11 +49,9 @@ const CreateComment = (props) => {
             
             <div className="border"></div>
             
-            <Button type="submit" color="primary"> 
-                Submit
-            </Button>
+            <button type="submit">Submit</button>
         </form>
     )
 }
 
-export default CreateComment
+export default CommentUpdateForm
