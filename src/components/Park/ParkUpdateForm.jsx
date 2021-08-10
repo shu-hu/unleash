@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
+import * as ParkFormStyles from './Park.module.css'
 
 const ParkUpdateForm = (props) => {
     const [parkName, setParkName] = useState(props.park.parkName)
@@ -21,7 +22,7 @@ const ParkUpdateForm = (props) => {
     }
 
         return (
-            <form  className="create-form" onSubmit={handleSubmit}>
+            <form  className={[ParkFormStyles.createForm]} onSubmit={handleSubmit}>
 
                 <div className="add-park-prompt">
                         <label>Update Park</label>
