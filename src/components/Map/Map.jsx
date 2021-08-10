@@ -68,7 +68,6 @@ const Map = () => {
 
     return (
         <>
-            <h1>MAP COMPONENT!</h1>
             <Locate panTo={panTo} />
             <GoogleMap
                 id="map"
