@@ -51,8 +51,6 @@ const ParkForm = (props) => {
                     id="desc" 
                     label="Description"
                     fullWidth
-                    multiline
-                    rows={4}
                     autoComplete='off' 
                     variant="outlined"
                     name="description"

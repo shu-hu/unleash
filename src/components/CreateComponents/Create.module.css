@@ -1,5 +1,5 @@
 .createForm {
-    border-radius: 0px 0px 8px 8px;
+
     border: 1px solid #292934;
     border-top: none;
     background: #121212;
@@ -18,15 +18,17 @@
 }
 
 .createForm input{
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 7px;
     background: none;
-    border-bottom: 1px solid #292934;
+    border: 1px solid #bdbdbd;
 }
 
-.createForm textarea{
-    border-radius: 0px 0px 8px 8px;
-    background: none;
-    border-bottom: 1px solid #292934;
+.createForm input:hover{
+    border: 1px solid #121212;
+}
+
+.createForm input:focus{
+    border: none;
 }
 
 .createForm button {

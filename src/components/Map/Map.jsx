@@ -17,7 +17,6 @@ const options = {
     zoomControl: true,
 };
 
-
 const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
 const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
@@ -40,7 +39,7 @@ const Map = () => {
                     setLng(parseFloat(position.coords.longitude))
                 },
                 () => null
-                )
+            )
     })()
     }, [])
     useEffect(() => {
@@ -65,7 +64,6 @@ const Map = () => {
 
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
-
 
     return (
         <>
