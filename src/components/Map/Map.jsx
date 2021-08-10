@@ -42,14 +42,17 @@ const Map = () => {
             )
     })()
     }, [])
+
     useEffect(() => {
-        const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
-        const makeApiCall = async () => {
-            const res = await fetch(tomtom)
-            const {results} = await res.json();
-            setDogParks(results)
-        };
-        makeApiCall();
+        if(lng) {
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
+            const makeApiCall = async () => {
+                const res = await fetch(tomtom)
+                const {results} = await res.json();
+                setDogParks(results)
+            };
+            makeApiCall();
+        }
     }, [lng]);
 
     const mapRef = React.useRef();
@@ -57,15 +60,11 @@ const Map = () => {
         mapRef.current = map;
     }, []);
 
-    const panTo = React.useCallback(({ lat, lng }) => {
-        mapRef.current.panTo({ lat, lng });
-        mapRef.current.setZoom(14);
-    }, []);
-
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
 
     return (
+        lng &&
         <>
             <GoogleMap
                 id="map"
@@ -93,6 +92,7 @@ const Map = () => {
                 ))}
             </GoogleMap>
         </>
+
     )
 }
 
