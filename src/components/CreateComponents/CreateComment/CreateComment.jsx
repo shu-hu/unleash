@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Button from '@material-ui/core/Button'
+import * as CreateCommentStyles from './CreateComment.module.css'
 
 const CreateComment = (props) => {
     const [text, setText] = useState('')
@@ -18,7 +19,7 @@ const CreateComment = (props) => {
     }
 
     return (
-        <form  className="create-form" onSubmit={handleSubmit}>
+        <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
             <div className="question-prompt">
                     <label>Enter Comment:</label>
             </div>

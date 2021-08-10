@@ -1,10 +1,24 @@
-import React from 'react';
+import 'date-fns'
+import React, {useState} from 'react';
 import * as createParkStyles from '../Create.module.css'
+import DateFnsUtils from '@date-io/date-fns'
+import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
+
 
 const ParkForm = (props) => {
+    const [selectedOpen, setSelectedOpen] = useState(new Date('2014-08-18T21:11:54'));
+    const [selectedClose, setSelectedClose] = useState(new Date('2014-08-18T21:11:54'));
+
+    const handleOpenChange = (date) => {
+        setSelectedOpen(date);
+      };
+    const handleCloseChange = (date) => {
+        setSelectedClose(date);
+      };
+
 
     return (
-        <>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <form  className={createParkStyles.createForm} onSubmit={props.handleSubmit}>
 
                 <div className="add-park-prompt">
@@ -46,7 +60,7 @@ const ParkForm = (props) => {
                     onChange={(e) => props.setDescription(e.target.value)}>
                 </input>
 
-                <label for="openTime">Opens:</label>
+                {/* <label for="openTime">Opens:</label>
                 <input
                     required
                     id="open-time"
@@ -54,9 +68,22 @@ const ParkForm = (props) => {
                     name="openTime"
                     value={props.openTime}
                     onChange={(e) => props.setOpenTime(e.target.value)}>
-                </input>
+                </input> */}
 
-                <label for="closeTime">Closes:</label>
+                <KeyboardTimePicker
+                    required
+                    margin="normal"
+                    id="open-time"
+                    label="Opens:"
+                    name="openTime"
+                    value={selectedOpen}
+                    onChange={handleOpenChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                    }}
+                />
+
+                {/* <label for="closeTime">Closes:</label>
                 <input
                     required
                     id="closeTime"
@@ -65,13 +92,26 @@ const ParkForm = (props) => {
                     value={props.closeTime}
                     onChange={(e) => props.setCloseTime(e.target.value)}>
                 </input>
-                
+                 */}
+
+<KeyboardTimePicker
+                    required
+                    margin="normal"
+                    id="close-time"
+                    label="closes:"
+                    name="closeTime"
+                    value={selectedClose}
+                    onChange={handleCloseChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                    }}
+                />
                 
                 <div className={createParkStyles.border}></div>
                 
                 <button type="submit">Submit</button>
             </form>
-        </> 
+        </MuiPickersUtilsProvider>
     )
 }
 

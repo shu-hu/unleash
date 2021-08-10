@@ -1,0 +1,11 @@
+createForm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 8px 8px;
+    border: 1px solid #292934;
+    border-top: none;
+    background: #12121b;
+    padding: 12px;	
+    display: flex;
+    flex-direction: column;
+}
