@@ -48,21 +48,22 @@ const Map = () => {
         const makeApiCall = async () => {
             const res = await fetch(tomtom)
             const {results} = await res.json();
+            console.log(results)
             setDogParks(results)
         };
         makeApiCall();
     }, [lng]);
 
-    const onMapClick = React.useCallback((e) => {
-        setMarkers((current) => [
-            ...current,
-            {
-                lat: e.latLng.lat(),
-                lng: e.latLng.lng(),
-                time: new Date(),
-            },
-        ]);
-    }, []);
+    // const onMapClick = React.useCallback((e) => {
+    //     setMarkers((current) => [
+    //         ...current,
+    //         {
+    //             lat: e.latLng.lat(),
+    //             lng: e.latLng.lng(),
+    //             time: new Date(),
+    //         },
+    //     ]);
+    // }, []);
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -87,7 +88,7 @@ const Map = () => {
                 zoom={8}
                 center={{lat: lat, lng: lng}}
                 options={options}
-                onClick={onMapClick}
+                // onClick={onMapClick}
                 onLoad={onMapLoad}
 
             >
@@ -95,7 +96,7 @@ const Map = () => {
                 {dogParks?.map((park) => (
                     <Marker
                         key={park.id}
-                        position={{ lat: lat, lng: lng }}
+                        position={{ lat: park.position.lat, lng: park.position.lon }}
                         onClick={() => {
                             setSelected(park);
                         }}
