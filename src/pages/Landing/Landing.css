@@ -43,7 +43,16 @@ body {
     text-decoration: none;
     color: white;
 }
-
 .team-logo-img {
+    width:250px;
+    height:250px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -125px;
+    margin-left: -125px;
+}
+
+.app-logo-img {
     max-width: 20vw;
 }
