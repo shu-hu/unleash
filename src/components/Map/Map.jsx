@@ -16,10 +16,6 @@ const options = {
     disableDefaultUI: true,
     zoomControl: true,
 };
-// const center ={{
-// /: lat/    : lng}lat: 40.69,
-//     lng: -73.79,
-// };
 
 const Map = () => {
     const { isLoaded, loadError } = useLoadScript({
@@ -36,31 +32,23 @@ const Map = () => {
         (async() => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    // console.log(position.coords.latitude, position.coords.longitude)
                     setLat(parseFloat(position.coords.latitude))
                     setLng(parseFloat(position.coords.longitude))
-                    // panTo({
-                    //     lat: lat,
-                    //     lng: lng,
-                    // });
+                    panTo({
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    });
                 },
                 () => null
                 )
-        console.log('first', lat, lng)
     })()
     }, [])
     useEffect(() => {
-        console.log('second', lat, lng)
-        console.log(typeof lat)
-        // const tomtom = `https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=${lat}&lon=${lng}&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
+        const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`
         const makeApiCall = async () => {
-            console.log(`https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=${lat}&lon=${lng}&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`)
-            const res = await fetch(`https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=${lat}&lon=${lng}&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`)
-            // const res = await fetch(`https://api.tomtom.com/search/2/poiSearch/dog%20park.json?lat=41.85003&lon=-87.65005&radius=1000&key=rna21jhsFa14jRA7PdiHoysupvIjza4t`)
-            const dogParkData = await res.json();
-            console.log(dogParkData)
-            setDogParks(dogParkData.results)
-        // console.log(dogParks)
+            const res = await fetch(tomtom)
+            const {results} = await res.json();
+            setDogParks(results)
         };
         makeApiCall();
     }, [lng]);
@@ -93,7 +81,6 @@ const Map = () => {
     return (
         <>
             <h1>MAP COMPONENT!</h1>
-            {/* <Locate panTo={panTo} /> */}
             <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
@@ -108,7 +95,7 @@ const Map = () => {
                 {dogParks?.map((park) => (
                     <Marker
                         key={park.id}
-                        position={{ lat: park.position.lat, lng: park.position.lon }}
+                        position={{ lat: lat, lng: lng }}
                         onClick={() => {
                             setSelected(park);
                         }}
@@ -124,28 +111,5 @@ const Map = () => {
         </>
     )
 }
-
-
-// function Locate({ panTo }) {
-//     return (
-//         <button
-//             className="locate"
-//             onClick={() => {
-//                 navigator.geolocation.getCurrentPosition(
-//                     (position) => {
-//                         panTo({
-//                             lat: position.coords.latitude,
-//                             lng: position.coords.longitude,
-//                         });
-//                     },
-//                     () => null
-//                 );
-//             }}
-
-//         >
-//             <h1>Your Location</h1>
-//         </button>
-//     );
-// }
 
 export default Map
