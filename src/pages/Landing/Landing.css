@@ -12,13 +12,13 @@ body {
 }
 
 .left {      
-    background-color: white;
+    background-color: #F4F9FF;
     color: black;
     
 }
 
 .right {
-    background-color: rgb(56, 54, 54);
+    background-color: #282C34;
 }
 
 .landing-button-container {
