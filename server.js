@@ -7,12 +7,13 @@ import cors from 'cors'
 
 import { router as authRouter } from './routes/auth.js'
 import { router as usersRouter } from './routes/users.js'
-import { router as parksRouter} from './routes/parks.js'
+import { router as parksRouter } from './routes/parks.js'
 
 const app = express()
 
 import('./config/database.js')
 
+app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), 'build')))
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
@@ -24,11 +25,11 @@ app.use('/api/parks', parksRouter)
 
 app.get('/*', (req, res) => {
   res.sendFile(
-      path.join(
-          path.dirname(fileURLToPath(import.meta.url)),
-          'build',
-          'index.html'
-      )
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      'build',
+      'index.html'
+    )
   )
 })
 
