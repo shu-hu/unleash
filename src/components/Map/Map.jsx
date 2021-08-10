@@ -34,10 +34,10 @@ const Map = () => {
                 (position) => {
                     setLat(parseFloat(position.coords.latitude))
                     setLng(parseFloat(position.coords.longitude))
-                    panTo({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    });
+                    // panTo({
+                    //     lat: position.coords.latitude,
+                    //     lng: position.coords.longitude,
+                    // });
                 },
                 () => null
                 )
@@ -85,7 +85,7 @@ const Map = () => {
             <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
-                zoom={8}
+                zoom={14}
                 center={{lat: lat, lng: lng}}
                 options={options}
                 // onClick={onMapClick}
