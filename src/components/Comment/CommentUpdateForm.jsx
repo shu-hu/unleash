@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import * as createParkStyles from '../CreateComponents/Create.module.css'
 
 const CommentUpdateForm = (props) => {
     const [text, setText] = useState(props.comment.genComments)
@@ -17,7 +18,7 @@ const CommentUpdateForm = (props) => {
     }
 
     return (
-        <form  className="create-form" onSubmit={handleSubmit}>
+        <form  className={createParkStyles.createForm} onSubmit={handleSubmit}>
             <div className="question-prompt">
                     <label>Enter Comment:</label>
             </div>
