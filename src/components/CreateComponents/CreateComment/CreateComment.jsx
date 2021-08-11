@@ -158,10 +158,9 @@ const CreateComment = (props) => {
             </List>
             
             <div className={CreateCommentStyles.border}></div>
-            
-            <Button type="submit" color="primary"> 
-                Submit
-            </Button>
+                <Button type="submit" color="primary" variant="outlined" fullWidth> 
+                    Submit
+                </Button>
             </div>
         </form>
     )
