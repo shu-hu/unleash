@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button'
 import * as CreateCommentStyles from './CreateComment.module.css'
 import Rating from '@material-ui/lab/Rating'
 import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -137,7 +136,7 @@ const CreateComment = (props) => {
                 onChange={(event, newValue) => {setStars(newValue)}}
                 onChangeActive={(event, newHover) => {setHover(newHover);}}
             />
-            {stars !== null && <Box ml={2}>{labels[hover !== -1 ? hover : stars]}</Box>}
+            {stars !== null && <Box ml={2} mt={1.5}>{labels[hover !== -1 ? hover : stars]}</Box>}
             </Box>
 
             <List>
