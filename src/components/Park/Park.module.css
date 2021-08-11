@@ -19,3 +19,27 @@ createForm {
     background: #0b0b12;
 }
 
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+div .featuresList {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 50%;
+    background-color: white;
+}
+
+div .cardContainer {
+    width: 50%;
+    background-color: #292934;
+    border-radius: 1rem;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 3rem;
+    margin-top: 2rem;
+    width: 600px;
+}
