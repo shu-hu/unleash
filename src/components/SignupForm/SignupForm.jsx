@@ -41,16 +41,16 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
   }, [formData])
 
   return (
-    <div className='form-container'>
+    <div className='signup-form-container'>
 
-      <div className="title-container">
+      <div className="signup-title-container">
         <h1>SignUp !</h1>
       </div>
 
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
-        className="register-form"
+        className="signup-register-form"
       >
         <div>
           <label htmlFor="handle" className="label">
@@ -65,8 +65,8 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="inputContainer">
-          <label htmlFor="email-input" className="label">Email</label>
+        <div className="signup-inputContainer">
+          <label htmlFor="email-input" className="signup-label">Email</label>
           <input
             type="text"
             autoComplete="off"
@@ -76,8 +76,8 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="inputContainer">
-          <label htmlFor="password-input" className="label">
+        <div className="signup-inputContainer">
+          <label htmlFor="password-input" className="signup-label">
             Password
           </label>
           <input
@@ -89,8 +89,8 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="inputContainer">
-          <label htmlFor="confirm-input" className="label">
+        <div className="signup-inputContainer">
+          <label htmlFor="confirm-input" className="signup-label">
             Confirm Password
           </label>
           <input
@@ -103,17 +103,17 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
           />
         </div>
         <div>
-          <button id="submit-button" disabled={validForm} type="submit">SUBMIT</button>
+          <button id="signup-submit-button" disabled={validForm} type="submit">SUBMIT</button>
           <Link to="/">
-            <button id="cancel-button" type="submit">CANCEL</button>
+            <button id="signup-cancel-button" type="submit">CANCEL</button>
           </Link>
         </div>
       </form>
 
-      <div className="redirect-container">
+      <div className="signup-redirect-container">
         <p>Already have an account?</p>
-        <Link className="redirect-link" to="/login">
-          <p id="link-login">Log In</p>
+        <Link className="signup-redirect-link" to="/login">
+          <p id="signup-link-login">Log In</p>
         </Link>
       </div>
 

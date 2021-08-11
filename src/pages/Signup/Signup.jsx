@@ -14,13 +14,13 @@ const Signup = ({ handleSignupOrLogin }) => {
   return (
     <div className="signup-page">
 
-      <div className="left-container">
-        <div className="animation-box">
+      <div className="signup-left-container">
+        <div className="signup-animation-box">
           <Animation animData={rightSide}></Animation>
         </div>
       </div>
 
-      <div className="right-container">
+      <div className="signup-right-container">
         {message && <p>{message}</p>}
         <SignupForm
           updateMessage={updateMessage}
