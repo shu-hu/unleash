@@ -20,6 +20,7 @@
     align-items: center;
     max-width: 450px;
     border: 1px groove #90caf9;
+    box-shadow: rgba(245, 245, 102, 0.12) 0px 2px 4px 0px, rgba(245, 245, 242, 0.32) 0px 2px 16px 0px;
     border-radius: 10px;
     text-align: center;
 }
