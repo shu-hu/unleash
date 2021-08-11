@@ -58,11 +58,7 @@ const CreateComment = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault()
-        console.log('fired')
-
         const featureObj = features.reduce((a, key) => Object.assign(a, { [key]: true }), {});
-
-        console.log(featureObj)
 		const formData = {
             genComments: text,
             likes: likes,
