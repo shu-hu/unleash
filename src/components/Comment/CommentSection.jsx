@@ -19,7 +19,7 @@ const CommentSection = (props) => {
         }
     }
 
-    const handleDeleteComment = async (commentId) => {
+    const handleDeleteComment = async commentId => {
         try {
             await deleteComment(props.park._id, commentId)
             props.setCommentArray(props.commentArray.filter(comment => comment._id !== commentId))

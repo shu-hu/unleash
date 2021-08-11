@@ -50,9 +50,9 @@ const CreateComment = (props) => {
     const [ likes, setLikes ] = useState('')
     const [ dislikes, setDislikes ] = useState('')
     const [ stars, setStars ] = useState(5)
-    const [ hover, setHover] = useState(-1);
-    const [ checked, setChecked ] = useState([]);
-    const [ features, setFeatures ] = useState([]);
+    const [ hover, setHover] = useState(-1)
+    const [ checked, setChecked ] = useState([])
+    const [ features, setFeatures ] = useState([])
 
     const handleSubmit = (e) => {
 		e.preventDefault()
