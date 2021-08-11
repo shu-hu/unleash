@@ -21,6 +21,7 @@ const CommentCard = (props) => {
             <div className="card-header">
             </div>
             {!props.toggleUpdateForm ?
+                !props.comment.editing &&
                 <Card elevation={0}>
                     <CardContent className={cx(shadowStyles.root)}>
                         <Box className={gutterStyles.parent}>
@@ -77,6 +78,7 @@ const CommentCard = (props) => {
                     </CardContent>
               </Card>
               :
+              props.comment.editing && 
               <CommentUpdateForm {...props} />
             }
         </div>

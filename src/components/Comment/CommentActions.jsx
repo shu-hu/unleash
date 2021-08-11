@@ -4,6 +4,11 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 
 const CommentActions = (props) => {
+
+    const handleClick = () => {
+        props.handleSetEditing(props.comment._id)
+    }
+
     return (
         props &&
         !props.toggleUpdateForm &&
@@ -18,7 +23,7 @@ const CommentActions = (props) => {
             {
                 props.user &&
                 props.user.profile === props.park.added_by &&
-                <IconButton onClick={props.handleToggle}>
+                <IconButton onClick={handleClick}>
                     <EditIcon />
                 </IconButton>
             }
