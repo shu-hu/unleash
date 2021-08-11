@@ -113,7 +113,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
       <div className="redirect-container">
         <p>Already have an account?</p>
         <Link className="redirect-link" to="/login">
-          <p>Log In</p>
+          <p id="link-login">Log In</p>
         </Link>
       </div>
 

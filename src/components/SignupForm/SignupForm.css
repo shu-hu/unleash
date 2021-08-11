@@ -45,17 +45,26 @@
 
 .redirect-container{
     display: flex;
-    font-size: 14px;
-    font-weight: 500;
     opacity: .5;
     color: rgb(235, 235, 235);
+    margin-top: 25px ;
+    align-items: flex-start;
+}
+
+.redirect-container p {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .redirect-link{
-    color: #7450E9;
     text-decoration: none;
     padding-left: 6px;
-    font-family: 'Work Sans', sans-serif;
+}
+
+#link-login {
+  color: #d32f2f;
+  font-weight: 500;
 }
 
 #submit-button{
