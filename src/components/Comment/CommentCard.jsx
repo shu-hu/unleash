@@ -2,6 +2,7 @@ import React from "react"
 import CommentActions from './CommentActions'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
+import CommentUpdateForm from './CommentUpdateForm'
 import cx from 'clsx'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -19,7 +20,7 @@ const CommentCard = (props) => {
         <div className="comment-card">
             <div className="card-header">
             </div>
-            {!props.toggleUpdateForm &&
+            {!props.toggleUpdateForm ?
                 <Card elevation={0}>
                     <CardContent className={cx(shadowStyles.root)}>
                         <Box className={gutterStyles.parent}>
@@ -75,6 +76,8 @@ const CommentCard = (props) => {
                     </Box>
                     </CardContent>
               </Card>
+              :
+              <CommentUpdateForm {...props} />
             }
         </div>
     );
