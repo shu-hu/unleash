@@ -1,18 +1,83 @@
-body {
-  background-color: #282C34;
+.title-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
 }
 
-.container {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+.title-container h1 {
+    margin: 14px 0px 32px 15px;
+    font-weight: 600;
+    text-shadow: #64b5f6;
+    
 }
 
-.label,
-.button {
-  margin-right: .5rem;
+.form-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px    
 }
 
-.inputContainer {
-  margin-bottom: 1rem;
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-container input, label{
+    padding: 16px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: rgb(200, 200, 200);
+}
+
+.form-container input {
+    border: 1px solid #292934;
+    border-radius: 7px;
+    background: #0B0B12;
+}
+
+.redirect-container{
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: .5;
+    color: rgb(235, 235, 235);
+}
+
+/* .redirect-link{
+    color: #7450E9;
+    text-decoration: none;
+    padding-left: 6px;
+} */
+
+#submit-button{
+    margin: 22px 40px 0 15px;
+    background: #a6d4fa;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+#cancel-button {
+  margin-top: 22px;
+  background: #f6a5c0;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 7px;
+  padding: 10.2px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  .form-container {
+        width: 75%;
+  }
 }
