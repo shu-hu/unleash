@@ -39,6 +39,10 @@
     background: #0B0B12;
 }
 
+.form-container label {
+    font-family: 'Signika', sans-serif;;
+}
+
 .redirect-container{
     display: flex;
     font-size: 14px;
@@ -47,11 +51,12 @@
     color: rgb(235, 235, 235);
 }
 
-/* .redirect-link{
+.redirect-link{
     color: #7450E9;
     text-decoration: none;
     padding-left: 6px;
-} */
+    font-family: 'Work Sans', sans-serif;
+}
 
 #submit-button{
     margin: 22px 40px 0 15px;
