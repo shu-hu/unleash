@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import * as createParkStyles from '../CreateComponents/Create.module.css'
+import TextField from '@material-ui/core/TextField'
 
 const CommentUpdateForm = (props) => {
     const [text, setText] = useState(props.comment.genComments)
@@ -23,30 +24,38 @@ const CommentUpdateForm = (props) => {
                     <label>Update Comment:</label>
             </div>
             
-            <input
+            <TextField
                 required
+                multiline
+                fullWidth
+                maxRows={4}
+                variant="outlined"
+                label="Comment"
                 autoComplete='off'
-                placeholder="Comment"
                 name="genComments"
                 value={text}
-                onChange={(e) => setText(e.target.value)}>
-            </input>
+                onChange={(e) => setText(e.target.value)}
+            />
 
-            <input
+            <TextField
+                fullWidth
+                label="Likes"
+                variant="outlined"
                 autoComplete='off'
-                placeholder="Likes"
                 name="likes"
                 value={likes}
-                onChange={(e) => setLikes(e.target.value)}>
-            </input>
+                onChange={(e) => setLikes(e.target.value)}
+            />
 
-            <input
+            <TextField 
+                fullWidth
+                label="Dislikes" 
+                variant="outlined" 
                 autoComplete='off'
-                placeholder="Dislikes"
                 name="dislikes"
                 value={dislikes}
-                onChange={(e) => setDislikes(e.target.value)}>
-            </input>
+                onChange={(e) => setDislikes(e.target.value)}
+            />
             
             <div className="border"></div>
             

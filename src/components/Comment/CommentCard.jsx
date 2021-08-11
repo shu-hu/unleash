@@ -64,6 +64,7 @@ const CommentCard = (props) => {
                             { props.comment.likes &&
                                 `Likes: ${props.comment.likes}`
                             }
+                            <br/>
                             { props.comment.dislikes && 
                                 `Dislikes: ${props.comment.dislikes}`
                             }
