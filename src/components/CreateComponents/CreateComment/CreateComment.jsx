@@ -129,7 +129,7 @@ const CreateComment = (props) => {
                 onChange={(e) => setDislikes(e.target.value)}
             />
 
-            <Box component="fieldset" mb={3} mt={3} borderColor="transparent" display="flex">
+            <Box component="fieldset" mt={3} borderColor="transparent" display="flex">
             <Rating
                 name="stars"
                 value={stars}

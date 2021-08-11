@@ -49,7 +49,7 @@ const CommentSection = (props) => {
     return (
         <div className="comment-section">
             <div className={CommentSectionStyles.header}>
-                <h3>Comment Section</h3>
+                <h3>Comments</h3>
                     {props.user &&
                         !props.toggleUpdateForm &&
                         <Button
