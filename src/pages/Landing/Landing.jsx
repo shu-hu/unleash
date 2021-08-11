@@ -4,6 +4,7 @@ import Teamlogo from '../../assets/logo/team-logo.png'
 import Applogo from '../../assets/logo/unleash-logo-white.png'
 import Animation from '../../components/misc/Animation'
 import dogPark from '../../assets/animation/dog-park.json'
+import dots from '../../assets/animation/three-dots.json'
 import dogWalkM from '../../assets/images/dog_walking_man.svg'
 import dogWalkW from '../../assets/images/dog_walking_woman.svg'
 
@@ -31,8 +32,20 @@ const Landing = ({ user }) => {
       <div className="landing-col right">
         <div className="landing-button-container">
           <img className="app-logo-img" src={Applogo} alt="unleash-logo"></img>
-          <button><Link to="/signup">Sign Up</Link></button>
+          <div className="sign-up-box">
+            <button><Link to="/signup">Sign Up</Link></button>
+          </div>
         </div>
+        <div className="dots-animation">
+          <Animation animData={dots}></Animation>
+        </div>
+        <div className="landing-text">
+          <h1>Welcome !</h1>
+          <p>Sign up now</p>
+          <p>and</p>
+          <p>Discover your puppy's favorite park...</p>
+        </div>
+
       </div>
     </div>
   )

@@ -18,7 +18,7 @@ body {
 }
 
 .right {
-    background-color: #282C34;
+    background-color: black;
 }
 
 .landing-button-container {
@@ -39,10 +39,12 @@ body {
     margin: 10px;
 }
 
+
 .landing-button-container a {
     text-decoration: none;
     color: white;
 }
+
 .team-logo-img {
     width:250px;
     height:250px;
@@ -54,7 +56,7 @@ body {
 }
 
 .app-logo-img {
-    max-width: 20vw;
+    max-width: 34vw;
 }
 
 .landing-one {
@@ -80,7 +82,7 @@ body {
     height: 150px;
     display: flex;
     margin-left: 320px;
-    margin-top: 140px;
+    margin-top: 120px;
     position: relative;
 }
 
@@ -90,4 +92,28 @@ body {
     margin: 20px 0 0 20px;
     font-family: sans-serif;
     font-Weight: bold;
+}
+
+.landing-text{
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    font-family: 'Acme', sans-serif;
+}
+
+p {
+    font-size: 24px;
+    font-family: 'Signika', sans-serif;
+}
+
+.dots-animation {
+    width: 200px;
+    margin-left: 250px;
+    display: block;
+    position: relative;
+    text-align: center;
 }
