@@ -21,6 +21,10 @@
   background: #12121b;
 }
 
+.animation-box {
+  width: 60%;
+}
+
 @media only screen and (max-width: 900px) {
   .signup-page{
     flex-direction: column;
@@ -30,7 +34,7 @@
   .left-container{
     display: none;
   }
-  
+
   .right-container{
     width: 100%;
     height: 100vh;
