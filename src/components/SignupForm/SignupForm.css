@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .title-container h1 {
@@ -18,7 +18,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 450px    
+    max-width: 450px;
+    border: 1px groove #90caf9;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .register-form {
