@@ -1,11 +1,24 @@
 import React, { useState } from "react"
 import * as createParkStyles from '../CreateComponents/Create.module.css'
 import TextField from '@material-ui/core/TextField'
+import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
+import Rating from '@material-ui/lab/Rating'
+
+const labels = {
+    1: 'Terrible',
+    2: 'Mediocre',
+    3: 'Ok',
+    4: 'Good',
+    5: 'Excellent',
+}
 
 const CommentUpdateForm = (props) => {
     const [text, setText] = useState(props.comment.genComments)
     const [likes, setLikes] = useState(props.comment.likes)
     const [dislikes, setDislikes] = useState(props.comment.dislikes)
+    const [ stars, setStars ] = useState(props.comment.rating)
+    const [ hover, setHover] = useState(-1);
     
     const handleSubmit = (e) => {
 		e.preventDefault()
@@ -56,6 +69,17 @@ const CommentUpdateForm = (props) => {
                 value={dislikes}
                 onChange={(e) => setDislikes(e.target.value)}
             />
+
+            <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">Rating:</Typography>
+            <Rating
+                name="stars"
+                value={stars}
+                onChange={(event, newValue) => {setStars(newValue)}}
+                onChangeActive={(event, newHover) => {setHover(newHover);}}
+            />
+            {stars !== null && <Box ml={2}>{labels[hover !== -1 ? hover : stars]}</Box>}
+            </Box>
             
             <div className="border"></div>
             
