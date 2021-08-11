@@ -5,15 +5,16 @@
 }
 
 .left-container{
-  width: 60%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0B0B12;
+  /* background: #0B0B12; */
+  background:white;
 }
 
 .right-container{
-  width: 40%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
