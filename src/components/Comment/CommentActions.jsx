@@ -6,6 +6,7 @@ import EditIcon from '@material-ui/icons/Edit'
 const CommentActions = (props) => {
 
     const handleClick = () => {
+        props.setToggleUpdateForm(true)
         props.handleSetEditing(props.comment._id)
     }
 
