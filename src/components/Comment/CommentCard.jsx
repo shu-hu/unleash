@@ -12,7 +12,6 @@ import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
 
 
-
 const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
@@ -22,14 +21,13 @@ const CommentCard = (props) => {
                 <CommentActions
                     toggleUpdateForm={props.toggleUpdateForm}
                     handleToggle={props.handleToggle}
-                    {...props} 
+                    {...props}
                 />
             </div>
             {!props.toggleUpdateForm &&
-
                 <Card elevation={0}>
                     <CardContent className={cx(shadowStyles.root)}>
-                    <h3>{props.comment.added_by}</h3>
+                    <h3>{props.comment.author}</h3>
                     <Box
                         display={'flex'}
                         alignItems={'center'}
