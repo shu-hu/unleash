@@ -52,15 +52,16 @@ const Map = (props) => {
             setDogParks(results)
         };
         makeApiCall();
-    }, [lng]);
+    }, [lat, lng]);
 
     useEffect(() => {
         props.location &&
 
         (async () => {
-            await setLat(props.location.lat)
-            await setLng(props.location.lng)
-            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
+            // setLat(props.location.lat)
+            // setLng(props.location.lng)
+            // console.log('LATANDLONG!!!', lat, lng)
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${props.location.lat}&lon=${props.location.lon}&radius=5000&key=${tomtomApiKey}`
             const res = await fetch(tomtom)
             const {results} = await res.json();
             setDogParks(results)

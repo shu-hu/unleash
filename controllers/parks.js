@@ -1,6 +1,6 @@
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
-import axios from 'axios'
+
 
 // const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
