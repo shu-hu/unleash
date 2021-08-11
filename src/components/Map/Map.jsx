@@ -21,7 +21,7 @@ const options = {
 const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
 const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
-const Map = () => {
+const Map = (props) => {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: googleMapsApiKey,
         libraries,
@@ -44,20 +44,6 @@ const Map = () => {
     })()
     }, [])
 
-    // useEffect(() => {
-    //     const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
-    //     const makeApiCall = async () => {
-            // const res = await fetch(geocode)
-            // const {results} = await res.json()
-            // console.log('LOOKHERE!!!!', results)
-            // setInputLat(results[0].position.lat)
-            // setInputLng(results[0].position.lon)
-            // setLat(inputLat)
-            // setLng(inputLng)
-    //     }
-    //     makeApiCall()
-    // }, [inputLng])
-
     useEffect(() => {
         const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
         const makeApiCall = async () => {
@@ -67,6 +53,21 @@ const Map = () => {
         };
         makeApiCall();
     }, [lng]);
+
+    useEffect(() => {
+        props.location &&
+
+        (async () => {
+            await setLat(props.location.lat)
+            await setLng(props.location.lng)
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
+            const res = await fetch(tomtom)
+            const {results} = await res.json();
+            setDogParks(results)
+        })();
+        
+    
+    }, [props.location]);
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {

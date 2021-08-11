@@ -3,16 +3,24 @@ import { getPaginatedParks, createPark} from '../services/parkService'
 import CreatePark from '../components/CreateComponents/CreatePark/CreatePark'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map/Map'
+import { searchTomTom } from '../services/parkService'
 
 
 const Home = (props) => {
     const [parks, setParks] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
+    const [location, setLocation] = useState(null)
 
-    // const changePage = (e) => {
-    //     e.preventDefault()
-    //     setCurrentPage(currentPage + parseInt(e.target.value))
-    // }
+    const handleSearch = async (searchData) => {
+        try {
+            const locationQuery = await searchTomTom(searchData.location)
+            await setLocation(locationQuery.results[0].position)
+            console.log(locationQuery.results[0].position)
+            console.log(location)
+        } catch (error) {
+            throw error
+        }
+    }
 
     useEffect(() => {
         const fetchPaginatedParks = async () => {
@@ -40,10 +48,10 @@ const Home = (props) => {
     }
 
     return (
-        <Layout parks={parks} {...props}>
+        <Layout parks={parks} {...props} location={location} setLocation={setLocation} handleSearch={handleSearch}>
             <div className="layout">
                 {props.toggleMap ? 
-                <Map />
+                <Map location={location} />
                 :
                 <CreatePark handleCreatePark={handleCreatePark} {...props} />
                 }
