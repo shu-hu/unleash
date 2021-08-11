@@ -18,16 +18,17 @@ const CommentCard = (props) => {
     return (
         <div className="comment-card">
             <div className="card-header">
-                <CommentActions
-                    toggleUpdateForm={props.toggleUpdateForm}
-                    handleToggle={props.handleToggle}
-                    {...props}
-                />
+                
             </div>
             {!props.toggleUpdateForm &&
                 <Card elevation={0}>
                     <CardContent className={cx(shadowStyles.root)}>
                     <h3>{props.comment.author}</h3>
+                    <CommentActions
+                    toggleUpdateForm={props.toggleUpdateForm}
+                    handleToggle={props.handleToggle}
+                    {...props}
+                    />
                     <Box
                         display={'flex'}
                         alignItems={'center'}
