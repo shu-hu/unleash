@@ -2,6 +2,7 @@ import React from "react"
 import CommentActions from './CommentActions'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
+import CommentUpdateForm from './CommentUpdateForm'
 import cx from 'clsx'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -18,17 +19,18 @@ const CommentCard = (props) => {
     return (
         <div className="comment-card">
             <div className="card-header">
-                
             </div>
-            {!props.toggleUpdateForm &&
+            {!props.toggleUpdateForm ?
                 <Card elevation={0}>
                     <CardContent className={cx(shadowStyles.root)}>
-                    <h3>{props.comment.author}</h3>
-                    <CommentActions
-                    toggleUpdateForm={props.toggleUpdateForm}
-                    handleToggle={props.handleToggle}
-                    {...props}
-                    />
+                        <Box className={gutterStyles.parent}>
+                        <h3 style={{ display: 'inline' }}>{props.comment.author}</h3>
+                            <CommentActions
+                                toggleUpdateForm={props.toggleUpdateForm}
+                                handleToggle={props.handleToggle}
+                                {...props}
+                            />
+                        </Box>
                     <Box
                         display={'flex'}
                         alignItems={'center'}
@@ -69,12 +71,14 @@ const CommentCard = (props) => {
                         </Typography>
                         </Box>
                         <IconButton size={'small'}>
-                        <MoreHoriz />
+                            <MoreHoriz />
                         </IconButton>
                     </Box>
                     </CardContent>
               </Card>
-        }
+              :
+              <CommentUpdateForm {...props} />
+            }
         </div>
     );
 }

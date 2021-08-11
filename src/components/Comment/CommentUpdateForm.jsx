@@ -5,7 +5,7 @@ const CommentUpdateForm = (props) => {
     const [text, setText] = useState(props.comment.genComments)
     const [likes, setLikes] = useState(props.comment.likes)
     const [dislikes, setDislikes] = useState(props.comment.dislikes)
-
+    
     const handleSubmit = (e) => {
 		e.preventDefault()
 		const formData = {
@@ -20,7 +20,7 @@ const CommentUpdateForm = (props) => {
     return (
         <form  className={createParkStyles.createForm} onSubmit={handleSubmit}>
             <div className="question-prompt">
-                    <label>Enter Comment:</label>
+                    <label>Update Comment:</label>
             </div>
             
             <input

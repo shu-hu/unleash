@@ -1,14 +1,13 @@
 import React from 'react'
-import CommentUpdateForm from './CommentUpdateForm'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 
-
 const CommentActions = (props) => {
     return (
-        props ?
-        <div>
+        props &&
+        !props.toggleUpdateForm &&
+        <>
             {
                 props.user &&
                 props.user.profile === props.comment.author &&
@@ -23,14 +22,8 @@ const CommentActions = (props) => {
                     <EditIcon />
                 </IconButton>
             }
-            {props.toggleUpdateForm &&
-                <CommentUpdateForm 
-                {...props} />
-            }
-        </div>
-        :
-        <p>Loading...</p>
-    )
+        </>
+    );
 }
 
 export default CommentActions
