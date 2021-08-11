@@ -59,9 +59,6 @@ const ParkCard = (props) => {
         !toggleUpdate ?
         park &&
         <main className={parkStyles.mainContainer}>
-            <div className={parkStyles.featuresList}>
-            <ParkFeatureList />
-            </div>
             <div className={parkStyles.cardContainer}>
                 <h1>{park.parkName}</h1>
                 <h2>{park.address}</h2>
@@ -86,6 +83,9 @@ const ParkCard = (props) => {
                   Update
                 </Button>
                 }
+            </div>
+            <div className={parkStyles.featuresList}>
+            <ParkFeatureList park={park}/>
             </div>
         </main>
             :

@@ -29,7 +29,9 @@ createForm {
 div .featuresList {
     display: flex;
     flex-direction: column;
+    height: 90vh;
     width: 50%;
+    background-color: white;
 }
 
 div .cardContainer {

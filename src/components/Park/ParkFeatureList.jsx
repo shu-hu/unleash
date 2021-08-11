@@ -1,7 +1,8 @@
 import React from 'react'
 import ParkFeature from './ParkFeature'
 
-const ParkFeatureList = () => {
+const ParkFeatureList = (props) => {
+    console.log(props.park)
     return(
         <>
         <ParkFeature />
