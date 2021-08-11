@@ -32,8 +32,8 @@ const LoginForm = ({ handleSignupOrLogin }) => {
   }
 
   return (
-    <div className='form-container'>
-      <div className="title-container">
+    <div className='login-form-container'>
+      <div className="login-title-container">
         <h1>LogIn !</h1>
       </div>
 
@@ -46,10 +46,10 @@ const LoginForm = ({ handleSignupOrLogin }) => {
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
-        className="register-form"
+        className="login-register-form"
       >
         <div>
-          <label htmlFor="email-input" className="label">
+          <label htmlFor="email-input" className="login-label">
             Email
           </label>
           <input
@@ -61,8 +61,8 @@ const LoginForm = ({ handleSignupOrLogin }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="inputContainer">
-          <label htmlFor="password-input" className="label">
+        <div className="login-inputContainer">
+          <label htmlFor="password-input" className="login-label">
             Password
           </label>
           <input
@@ -75,9 +75,9 @@ const LoginForm = ({ handleSignupOrLogin }) => {
           />
         </div>
         <div>
-          <button id="submit-button" type="submit">LOGIN</button>
+          <button id="login-submit-button" type="submit">LOGIN</button>
           <Link to="/">
-            <button id="cancel-button" type="submit">CANCEL</button>
+            <button id="login-cancel-button" type="submit">CANCEL</button>
           </Link>
         </div>
       </form>

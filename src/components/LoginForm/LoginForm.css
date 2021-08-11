@@ -1,4 +1,4 @@
-.title-container{
+.login-title-container{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.title-container h1 {
+.login-title-container h1 {
     margin: 14px 0px 32px 15px;
     font-weight: 600;
     text-shadow: #64b5f6;
@@ -14,7 +14,7 @@
     
 }
 
-.form-container {
+.login-form-container {
     width: 70%;
     height: 55vh;
     display: flex;
@@ -26,31 +26,31 @@
     text-align: center;
 }
 
-.register-form {
+.login-register-form {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.form-container input, label{
+.login-form-container input, label{
     padding: 16px;
     font-size: 16px;
     margin-bottom: 16px;
     color: rgb(200, 200, 200);
 }
 
-.form-container input {
+.login-form-container input {
   border: 1px solid #292934;
   border-radius: 7px;
   background: #0B0B12;
   align-self: flex-end;
 }
 
-.form-container label {
+.login-form-container label {
     font-family: 'Signika', sans-serif;;
 }
 
-#submit-button{
+#login-submit-button{
     margin: 22px 40px 0 15px;
     background: #a6d4fa;
     border: none;
@@ -62,7 +62,7 @@
 
 }
 
-#cancel-button {
+#login-cancel-button {
   margin-top: 16px;
   background: #f6a5c0;
   border: none;
@@ -74,7 +74,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .form-container {
+  .login-form-container {
         width: 75%;
   }
 }

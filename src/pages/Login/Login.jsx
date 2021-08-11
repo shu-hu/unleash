@@ -6,14 +6,14 @@ import rightSide from '../../assets/animation/user-profile.json'
 
 const LoginPage = ({ handleSignupOrLogin }) => {
   return (
-    <main className="signup-page">
-      <div className="left-container">
-        <div className="animation-box">
+    <main className="login-page">
+      <div className="login-left-container">
+        <div className="login-animation-box">
           <Animation animData={rightSide}></Animation>
         </div>
       </div>
 
-      <div className="right-container">
+      <div className="login-right-container">
         <LoginForm handleSignupOrLogin={handleSignupOrLogin} />
       </div>
     </main>
