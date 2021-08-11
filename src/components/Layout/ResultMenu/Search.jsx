@@ -15,8 +15,6 @@ const Search = (props) => {
         props.handleSearch(searchData)
     }
 
-
-
     useEffect(() => {
         console.log(location)
     }, [location])

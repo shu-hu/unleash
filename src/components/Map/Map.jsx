@@ -79,7 +79,6 @@ const Map = (props) => {
                 id="map"
                 mapContainerStyle={mapContainerStyle}
                 zoom={14}
-                initialCenter={{lat: lat, lng: lng}}
                 center={{lat: lat, lng: lng}}
                 options={options}
                 onLoad={onMapLoad}

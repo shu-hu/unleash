@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 
 import ResultMenu from './ResultMenu/ResultMenu'
@@ -6,11 +6,6 @@ import SideMenu from './SideMenu/SideMenu'
 
 const Layout = (props) => {
     const { children } = props
-
-
-    // const handleChange = (e) => {
-    //     props.setLocation(e.target.value)
-    // }
 
     return (
         <div className="home-page">

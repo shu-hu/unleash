@@ -3,20 +3,10 @@ import { useHistory } from 'react-router-dom'
 import {getPaginatedParks, search} from '../../../services/parkService'
 import ResultCard from './ResultCard'
 import Search from './Search'
-import { searchTomTom } from '../../../services/parkService';
 
 
 const ResultMenu = (props) => {
-    console.log("PPPRRROOOPPPSSS", props)
-    const history = useHistory()
     const [parkList, setParkList] = useState(props.parks)
-    const {
-
-        setLat,
-
-        setLng,
-
-    } = props
 
     useEffect(()=> {
         (async()=>{
@@ -32,27 +22,10 @@ const ResultMenu = (props) => {
         })
     }
 
-    // const handleSearch = async (e) => {
-    //     e.preventDefault()
-    //     try {
-    //         const inputLocation = await search(props.location)
-    //         setLat(inputLocation.lat)
-    //         setLng(inputLocation.lng)
-    //         history.push('/home')
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // }
-
-    // const handleChange = (e) => {
-    //     props.setLocation(e.target.value)
-    // }
-
     return (
             <div className="results">
             <Search 
                 {...props}
-
             />
             {parks}
             </div>

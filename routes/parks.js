@@ -5,7 +5,6 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 // ========= Public Routes ========= 
-// router.get('/search', parkCtrl.searchParks)
 router.get('/:page', parkCtrl.indexPark)
 router.get('/details/:park_id', parkCtrl.showPark)
 
