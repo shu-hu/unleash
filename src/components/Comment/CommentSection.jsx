@@ -4,10 +4,12 @@ import Button from '@material-ui/core/Button'
 import CommentIcon from '@material-ui/icons/Comment';
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import { createComment, deleteComment, updateComment } from '../../services/commentService'
+import { useEffect } from 'react';
 
 
 const CommentSection = (props) => {
     const [toggleNewComment, setToggleNewComment] = useState(false)
+    const [ editing, setEditing ] = useState([props.park.comments])
 
     const handleCreateComment = async (formData) => {
         try {
@@ -19,7 +21,7 @@ const CommentSection = (props) => {
         }
     }
 
-    const handleDeleteComment = async (commentId) => {
+    const handleDeleteComment = async commentId => {
         try {
             await deleteComment(props.park._id, commentId)
             props.setCommentArray(props.commentArray.filter(comment => comment._id !== commentId))
@@ -35,6 +37,14 @@ const CommentSection = (props) => {
         } catch (err) {
             throw err
         }
+    }
+
+    const handleSetEditing = commentId => {
+        const newEditing = [...editing]
+        newEditing[0].map(comment => {
+           return comment._id === commentId ? comment.editing = true : comment.editing = false
+        })
+        setEditing(newEditing)
     }
 
     return (
@@ -67,6 +77,9 @@ const CommentSection = (props) => {
                 {...props} 
                 handleUpdateComment={handleUpdateComment} 
                 handleDeleteComment={handleDeleteComment} 
+                editing={editing}
+                setEditing={setEditing}
+                handleSetEditing={handleSetEditing}
              />
 
         </div>

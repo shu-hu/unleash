@@ -1,32 +1,35 @@
 import React from 'react'
-import CommentUpdateForm from './CommentUpdateForm'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
+import EditIcon from '@material-ui/icons/Edit'
 
 const CommentActions = (props) => {
+
+    const handleClick = () => {
+        props.setToggleUpdateForm(true)
+        props.handleSetEditing(props.comment._id)
+    }
+
     return (
-        props ?
-        <div>
+        props &&
+        !props.toggleUpdateForm &&
+        <>
             {
                 props.user &&
                 props.user.profile === props.comment.author &&
-                <button onClick={() => props.handleDeleteComment(props.comment._id)}>
-                    Delete
-                </button>
+                <IconButton onClick={() => props.handleDeleteComment(props.comment._id)}>
+                    <DeleteIcon />
+                </IconButton>
             }
             {
                 props.user &&
                 props.user.profile === props.park.added_by &&
-                <button onClick={props.handleToggle}>
-                    Edit
-                </button>
+                <IconButton onClick={handleClick}>
+                    <EditIcon />
+                </IconButton>
             }
-            {props.toggleUpdateForm &&
-                <CommentUpdateForm 
-                {...props} />
-            }
-        </div>
-        :
-        <p>loading...</p>
-    )
+        </>
+    );
 }
 
 export default CommentActions
