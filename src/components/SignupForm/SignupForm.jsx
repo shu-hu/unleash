@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import styles from './SignupForm.module.css'
+import './SignupForm.css'
 import { signup } from '../../services/authService'
 
 const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
   const history = useHistory()
-  const [ validForm, setValidForm ] = useState(false)
-  const [ formData, setFormData ] = useState({
+  const [validForm, setValidForm] = useState(false)
+  const [formData, setFormData] = useState({
     handle: '',
     email: '',
     password: '',
@@ -17,92 +17,109 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-   const handleSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     try {
-        await signup(formData)
-        await handleSignupOrLogin()
-        history.push('/')
-    } catch(error) {
-        updateMessage(error.message)
-        setFormData({
-            handle: '',
-            email: '',
-            password: '',
-            passwordConf: '',
-        })
+      await signup(formData)
+      await handleSignupOrLogin()
+      history.push('/')
+    } catch (error) {
+      updateMessage(error.message)
+      setFormData({
+        handle: '',
+        email: '',
+        password: '',
+        passwordConf: '',
+      })
     }
-}
+  }
 
   useEffect(() => {
     const { handle, email, password, passwordConf } = formData
     const isFormInvalid = !(handle && email && password === passwordConf)
-		setValidForm(isFormInvalid)
-	}, [formData])
+    setValidForm(isFormInvalid)
+  }, [formData])
 
   return (
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <div>
-        <label htmlFor="handle" className={styles.label}>
-          Name
-        </label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="handle"
-          value={formData.handle}
-          name="handle"
-          onChange={handleChange}
-        />
+    <div className='form-container'>
+
+      <div className="title-container">
+        <h1>SignUp !</h1>
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email-input" className={styles.label}>Email</label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="email"
-          value={formData.email}
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password-input" className={styles.label}>
-          Password
-        </label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={formData.password}
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm-input" className={styles.label}>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="confirm-input"
-          value={formData.passwordConf}
-          name="passwordConf"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <button disabled={validForm}>Sign Up</button>
-        <Link to="/">
-          <button>Cancel</button>
+
+      <form
+        autoComplete="off"
+        onSubmit={handleSubmit}
+        className="register-form"
+      >
+        <div>
+          <label htmlFor="handle" className="label">
+            Name
+          </label>
+          <input
+            type="text"
+            autoComplete="off"
+            id="handle"
+            value={formData.handle}
+            name="handle"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="inputContainer">
+          <label htmlFor="email-input" className="label">Email</label>
+          <input
+            type="text"
+            autoComplete="off"
+            id="email"
+            value={formData.email}
+            name="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="inputContainer">
+          <label htmlFor="password-input" className="label">
+            Password
+          </label>
+          <input
+            type="password"
+            autoComplete="off"
+            id="password"
+            value={formData.password}
+            name="password"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="inputContainer">
+          <label htmlFor="confirm-input" className="label">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            autoComplete="off"
+            id="confirm-input"
+            value={formData.passwordConf}
+            name="passwordConf"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <button id="submit-button" disabled={validForm} type="submit">SUBMIT</button>
+          <Link to="/">
+            <button id="cancel-button" type="submit">CANCEL</button>
+          </Link>
+        </div>
+      </form>
+
+      <div className="redirect-container">
+        <p>Already have an account?</p>
+        <Link className="redirect-link" to="/login">
+          <p id="link-login">Log In</p>
         </Link>
       </div>
-    </form>
+
+    </div>
+
   )
 }
- 
+
 export default SignupForm

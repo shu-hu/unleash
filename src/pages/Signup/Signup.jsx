@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import SignupForm from '../../components/SignupForm/SignupForm'
-import styles from './Signup.module.css'
+import './Signup.css'
+import Animation from '../../components/misc/Animation'
+import rightSide from '../../assets/animation/user-profile.json'
 
 const Signup = ({ handleSignupOrLogin }) => {
   const [message, setMessage] = useState()
@@ -10,14 +12,23 @@ const Signup = ({ handleSignupOrLogin }) => {
   }
 
   return (
-    <main className={styles.container}>
-      <h1>Sign Up</h1>
-      {message && <p>{message}</p> }
-      <SignupForm 
-        updateMessage={updateMessage} 
-        handleSignupOrLogin={handleSignupOrLogin} 
-      />
-    </main>
+    <div className="signup-page">
+
+      <div className="left-container">
+        <div className="animation-box">
+          <Animation animData={rightSide}></Animation>
+        </div>
+      </div>
+
+      <div className="right-container">
+        {message && <p>{message}</p>}
+        <SignupForm
+          updateMessage={updateMessage}
+          handleSignupOrLogin={handleSignupOrLogin}
+        />
+      </div>
+
+    </div>
   )
 }
 

@@ -4,7 +4,8 @@ body {
 
 .landing-page-container {
     display: flex;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
 .landing-col {
@@ -22,7 +23,6 @@ body {
 }
 
 .landing-button-container {
-    width: 100%;
     display: flex;
     justify-content: center;
     margin: 50px;
