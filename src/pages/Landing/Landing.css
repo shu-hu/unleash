@@ -12,7 +12,7 @@ body {
 }
 
 .left {      
-    background-color: #F4F9FF;
+    background-color: white;
     color: black;
     
 }
@@ -55,4 +55,39 @@ body {
 
 .app-logo-img {
     max-width: 20vw;
+}
+
+.landing-one {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    margin-left: 320px;
+    position: relative;
+    margin-top: 20px;
+
+}
+
+.animation-two {
+    width: 300px;
+    position: relative;
+    display: flex;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.landing-three {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    margin-left: 320px;
+    margin-top: 140px;
+    position: relative;
+}
+
+.landing-sign-in {
+    font-size: 20px;
+    color: black;
+    margin: 20px 0 0 20px;
+    font-family: sans-serif;
+    font-Weight: bold;
 }
