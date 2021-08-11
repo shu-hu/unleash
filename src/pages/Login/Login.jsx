@@ -3,6 +3,7 @@ import LoginForm from '../../components/LoginForm/LoginForm'
 import './Login.css'
 import Animation from '../../components/misc/Animation'
 import rightSide from '../../assets/animation/user-profile.json'
+import unleashLogo from '../../assets/logo/logo-desktop.png'
 
 const LoginPage = ({ handleSignupOrLogin }) => {
   return (
@@ -14,6 +15,7 @@ const LoginPage = ({ handleSignupOrLogin }) => {
       </div>
 
       <div className="login-right-container">
+        <img className="login-app-logo-img" src={unleashLogo} alt="login-unleash-logo"></img>
         <LoginForm handleSignupOrLogin={handleSignupOrLogin} />
       </div>
     </main>
