@@ -17,7 +17,6 @@ const options = {
     zoomControl: true,
 };
 
-
 const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
 const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
@@ -26,11 +25,11 @@ const Map = (props) => {
         googleMapsApiKey: googleMapsApiKey,
         libraries,
     });
-    // const [markers, setMarkers] = useState([]);
     const [dogParks, setDogParks] = useState([])
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
+    const [center, setCenter] = useState()
     
     useEffect(() => {
         (async() => {
@@ -45,29 +44,25 @@ const Map = (props) => {
     }, [])
 
     useEffect(() => {
-        const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
-        const makeApiCall = async () => {
-            const res = await fetch(tomtom)
-            const {results} = await res.json();
-            setDogParks(results)
-        };
-        makeApiCall();
-    }, [lat, lng]);
-
-    useEffect(() => {
-        props.location &&
-
+        !props.location &&
         (async () => {
-            // setLat(props.location.lat)
-            // setLng(props.location.lng)
-            // console.log('LATANDLONG!!!', lat, lng)
-            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${props.location.lat}&lon=${props.location.lon}&radius=5000&key=${tomtomApiKey}`
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
             const res = await fetch(tomtom)
             const {results} = await res.json();
             setDogParks(results)
         })();
-        
-    
+    }, [lat, lng]);
+
+    useEffect(() => {
+        props.location &&
+        (async () => {
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${props.location.lat}&lon=${props.location.lon}&radius=5000&key=${tomtomApiKey}`
+            const res = await fetch(tomtom)
+            const {results} = await res.json();
+            setDogParks(results)
+            setLat(props.location.lat)
+            setLng(props.location.lon)
+        })();
     }, [props.location]);
 
     const mapRef = React.useRef();
@@ -78,18 +73,17 @@ const Map = (props) => {
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
 
-
     return (
         <>
             <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
                 zoom={14}
+                initialCenter={{lat: lat, lng: lng}}
                 center={{lat: lat, lng: lng}}
                 options={options}
                 onLoad={onMapLoad}
             >
-
                 {dogParks?.map((park) => (
                     <Marker
                         key={park.id}
