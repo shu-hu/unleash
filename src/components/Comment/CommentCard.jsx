@@ -5,15 +5,14 @@ import CommentUpdateForm from './CommentUpdateForm'
 
 import Box from '@material-ui/core/Box'
 import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import CardContent from '@material-ui/core/CardContent'
 
 import Rating from '@material-ui/lab/Rating'
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
-
 
 const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()

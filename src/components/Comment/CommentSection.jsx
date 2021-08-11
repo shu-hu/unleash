@@ -4,8 +4,7 @@ import Button from '@material-ui/core/Button'
 import CommentIcon from '@material-ui/icons/Comment';
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import { createComment, deleteComment, updateComment } from '../../services/commentService'
-import { useEffect } from 'react';
-
+import * as CommentSectionStyles from './CommentSection.module.css'
 
 const CommentSection = (props) => {
     const [toggleNewComment, setToggleNewComment] = useState(false)
@@ -49,20 +48,19 @@ const CommentSection = (props) => {
 
     return (
         <div className="comment-section">
-            <div className="header">
+            <div className={CommentSectionStyles.header}>
                 <h3>Comment Section</h3>
-                <div className="header-buttons">
                     {props.user &&
+                        !props.toggleUpdateForm &&
                         <Button
-                        variant="contained"
-                        color="default"
+                        color="primary"
+                        size="small"
                         startIcon={<CommentIcon />}
                         onClick={() => setToggleNewComment(!toggleNewComment)}
                         >
                         New Comment
                         </Button>
                     }
-                </div>
             </div>
 
             {toggleNewComment &&

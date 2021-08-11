@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import * as createParkStyles from '../CreateComponents/Create.module.css'
+import * as commentSectionStyles from '../Comment/CommentSection.module.css'
 import TextField from '@material-ui/core/TextField'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'

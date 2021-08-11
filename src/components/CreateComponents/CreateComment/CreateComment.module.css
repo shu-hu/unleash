@@ -5,7 +5,6 @@ createForm {
     border: 1px solid #292934;
     border-top: none;
     background: #12121b;
-    padding: 12px;	
     display: flex;
     flex-direction: column;
 }
@@ -37,5 +36,4 @@ createForm {
 
 label {
     margin: .5rem 0 .3rem 0;
-    color: whitesmoke;
 }

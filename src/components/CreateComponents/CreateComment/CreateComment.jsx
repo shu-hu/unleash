@@ -104,6 +104,7 @@ const CreateComment = (props) => {
                 autoComplete='off'
                 name="genComments"
                 value={text}
+                inputProps={{ style: { color: '#bdbdbd' } }}
                 onChange={(e) => setText(e.target.value)}
             />
 
@@ -114,6 +115,7 @@ const CreateComment = (props) => {
                 autoComplete='off'
                 name="likes"
                 value={likes}
+                inputProps={{ style: { color: '#bdbdbd' } }}
                 onChange={(e) => setLikes(e.target.value)}
             />
 
@@ -124,11 +126,11 @@ const CreateComment = (props) => {
                 autoComplete='off'
                 name="dislikes"
                 value={dislikes}
+                inputProps={{ style: { color: '#bdbdbd' } }}
                 onChange={(e) => setDislikes(e.target.value)}
             />
 
-            <Box component="fieldset" mb={3} borderColor="transparent">
-            <Typography component="legend">Rating:</Typography>
+            <Box component="fieldset" mb={3} mt={3} borderColor="transparent" display="flex">
             <Rating
                 name="stars"
                 value={stars}
