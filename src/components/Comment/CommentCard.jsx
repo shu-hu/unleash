@@ -1,13 +1,15 @@
 import React from "react"
+import cx from 'clsx'
 import CommentActions from './CommentActions'
+import CommentUpdateForm from './CommentUpdateForm'
+
+import Box from '@material-ui/core/Box'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CommentUpdateForm from './CommentUpdateForm'
-import cx from 'clsx'
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
-import Rating from '@material-ui/lab/Rating'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+
+import Rating from '@material-ui/lab/Rating'
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
