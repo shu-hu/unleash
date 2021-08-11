@@ -89,45 +89,43 @@ const CreateComment = (props) => {
     return (
         <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
             <div className="question-prompt">
-                    <label>Enter Comment:</label>
+                    <label>New Comment</label>
             </div>
             <div className={CreateCommentStyles.formContainer}>
-
-            <TextField
-                required
-                multiline
-                fullWidth
-                maxRows={4}
-                variant="outlined"
-                label="Comment"
-                autoComplete='off'
-                name="genComments"
-                value={text}
-                inputProps={{ style: { color: '#bdbdbd' } }}
-                onChange={(e) => setText(e.target.value)}
-            />
-
-            <TextField
-                fullWidth
-                label="Likes"
-                variant="outlined"
-                autoComplete='off'
-                name="likes"
-                value={likes}
-                inputProps={{ style: { color: '#bdbdbd' } }}
-                onChange={(e) => setLikes(e.target.value)}
-            />
-
-            <TextField 
-                fullWidth
-                label="Dislikes" 
-                variant="outlined" 
-                autoComplete='off'
-                name="dislikes"
-                value={dislikes}
-                inputProps={{ style: { color: '#bdbdbd' } }}
-                onChange={(e) => setDislikes(e.target.value)}
-            />
+                <div className={CreateCommentStyles.inputContainer}>
+                    <TextField
+                        required
+                        multiline
+                        fullWidth
+                        rows={4}
+                        variant="outlined"
+                        label="Comment"
+                        autoComplete='off'
+                        name="genComments"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                    />
+                    <Box m={1}></Box>
+                    <TextField
+                        fullWidth
+                        label="Likes"
+                        variant="outlined"
+                        autoComplete='off'
+                        name="likes"
+                        value={likes}
+                        onChange={(e) => setLikes(e.target.value)}
+                    />
+                    <Box m={1}></Box>
+                    <TextField
+                        fullWidth
+                        label="Dislikes" 
+                        variant="outlined" 
+                        autoComplete='off'
+                        name="dislikes"
+                        value={dislikes}
+                        onChange={(e) => setDislikes(e.target.value)}
+                    />
+                </div>
 
             <Box component="fieldset" mt={3} borderColor="transparent" display="flex">
             <Rating
