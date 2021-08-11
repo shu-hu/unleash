@@ -1,13 +1,14 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import CommentList from './CommentList'
 import Button from '@material-ui/core/Button'
 import CommentIcon from '@material-ui/icons/Comment';
+import CancelIcon from '@material-ui/icons/Cancel';
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import { createComment, deleteComment, updateComment } from '../../services/commentService'
 import * as CommentSectionStyles from './CommentSection.module.css'
 
 const CommentSection = (props) => {
-    const [toggleNewComment, setToggleNewComment] = useState(false)
+    const [ toggleNewComment, setToggleNewComment ] = useState(false)
     const [ editing, setEditing ] = useState([props.park.comments])
 
     const handleCreateComment = async (formData) => {
@@ -47,11 +48,12 @@ const CommentSection = (props) => {
     }
 
     return (
-        <div className="comment-section">
-            <div className={CommentSectionStyles.header}>
+        <>
+        <div className={CommentSectionStyles.header}>
                 <h3>Comments</h3>
                     {props.user &&
                         !props.toggleUpdateForm &&
+                            !toggleNewComment ?
                         <Button
                         color="primary"
                         size="small"
@@ -60,9 +62,17 @@ const CommentSection = (props) => {
                         >
                         New Comment
                         </Button>
+                        :
+                        <Button
+                        color="secondary"
+                        size="small"
+                        endIcon={<CancelIcon />}
+                        onClick={() => setToggleNewComment(!toggleNewComment)}
+                        >Cancel</Button>
                     }
             </div>
 
+        <div className="comment-section">
             {toggleNewComment &&
                 <CreateComment
                     {...props}
@@ -81,6 +91,7 @@ const CommentSection = (props) => {
              />
 
         </div>
+    </>
     )
 }
 
