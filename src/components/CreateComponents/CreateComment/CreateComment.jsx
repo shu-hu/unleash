@@ -39,8 +39,20 @@ const CreateComment = (props) => {
     const [ dislikes, setDislikes ] = useState('')
     const [ stars, setStars ] = useState(5)
     const [ hover, setHover] = useState(-1);
-    const [ checked, setChecked ] = useState([0]);
-    const [ features, setFeatures ] = useState([])
+    const [ checked, setChecked ] = useState([]);
+    const [ features, setFeatures ] = useState({
+        fullyFenced: false,
+        partFenced: false,
+        offLeash: false,
+        smDogArea: false,
+        agility: false,
+        swimming: false,
+        dogWater: false,
+        washStation: false,
+        pooBags: false,
+        trash: false,
+        restrooms: false,
+    })
 
     const handleSubmit = (e) => {
 		e.preventDefault()
@@ -67,8 +79,7 @@ const CreateComment = (props) => {
     setChecked(newChecked);
   }
 
-  useEffect(() => {console.log(features)}, [features])
-
+  useEffect(() => {console.log(checked)}, [checked])
 
     return (
         <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
@@ -126,7 +137,7 @@ const CreateComment = (props) => {
             const labelId = `checkbox-list-label-${value}`;
 
             return (
-            <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
+            <ListItem key={value} dense button onClick={handleToggle(value)}>
             <ListItemIcon>
               <Checkbox
                 edge="start"
