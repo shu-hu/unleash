@@ -1,11 +1,16 @@
 import React, { useState } from "react"
 import Button from '@material-ui/core/Button'
 import * as CreateCommentStyles from './CreateComment.module.css'
+import Rating from '@material-ui/lab/Rating'
+import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
+import { useEffect } from "react"
 
 const CreateComment = (props) => {
-    const [text, setText] = useState('')
-    const [likes, setLikes] = useState('')
-    const [dislikes, setDislikes] = useState('')
+    const [ text, setText ] = useState('')
+    const [ likes, setLikes ] = useState('')
+    const [ dislikes, setDislikes ] = useState('')
+    const [ stars, setStars ] = useState(5)
 
     const handleSubmit = (e) => {
 		e.preventDefault()
@@ -13,6 +18,7 @@ const CreateComment = (props) => {
             genComments: text,
             likes: likes,
             dislikes: dislikes,
+            rating: stars
 		}
 		props.handleCreateComment(formData)
         props.setToggleNewComment(false)
@@ -48,6 +54,15 @@ const CreateComment = (props) => {
                 value={dislikes}
                 onChange={(e) => setDislikes(e.target.value)}>
             </input>
+
+            <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">Rating:</Typography>
+            <Rating
+                name="stars"
+                value={stars}
+                onChange={(event, newValue) => {setStars(newValue)}}
+            />
+            </Box>
             
             <div className={CreateCommentStyles.border}></div>
             
