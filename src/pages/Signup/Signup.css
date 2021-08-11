@@ -1,16 +1,11 @@
-/* .container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
-  
+
 .signup-page{
     display: flex;
-    height: 94vh;
+    height: 100vh;
 }
 
 .left-container{
-    width: 50%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +14,7 @@
 }
 
 .right-container{
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;

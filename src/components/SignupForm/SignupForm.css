@@ -9,6 +9,7 @@
     margin: 14px 0px 32px 15px;
     font-weight: 600;
     text-shadow: #64b5f6;
+    color: #ffb74d;
     
 }
 
@@ -34,9 +35,10 @@
 }
 
 .form-container input {
-    border: 1px solid #292934;
-    border-radius: 7px;
-    background: #0B0B12;
+  border: 1px solid #292934;
+  border-radius: 7px;
+  background: #0B0B12;
+  align-self: flex-end;
 }
 
 .form-container label {

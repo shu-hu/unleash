@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SignupForm from '../../components/SignupForm/SignupForm'
 import './Signup.css'
 
+
 const Signup = ({ handleSignupOrLogin }) => {
   const [message, setMessage] = useState()
 
