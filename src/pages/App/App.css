@@ -16,7 +16,7 @@
   #root{
     overflow-y: none;
     height: 100vh;
-    background: black;
+    /* background: black; */
     color: whitesmoke;
   }
   

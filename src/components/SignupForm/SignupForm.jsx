@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import styles from './SignupForm.module.css'
+import './SignupForm.css'
 import { signup } from '../../services/authService'
 
 const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
   const history = useHistory()
-  const [ validForm, setValidForm ] = useState(false)
-  const [ formData, setFormData ] = useState({
+  const [validForm, setValidForm] = useState(false)
+  const [formData, setFormData] = useState({
     handle: '',
     email: '',
     password: '',
@@ -17,28 +17,28 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-   const handleSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     try {
-        await signup(formData)
-        await handleSignupOrLogin()
-        history.push('/')
-    } catch(error) {
-        updateMessage(error.message)
-        setFormData({
-            handle: '',
-            email: '',
-            password: '',
-            passwordConf: '',
-        })
+      await signup(formData)
+      await handleSignupOrLogin()
+      history.push('/')
+    } catch (error) {
+      updateMessage(error.message)
+      setFormData({
+        handle: '',
+        email: '',
+        password: '',
+        passwordConf: '',
+      })
     }
-}
+  }
 
   useEffect(() => {
     const { handle, email, password, passwordConf } = formData
     const isFormInvalid = !(handle && email && password === passwordConf)
-		setValidForm(isFormInvalid)
-	}, [formData])
+    setValidForm(isFormInvalid)
+  }, [formData])
 
   return (
     <form
@@ -46,7 +46,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
       onSubmit={handleSubmit}
     >
       <div>
-        <label htmlFor="handle" className={styles.label}>
+        <label htmlFor="handle" className="label">
           Name
         </label>
         <input
@@ -58,8 +58,8 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email-input" className={styles.label}>Email</label>
+      <div className="inputContainer">
+        <label htmlFor="email-input" className="label">Email</label>
         <input
           type="text"
           autoComplete="off"
@@ -69,8 +69,8 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password-input" className={styles.label}>
+      <div className="inputContainer">
+        <label htmlFor="password-input" className="label">
           Password
         </label>
         <input
@@ -82,8 +82,8 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm-input" className={styles.label}>
+      <div className="inputContainer">
+        <label htmlFor="confirm-input" className="label">
           Confirm Password
         </label>
         <input
@@ -104,5 +104,5 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
     </form>
   )
 }
- 
+
 export default SignupForm
