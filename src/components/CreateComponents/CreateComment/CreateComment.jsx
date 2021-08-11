@@ -33,6 +33,20 @@ const featureLabels = [
     'Trash',
     'Restrooms',]
 
+const featureNames = [
+    'fullyFenced',
+    'partFenced',
+    'offLeash',
+    'smDogArea',
+    'agility',
+    'swimming',
+    'dogWater',
+    'washStation',
+    'pooBags',
+    'trash',
+    'restrooms',
+]
+
 const CreateComment = (props) => {
     const [ text, setText ] = useState('')
     const [ likes, setLikes ] = useState('')
@@ -40,19 +54,7 @@ const CreateComment = (props) => {
     const [ stars, setStars ] = useState(5)
     const [ hover, setHover] = useState(-1);
     const [ checked, setChecked ] = useState([]);
-    const [ features, setFeatures ] = useState({
-        fullyFenced: false,
-        partFenced: false,
-        offLeash: false,
-        smDogArea: false,
-        agility: false,
-        swimming: false,
-        dogWater: false,
-        washStation: false,
-        pooBags: false,
-        trash: false,
-        restrooms: false,
-    })
+    const [ features, setFeatures ] = useState([]);
 
     const handleSubmit = (e) => {
 		e.preventDefault()
@@ -70,16 +72,21 @@ const CreateComment = (props) => {
     const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
+    const newFeatures = [];
 
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
       newChecked.splice(currentIndex, 1);
     }
-    setChecked(newChecked);
-  }
 
-  useEffect(() => {console.log(checked)}, [checked])
+    newChecked.forEach((i) => {
+        newFeatures.push(featureNames[i])
+    })
+
+    setChecked(newChecked);
+    setFeatures(newFeatures);
+  }
 
     return (
         <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
