@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
+import ParkFeatureList from './ParkFeatureList'
 import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { updatePark, deletePark, getParkById } from '../../services/parkService'
+import * as parkStyles from './Park.module.css'
 
 const ParkCard = (props) => {
     const history = useHistory()
@@ -56,7 +58,11 @@ const ParkCard = (props) => {
     return (
         !toggleUpdate ?
         park &&
-            <div>
+        <main className={parkStyles.mainContainer}>
+            <div className={parkStyles.featuresList}>
+            <ParkFeatureList />
+            </div>
+            <div className={parkStyles.cardContainer}>
                 <h1>{park.parkName}</h1>
                 <h2>{park.address}</h2>
                 <CommentSection
@@ -81,9 +87,11 @@ const ParkCard = (props) => {
                 </Button>
                 }
             </div>
+        </main>
             :
         park ?
-            <>
+        <main className={parkStyles.mainContainer}>
+            <div className={parkStyles.container}>
                 <ParkUpdateForm 
                     park={park} 
                     handleUpdatePark={handleUpdatePark}
@@ -98,7 +106,8 @@ const ParkCard = (props) => {
                         Delete
                     </Button>
                 
-            </>
+                </div>
+        </main>
         :
         <p>loading...</p>
     )
