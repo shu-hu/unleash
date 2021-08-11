@@ -4,7 +4,7 @@ import * as CreateCommentStyles from './CreateComment.module.css'
 import Rating from '@material-ui/lab/Rating'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
-import { useEffect } from "react"
+import TextField from '@material-ui/core/TextField'
 
 const labels = {
     1: 'Terrible',
@@ -38,31 +38,40 @@ const CreateComment = (props) => {
             <div className="question-prompt">
                     <label>Enter Comment:</label>
             </div>
-            
-            <input
+            <div className={CreateCommentStyles.formContainer}>
+
+            <TextField
                 required
+                multiline
+                fullWidth
+                maxRows={4}
+                variant="outlined"
+                label="Comment"
                 autoComplete='off'
-                placeholder="Comment"
                 name="genComments"
                 value={text}
-                onChange={(e) => setText(e.target.value)}>
-            </input>
+                onChange={(e) => setText(e.target.value)}
+            />
 
-            <input
+            <TextField
+                fullWidth
+                label="Likes"
+                variant="outlined"
                 autoComplete='off'
-                placeholder="Likes"
                 name="likes"
                 value={likes}
-                onChange={(e) => setLikes(e.target.value)}>
-            </input>
+                onChange={(e) => setLikes(e.target.value)}
+            />
 
-            <input
+            <TextField 
+                fullWidth
+                label="Dislikes" 
+                variant="outlined" 
                 autoComplete='off'
-                placeholder="Dislikes"
                 name="dislikes"
                 value={dislikes}
-                onChange={(e) => setDislikes(e.target.value)}>
-            </input>
+                onChange={(e) => setDislikes(e.target.value)}
+            />
 
             <Box component="fieldset" mb={3} borderColor="transparent">
             <Typography component="legend">Rating:</Typography>
@@ -81,6 +90,7 @@ const CreateComment = (props) => {
             <Button type="submit" color="primary"> 
                 Submit
             </Button>
+            </div>
         </form>
     )
 }

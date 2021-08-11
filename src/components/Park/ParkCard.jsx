@@ -62,16 +62,7 @@ const ParkCard = (props) => {
             <div className={parkStyles.cardContainer}>
                 <h1>{park.parkName}</h1>
                 <h2>{park.address}</h2>
-                <CommentSection
-                    park={park}
-                    setPark={setPark}
-                    user={props.user}
-                    commentArray={commentArray}
-                    setCommentArray={setCommentArray}
-                    handleToggle={handleToggle}
-                    toggleUpdateForm={toggleUpdateForm}
-                    setToggleUpdateForm={setToggleUpdateForm}
-                     />
+                <ParkFeatureList park={park}/>
                 { props.user &&
                   props.user.profile === park.added_by &&
                   <Button
@@ -85,7 +76,16 @@ const ParkCard = (props) => {
                 }
             </div>
             <div className={parkStyles.featuresList}>
-            <ParkFeatureList park={park}/>
+            <CommentSection
+                    park={park}
+                    setPark={setPark}
+                    user={props.user}
+                    commentArray={commentArray}
+                    setCommentArray={setCommentArray}
+                    handleToggle={handleToggle}
+                    toggleUpdateForm={toggleUpdateForm}
+                    setToggleUpdateForm={setToggleUpdateForm}
+                     />
             </div>
         </main>
             :
