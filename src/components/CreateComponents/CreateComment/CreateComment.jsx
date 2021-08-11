@@ -6,11 +6,20 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { useEffect } from "react"
 
+const labels = {
+    1: 'Terrible',
+    2: 'Mediocre',
+    3: 'Ok',
+    4: 'Good',
+    5: 'Excellent',
+};
+
 const CreateComment = (props) => {
     const [ text, setText ] = useState('')
     const [ likes, setLikes ] = useState('')
     const [ dislikes, setDislikes ] = useState('')
     const [ stars, setStars ] = useState(5)
+    const [hover, setHover] = useState(-1);
 
     const handleSubmit = (e) => {
 		e.preventDefault()
@@ -61,8 +70,11 @@ const CreateComment = (props) => {
                 name="stars"
                 value={stars}
                 onChange={(event, newValue) => {setStars(newValue)}}
+                onChangeActive={(event, newHover) => {setHover(newHover);}}
             />
+            {stars !== null && <Box ml={2}>{labels[hover !== -1 ? hover : stars]}</Box>}
             </Box>
+            
             
             <div className={CreateCommentStyles.border}></div>
             
