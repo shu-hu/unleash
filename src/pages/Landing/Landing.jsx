@@ -14,7 +14,7 @@ const Landing = ({ user }) => {
     <div className="landing-page-container">
       <div className="landing-col left">
         <div className="landing-sign-in">
-          <Link to="/signin" style={{ textDecoration: 'none' }}>EXPLORE...</Link>
+          <Link to="/login" style={{ textDecoration: 'none' }}>EXPLORE...</Link>
         </div>
 
         <img className="team-logo-img" src={Teamlogo} alt="team-logo"></img>
