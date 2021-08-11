@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from "@material-ui/core/Button"
 
 const Search = (props) => {
 
@@ -12,6 +13,7 @@ const Search = (props) => {
                     value={props.location}
                     onChange={props.handleChange}
                 />
+                <Button type="submit">Submit</Button>
             </form>
         </div>
     )

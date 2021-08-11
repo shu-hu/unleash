@@ -31,8 +31,6 @@ const Map = () => {
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
-    // const [inputLat, setInputLat] = useState()
-    // const [inputLng, setInputLng] = useState()
     
     useEffect(() => {
         (async() => {
