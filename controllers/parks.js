@@ -2,7 +2,7 @@ import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
 import axios from 'axios'
 
-const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
+// const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
 
 const createPark = async (req, res) => {
@@ -121,22 +121,22 @@ const showPark = async (req, res) => {
 }
 
 
-const searchParks = async (req, res) => {
-    try {
-        const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
-        const res = await axios.get(geocode)
-        console.log(res.data.results[0].position)
-        return res.data.results[0].position
-        // const {results} = await res.json()
-        // console.log('LOOKHERE!!!!', results)
-        // return res.status(200).json(results)
-        // setLat(results[0].position.lat)
-        // setLng(results[0].position.lon)
-    } catch (error) {
-        throw error
-    }
+// const searchParks = async (req, res) => {
+//     try {
+//         const geocode = `https://api.tomtom.com/search/2/geocode/yankee%20stadium.json?&key=${tomtomApiKey}`
+//         const res = await axios.get(geocode)
+//         console.log("YOMAMA", res.data.results[0].position)
+//         return res.data.results[0].position
+//         // const {results} = await res.json()
+//         // console.log('LOOKHERE!!!!', results)
+//         // return res.status(200).json(results)
+//         // setLat(results[0].position.lat)
+//         // setLng(results[0].position.lon)
+//     } catch (error) {
+//         throw error
+//     }
     
-} 
+// } 
 
 export {
     createPark,
@@ -149,5 +149,5 @@ export {
     updateComment,
     deleteComment,
     showPark,
-    searchParks,
+    // searchParks,
 }

@@ -1,5 +1,6 @@
 import * as tokenService from './tokenService'
 const BASE_URL = '/api/parks/'
+const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
 
 export const createPark = async (park) => {
@@ -77,3 +78,15 @@ export const search = async (location) => {
     }
 }
 
+export const searchTomTom = async (query) => {
+    try {
+        let formatQuery = await decodeURI(query)
+        const geocode = `https://api.tomtom.com/search/2/geocode/${formatQuery}.json?&key=${tomtomApiKey}`
+        const res = await fetch(geocode)
+        console.log("YOMAMA", res.data.results[0].position)
+        return res.data.results[0].position
+    } catch (error) {
+        throw error
+    }
+    
+} 
