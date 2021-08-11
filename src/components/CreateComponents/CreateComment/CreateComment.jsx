@@ -5,13 +5,11 @@ import Rating from '@material-ui/lab/Rating'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
-
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Checkbox from '@material-ui/core/Checkbox'
-import { useEffect } from "react"
 
 const labels = {
     1: 'Terrible',

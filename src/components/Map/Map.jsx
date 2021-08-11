@@ -45,8 +45,8 @@ const Map = () => {
 
     useEffect(() => {
         if(lng) {
-            const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
             (async () => {
+                const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
                 const res = await fetch(tomtom)
                 const {results} = await res.json();
                 setDogParks(results)
