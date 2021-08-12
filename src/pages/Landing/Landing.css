@@ -1,34 +1,34 @@
+:root {
+    --landing-img-width: 200px;
+}
+
+
 body {
     margin: 0;
 }
 
 .landing-page-container {
     display: flex;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
 }
 
 .landing-col {
-    flex:50%;
+    flex: 50%;
 }
 
 .left {      
     background-color: white;
     color: black;
-    
 }
 
 .right {
     background-color: black;
-}
-
-.landing-button-container {
     display: flex;
-    justify-content: center;
-    margin: 50px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.landing-button-container button {
+.landing-buttons-container button {
     background: #7450E9;
     border: none;
     color: white;
@@ -40,7 +40,7 @@ body {
 }
 
 
-.landing-button-container a {
+.landing-buttons-container a {
     text-decoration: none;
     color: white;
 }
@@ -56,34 +56,38 @@ body {
 }
 
 .app-logo-img {
-    max-width: 34vw;
+    margin-top: 20px;
+    width: 70%;
+}
+
+.landing-imgs {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 .landing-one {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    margin-left: 320px;
-    position: relative;
+    margin-left: calc(90% - var(--landing-img-width));
     margin-top: 20px;
+}
 
+.landing-one > img {
+    width: var(--landing-img-width);
 }
 
 .animation-two {
     width: 300px;
-    position: relative;
-    display: flex;
     margin-top: 100px;
     margin-left: 50px;
 }
 
 .landing-three {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    margin-left: 320px;
+    margin-left: calc(90% - var(--landing-img-width));
     margin-top: 120px;
-    position: relative;
+}
+
+.landing-three > img {
+    width: var(--landing-img-width);
 }
 
 .landing-sign-in {
@@ -95,10 +99,8 @@ body {
 }
 
 .landing-text{
-    display: block;
-    position: relative;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 h1 {
@@ -112,8 +114,39 @@ p {
 
 .dots-animation {
     width: 200px;
-    margin-left: 250px;
-    display: block;
-    position: relative;
     text-align: center;
+}
+@media only screen and (max-width: 900px) and (min-width: 551px) {
+    :root {
+        --landing-img-width: 100px;
+    }
+
+    .team-logo-img {
+        width:150px;
+        height:150px;
+        margin-top: -75px;
+        margin-left: -75px;
+    }
+
+    .animation-two {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .landing-page-container {
+        flex-wrap: wrap;
+    }
+
+    .landing-col {
+        flex: 100%;
+    }
+
+    .team-logo-img {
+        width:150px;
+        height:150px;
+        position: absolute;
+        top: 170px;
+        left: 120px;
+    }
 }
