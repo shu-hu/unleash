@@ -33,14 +33,14 @@ const createFromAPI = async (req, res) => {
                 })
                 return res.status(200).json(newPark._id)
             } else {
-                let park = Park.findOne({ details_id: req.body.details_id})
-                return res.status(200).json(park._id)
+                return res.status(200).json(found._id)
             }
         })
     } catch (err) {
         return res.status(500).json({ err: err.message })
-    }
 }
+}
+
 
 const indexPark = async (req, res) => {
     const limitNum = 10
