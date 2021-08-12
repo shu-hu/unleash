@@ -15,8 +15,6 @@ const Home = (props) => {
         try {
             const locationQuery = await searchTomTom(searchData.location)
             await setLocation(locationQuery.results[0].position)
-            console.log(locationQuery.results[0].position)
-            console.log(location)
         } catch (error) {
             throw error
         }
