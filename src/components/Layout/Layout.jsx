@@ -1,13 +1,12 @@
 import React from 'react'
 import ResultMenu from './ResultMenu/ResultMenu'
-import SideMenu from './SideMenu/SideMenu'
 
 const Layout = (props) => {
     const { children } = props
 
     return (
         <div className="home-page" style={{ backgroundColor: '#121212'}}>
-            <SideMenu {...props} />
+            {/* <SideMenu {...props} /> */}
             {children}
             <ResultMenu 
                 {...props} 
