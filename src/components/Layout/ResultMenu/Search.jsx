@@ -23,6 +23,7 @@ const Search = (props) => {
         <div className="search-container">
             <form className="search" onSubmit={handleSubmit}>
                 <input
+                    required
                     autoComplete="off"
                     placeholder="Search Location"
                     name="location"
