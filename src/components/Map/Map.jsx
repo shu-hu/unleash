@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import Lottie from 'react-lottie-player'
+import mapLoading from '../../assets/animation/mapLoading.json'
+
 import {
     GoogleMap,
     useLoadScript,
@@ -28,7 +31,6 @@ const Map = (props) => {
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
-    const [center, setCenter] = useState()
     
     useEffect(() => {
         (async() => {
@@ -101,7 +103,13 @@ const Map = (props) => {
             </GoogleMap>
         </>
         :
-        <p>Loading...</p>
+        <Lottie
+                loop
+                animationData={mapLoading}
+                play
+                speed={1}
+                style={{ width: '100%', height: '100%' }}
+        />
 
     )
 }
