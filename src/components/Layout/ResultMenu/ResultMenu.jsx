@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import {getPaginatedParks} from '../../../services/parkService'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ResultCard from './ResultCard'
+import Box from '@material-ui/core/Box'
 import Search from './Search'
 
 const ResultMenu = (props) => {
@@ -29,9 +30,11 @@ const ResultMenu = (props) => {
     return (
             <div className="results">
             { props.user &&
-            <Button variant="contained" endIcon={<AddCircleOutlineIcon />} color="primary" onClick={handleClick}>
+            <>
+                <Button variant="contained" endIcon={<AddCircleOutlineIcon />} color="primary" onClick={handleClick}>
                 {props.toggleMap ? `Create Park` : 'Back to Map'}
-            </Button>
+                </Button>
+            </>
             }         
             <Search 
                 {...props}
