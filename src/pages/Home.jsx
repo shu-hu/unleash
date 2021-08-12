@@ -34,12 +34,13 @@ const Home = (props) => {
             const newPark = await createPark(formData)
             newPark.added_by = props.user
             if (parks.length < 8) {
-                setParks([newPark, ...parks])
+                    setParks([newPark, ...parks])
             } else {
                 const duplicate = [...parks]
                 duplicate.splice(duplicate.length - 1, 1)
                     setParks(() => [newPark, ...duplicate])
             }
+
         } catch (error) {
             throw error
         }

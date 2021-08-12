@@ -73,7 +73,7 @@ const Map = (props) => {
     if (!isLoaded) return "Loading...";
 
     return (
-        lng &&
+        lng ?
         <>
             <GoogleMap
                 id="map"
@@ -100,6 +100,8 @@ const Map = (props) => {
                 ))}
             </GoogleMap>
         </>
+        :
+        <p>Loading...</p>
 
     )
 }
