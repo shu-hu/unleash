@@ -38,7 +38,8 @@
   flex-direction: row;
 }
 
-.signup-form-container input, label{
+.signup-form-container input, 
+.signup-form-container label{
     padding: 16px;
     font-size: 16px;
     margin-bottom: 16px;

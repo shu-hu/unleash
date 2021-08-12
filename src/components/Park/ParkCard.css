@@ -1,0 +1,9 @@
+.MuiRating-root {
+    color: #ffb400;
+    cursor: pointer;
+    display: inline-flex;
+    position: relative;
+    font-size: 1.5rem;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+}
