@@ -31,9 +31,9 @@ const Map = (props) => {
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
-    
+
     useEffect(() => {
-        (async() => {
+        (async () => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     setLat(parseFloat(position.coords.latitude))
@@ -41,29 +41,29 @@ const Map = (props) => {
                 },
                 () => null
             )
-    })()
+        })()
     }, [])
 
     useEffect(() => {
         !props.location &&
-        (async () => {
-            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=2000&key=${tomtomApiKey}`
-            const res = await fetch(tomtom)
-            const {results} = await res.json();
-            setDogParks(results)
-        })();
+            (async () => {
+                const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=2000&key=${tomtomApiKey}`
+                const res = await fetch(tomtom)
+                const { results } = await res.json();
+                setDogParks(results)
+            })();
     }, [lat, lng]);
 
     useEffect(() => {
         props.location &&
-        (async () => {
-            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${props.location.lat}&lon=${props.location.lon}&radius=2000&key=${tomtomApiKey}`
-            const res = await fetch(tomtom)
-            const {results} = await res.json();
-            setDogParks(results)
-            setLat(props.location.lat)
-            setLng(props.location.lon)
-        })();
+            (async () => {
+                const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${props.location.lat}&lon=${props.location.lon}&radius=2000&key=${tomtomApiKey}`
+                const res = await fetch(tomtom)
+                const { results } = await res.json();
+                setDogParks(results)
+                setLat(props.location.lat)
+                setLng(props.location.lon)
+            })();
     }, [props.location]);
 
     const mapRef = React.useRef();
@@ -76,40 +76,40 @@ const Map = (props) => {
 
     return (
         lng ?
-        <>
-            <GoogleMap
-                id="map"
-                mapContainerStyle={mapContainerStyle}
-                zoom={14}
-                center={{lat: lat, lng: lng}}
-                options={options}
-                onLoad={onMapLoad}
-            >
-                {dogParks?.map((park) => (
-                    <Marker
-                        key={park.id}
-                        position={{ lat: park.position.lat, lng: park.position.lon }}
-                        onClick={() => {
-                            setSelected(park);
-                        }}
-                        icon={{
-                            url: `/dog-treat.png`,
-                            origin: new window.google.maps.Point(0, 0),
-                            anchor: new window.google.maps.Point(15, 15),
-                            scaledSize: new window.google.maps.Size(30, 30),
-                        }}
-                    />
-                ))}
-            </GoogleMap>
-        </>
-        :
-        <Lottie
+            <>
+                <GoogleMap
+                    id="map"
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={14}
+                    center={{ lat: lat, lng: lng }}
+                    options={options}
+                    onLoad={onMapLoad}
+                >
+                    {dogParks?.map((park) => (
+                        <Marker
+                            key={park.id}
+                            position={{ lat: park.position.lat, lng: park.position.lon }}
+                            onClick={() => {
+                                setSelected(park);
+                            }}
+                            icon={{
+                                url: `/dog-treat.png`,
+                                origin: new window.google.maps.Point(0, 0),
+                                anchor: new window.google.maps.Point(15, 15),
+                                scaledSize: new window.google.maps.Size(30, 30),
+                            }}
+                        />
+                    ))}
+                </GoogleMap>
+            </>
+            :
+            <Lottie
                 loop
                 animationData={mapLoading}
                 play
                 speed={1}
                 style={{ width: '100%', height: '100%' }}
-        />
+            />
 
     )
 }
