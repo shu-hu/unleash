@@ -1,27 +1,46 @@
 .nav-bar{
-height: 70px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-bottom: 1px solid #292934;
-padding: 10px 35px 10px 35px;
-background: #12121b;
-color: whitesmoke
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #292934;
+    padding: 15px 35px 15px 40px;
+    background: #12121b;
+    color: whitesmoke;
+    margin:1px 1px 20px 1px;
+    box-shadow: 1px 0 10px white;
 }
 
 .nav-bar a {
-    color: white;
+    color: blanchedalmond;
     text-decoration: none;
     font-size: 1.3rem;
 }
 
-.nav-bar a:hover {
-    color: whitesmoke;
-    text-decoration: underline;
+.nav-bar-left a:hover {
+    color: #f44336;
+    border: 1px groove lightgoldenrodyellow;
+    box-shadow: rgba(175, 214, 3, 0.3) 0px 0px 0px 3px;
+    
+    
 }
 
 .nav-bar-left a {
-    margin-left: 1rem;    
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 1rem;
+    border: 1px groove lightskyblue;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.nav-bar-left {
+    font-size: larger;
+}
+
+.nav-bar-right {
+    box-shadow: #64b4f6c9 -5px 5px, #64b4f6a4 -10px 10px, #64b4f69a -15px 15px
 }
 
 .logo {
