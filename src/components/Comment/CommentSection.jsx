@@ -62,12 +62,16 @@ const CommentSection = (props) => {
                         >
                         New Comment
                         </Button>
-                        :
+                        : 
                         <Button
                         color="secondary"
                         size="small"
                         endIcon={<CancelIcon />}
-                        onClick={() => setToggleNewComment(!toggleNewComment)}
+                        onClick={() => {
+                            setToggleNewComment(false)
+                            props.setToggleUpdateForm(false)
+                            }
+                        }
                         >Cancel</Button>
                     }
             </div>
@@ -89,6 +93,8 @@ const CommentSection = (props) => {
                 editing={editing}
                 setEditing={setEditing}
                 handleSetEditing={handleSetEditing}
+                setToggleNewComment={setToggleNewComment}
+                toggleNewComment={toggleNewComment}
              />
             }
         </div>
