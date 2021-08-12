@@ -29,14 +29,31 @@ body {
 }
 
 .landing-buttons-container button {
-    background: #7450E9;
     border: none;
-    color: white;
     font-weight: 600;
     border-radius: 7px;
     max-width: 200px;
     padding: 8px;
     margin: 10px;
+    font-size: 18px;
+}
+
+.landing-login-btn {
+    background-color: #2196f3;
+    
+}
+
+.landing-signup-btn {
+    background-color: #ff9800;
+}
+
+.landing-login-btn:hover {
+    background-color: #1976d2;
+    
+}
+
+.landing-signup-btn:hover {
+    background-color: #f57c00;
 }
 
 
@@ -92,7 +109,6 @@ body {
 
 .landing-sign-in {
     font-size: 20px;
-    color: black;
     margin: 20px 0 0 20px;
     font-family: sans-serif;
     font-Weight: bold;
@@ -101,13 +117,14 @@ body {
 .landing-text{
     text-align: center;
     margin-top: 20px;
+    color: white;
 }
 
-h1 {
+.landing-text h1 {
     font-family: 'Acme', sans-serif;
 }
 
-p {
+.landing-text p {
     font-size: 24px;
     font-family: 'Signika', sans-serif;
 }

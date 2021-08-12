@@ -38,8 +38,8 @@ const Landing = ({ user }) => {
           <Animation animData={dots}></Animation>
         </div>
         <div className="landing-buttons-container">
-          <button><Link to="/login">Log In</Link></button>
-          <button><Link to="/signup">Sign Up</Link></button>
+          <button className="landing-login-btn"><Link to="/login">Log In</Link></button>
+          <button className="landing-signup-btn"><Link to="/signup">Sign Up</Link></button>
         </div>
         <div className="landing-text">
           <h1>Welcome !</h1>
