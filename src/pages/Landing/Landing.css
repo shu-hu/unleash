@@ -114,6 +114,10 @@ body {
     font-Weight: bold;
 }
 
+.landing-sign-in a:hover {
+    color: #d32f2f;
+}
+
 .landing-text{
     text-align: center;
     margin-top: 20px;
@@ -133,6 +137,7 @@ body {
     width: 200px;
     text-align: center;
 }
+
 @media only screen and (max-width: 900px) and (min-width: 551px) {
     :root {
         --landing-img-width: 100px;
