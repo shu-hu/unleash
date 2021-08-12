@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add'
 import CancelIcon from '@material-ui/icons/Cancel'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+
 import * as createParkStyles from '../Create.module.css'
 
 const ParkForm = (props) => {
@@ -17,20 +18,25 @@ const ParkForm = (props) => {
                 autoComplete='off'
                 >
 
-                    <Box m='auto'>
-                        <Typography variant="h5" gutterBottom style={{ color: '#121212 '}}>
-                            Create Park 
-                            <AddIcon fontSize='large' style={{ color: '#121212 '}}/>
-                        </Typography>
-                        <Button 
-                                color="secondary"
-                                onClick={() => props.setToggleMap(true)}
-                            >
-                            Cancel <CancelIcon />
-                        </Button>
-                    </Box>
-
-                <div className={createParkStyles.border}></div>
+                <Box m='auto' display="flex" className={createParkStyles.header}>
+                    <Typography 
+                        variant="h5" 
+                        gutterBottom 
+                        style={{ color: '#bdbdbd'}}
+                    >
+                        CREATE PARK
+                        <AddIcon 
+                            fontSize='large' 
+                            style={{ color: '#121212'}}
+                        />
+                    </Typography>
+                    <Button 
+                        color="secondary"
+                        onClick={() => props.setToggleMap(true)}
+                    >
+                    Cancel <CancelIcon />
+                    </Button>
+                </Box>
             <Box className={createParkStyles.inputContainer}>
                 <TextField 
                     color="primary"
@@ -42,7 +48,6 @@ const ParkForm = (props) => {
                     variant="outlined"
                     name="parkName"
                     value={props.parkName}
-                    inputProps={ { style: { color: '#bdbdbd' }} }
                     onChange={(e) => props.setParkName(e.target.value)}
                 /> 
                 <Box m={2}></Box>
@@ -56,7 +61,6 @@ const ParkForm = (props) => {
                     variant="outlined"
                     name="address"
                     value={props.address}
-                    inputProps={{ style: { color: '#bdbdbd' }}}
                     onChange={(e) => props.setAddress(e.target.value)}
                 /> 
                 <Box m={2}></Box>
@@ -69,7 +73,6 @@ const ParkForm = (props) => {
                     variant="outlined"
                     name="description"
                     value={props.description}
-                    inputProps={{ style: { color: '#bdbdbd' }}}
                     onChange={(e) => props.setDescription(e.target.value)}
                 />
                 <Box m={2}></Box>
