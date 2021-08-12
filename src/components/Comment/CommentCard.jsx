@@ -14,7 +14,6 @@ import Rating from '@material-ui/lab/Rating'
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
-import { Data } from "@react-google-maps/api"
 
 const featuresConverter = {
     'fullyFenced': 'Partially Fenced', 
@@ -30,15 +29,11 @@ const featuresConverter = {
     'restrooms': 'Restrooms'
 } 
 
-
-
-
-
 const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
 
-  const convertFeatureTest = (arr) => (
+  const convertFeature = (arr) => (
     arr.reduce((acc, feature) => {
         acc.push(featuresConverter[feature])
         return acc
@@ -49,14 +44,12 @@ const CommentCard = (props) => {
     let array = [];
     arr.map(feature => {
         let featureArr = Object.entries(feature)
-        return featureArr.map((feat, idx) => (
+        return featureArr.map(feat => (
             feat[1] === true && array.push(feat[0])
         ))
     })
-    return convertFeatureTest(array)
+    return convertFeature(array)
 }
-
-
 
     return (
         <div className="comment-card">
@@ -66,7 +59,9 @@ const CommentCard = (props) => {
                 <Card elevation={5} style={{ background: '#F6F6FF'}}>
                     <CardContent className={cx(shadowStyles.root)}>
                         <Box className={gutterStyles.parent}>
-                        <h3 style={{ display: 'inline' }}>{props.comment.author}</h3>
+                        <h3 style={{ display: 'inline' }}>
+                            {props.comment.author.name}
+                        </h3>
                             <CommentActions
                                 toggleUpdateForm={props.toggleUpdateForm}
                                 handleToggle={props.handleToggle}
@@ -91,8 +86,7 @@ const CommentCard = (props) => {
                     <Box mt={2} >
                         { filterTrueFeatures(props.comment.features).map((feature, idx) => (
                             <Chip label={feature} key={idx}></Chip>
-                        ))
-                        }
+                        ))}
                     </Box>
 
                     <Box
