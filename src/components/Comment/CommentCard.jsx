@@ -14,10 +14,52 @@ import Rating from '@material-ui/lab/Rating'
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
+import { Data } from "@react-google-maps/api"
+
+const featuresConverter = {
+    'fullyFenced': 'Partially Fenced', 
+    'partFenced': 'Partially Fenced', 
+    'offLeash': 'Off-Leash Area', 
+    'smDogArea': 'Small Dog Friendly', 
+    'agility': 'Agility', 
+    'swimming': 'Swimming', 
+    'dogWater': 'Drinking Water', 
+    'washStation': 'Wash Station',
+    'pooBags': 'Poo Bags',
+    'trash': 'Trash',
+    'restrooms': 'Restrooms'
+} 
+
+
+
+
 
 const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
+
+  const convertToArray = () => {
+    let array = []
+    props.comment.features.map(feature => {
+        let featureArr = Object.entries(feature)
+        return featureArr.map((feat, idx) => (
+            feat[1] === true && array.push(feat[0])
+        ))
+    })
+    return array
+}
+
+    const convert = (objChart) => {
+        let data = convertToArray()
+        let newArr = []
+        data.map(feature => {
+            newArr.push(objChart[feature])
+        })
+    return newArr
+}
+
+console.log(convert(featuresConverter))
+
     return (
         <div className="comment-card">
             <div className="card-header">
@@ -58,8 +100,6 @@ const CommentCard = (props) => {
                         })}
 
                     </Box>
-
-
 
                     <Box
                         mt={2}
