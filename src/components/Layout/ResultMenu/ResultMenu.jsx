@@ -21,33 +21,32 @@ const ResultMenu = (props) => {
     }, [])
 
     const handleSearchedParks = async () => {
+        if(props.location){
         try {
-
             const results = await searchedParks(props.location)
-            console.log('results', results)
             return results.results;
         } catch (error) {
             throw error
         }
+        }
     }
 
     useEffect(() => {
+        if(props.location)
         (async () => {
             let searchedParksArr = await handleSearchedParks()
             let parksData = []
 
             searchedParksArr.forEach((park, idx) => {
                 const newParks = {
-                    _id: "",
+                    details_id: "",
                     parkName: "",
                     description: "",
                     address: "",
-
                 }
-                newParks._id = park.dataSources?.poiDetails[0].id || idx
+                newParks.details_id = park.dataSources?.poiDetails?.[0].id || park.poi.name.toLowerCase().replace(/[^A-Z0-9]+/ig,'')
                 newParks.parkName = park.poi.name
                 newParks.address = park.address.freeformAddress
-
                 parksData.push(newParks)
             })
             setParkList(parksData)

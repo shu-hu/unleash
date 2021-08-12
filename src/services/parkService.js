@@ -20,6 +20,23 @@ export const createPark = async (park) => {
     }
 }
 
+export const createParkFromApi = async (park) => {
+    try {
+        const res = await fetch(`${BASE_URL}create_api`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${tokenService.getToken()}`
+            },
+            body: JSON.stringify(park)
+        }, { mode: "cors" })
+        const data = await res.json()
+        return data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const getPaginatedParks = async page => {
     try {
         const res = await fetch(`${BASE_URL}${page}`, { mode: "cors" })
@@ -93,10 +110,8 @@ export const searchTomTom = async (query) => {
 
 }
 
-// const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${arr[0]}&lon=${arr[1]}&radius=2000&key=${tomtomApiKey}`
-// const res = await fetch(tomtom)
-// const { results } = await res.json();
 export const searchedParks = async (arr) => {
+    if (arr) {
     try {
         const geocode = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${arr.lat}&lon=${arr.lon}&radius=2000&key=${tomtomApiKey}`
         const res = await fetch(geocode)
@@ -105,4 +120,5 @@ export const searchedParks = async (arr) => {
     } catch (error) {
         throw error
     }
+}
 }

@@ -12,6 +12,7 @@ router.get('/details/:park_id', parkCtrl.showPark)
 router.use(decodeUserFromToken)
 
 router.post('/', checkAuth, parkCtrl.createPark)
+router.post('/create_api', checkAuth, parkCtrl.createFromAPI)
 router.get('/:park_id/comments', checkAuth, parkCtrl.indexComment)
 router.post('/:park_id/comments', checkAuth, parkCtrl.createComment)
 router.put('/:park_id/comments/:comment_id', checkAuth, parkCtrl.updateComment)
