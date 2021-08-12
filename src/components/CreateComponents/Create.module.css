@@ -1,7 +1,6 @@
 .header {
     display: flex;
     justify-content: space-between;
-    margin: 0;
 }
 
 .createForm {
@@ -11,7 +10,6 @@
     display: flex;
     flex-direction: column;
     color: #121212;
-    margin: 0 3rem;
 }
 
 .createForm div {
@@ -44,9 +42,9 @@
 .inputContainer {
     background-color: whitesmoke;
     padding: 4rem;
+    border-radius: .5rem;
 }
 
 .timeInputContainer {
     display: flex;
-    
 }

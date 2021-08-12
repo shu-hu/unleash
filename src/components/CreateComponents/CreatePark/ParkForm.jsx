@@ -18,7 +18,7 @@ const ParkForm = (props) => {
                 autoComplete='off'
                 >
 
-                <Box m='auto' display="flex" className={createParkStyles.header}>
+                <Box m='0' display="flex" className={createParkStyles.header}>
                     <Typography 
                         variant="h5" 
                         gutterBottom 
