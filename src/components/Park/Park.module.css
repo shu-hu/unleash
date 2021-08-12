@@ -1,22 +1,26 @@
-createForm {
+.createForm {
+    margin-top: 3rem;
     display: flex;
+    gap: 1rem;
     flex-direction: column;
     border-radius: 0px 0px 8px 8px;
     border: 1px solid #292934;
     border-top: none;
-    background: #12121b;
-    padding: 12px;	
-    display: flex;
-    flex-direction: column;
 }
 
 .createForm input{
     padding: 15px 10px 15px 10px;
     border-radius: 8px;
-    border: 1px solid #292934;
-    color: rgb(200, 200, 200);
-    margin-bottom: 10px;
-    background: #0b0b12;
+    background: none;
+    margin-top: 1rem;
+}
+
+.createForm text-area:focus {
+    border: 1 px #bdbdbd;
+}
+
+.createForm input:focus {
+    border: 1 px #bdbdbd;
 }
 
 .mainContainer {
@@ -39,6 +43,13 @@ createForm {
   outline: 1px solid slategrey;
 }
 
+.inputContainer {
+    background-color: #F6F6FF;
+    border-radius: 7px;
+    padding: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
 div .featuresList {
     display: flex;
     flex-direction: column;
@@ -58,4 +69,14 @@ div .cardContainer {
     padding: 3rem;
     margin-top: 2rem;
     width: 600px;
+}
+
+.border {
+    border-bottom: 1px solid #d6d6dd;
+    width: 100%;
+    height: 16px;
+}
+
+label {
+    margin: .5rem 0 .3rem 0;
 }
