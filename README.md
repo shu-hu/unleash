@@ -35,11 +35,12 @@ UNleash connects users with dog parks near their current location using the Goog
 
 The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 
-## Languages
-<img src="public/images/screenshots/languages.png" width=100% height=auto>
-* HTML * CSS * JavaScript
 
 ## Built With
+
+<img src="public/images/readme-images/mern-stack.png" width=100% height=auto>
+
+<img src="public/images/readme-images/languages.png" width=100% height=auto>
 
 * [MongoDB](https://www.mongodb.com/)
 * [Mongoose](https://mongoosejs.com/)
@@ -58,11 +59,6 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 **John Nelson-Alden**
 **Shunuan Hu** 
 
-## Next Steps
-
-* 
-* 
-
 
 ## Wireframe
 
@@ -79,6 +75,11 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 ## Pseudocode and User Stories
 
 
+
+## Next Steps
+
+* 
+* 
 
 <img src="public/images/readme-images/barksandrec2.png" width=100% height=auto>
 
