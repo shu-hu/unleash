@@ -2,6 +2,9 @@ import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
 
 
+// const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
+
+
 const createPark = async (req, res) => {
     console.log('createPark!')
     try {

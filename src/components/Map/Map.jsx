@@ -14,22 +14,21 @@ const mapContainerStyle = {
 const options = {
     styles: mapStyles,
     disableDefaultUI: true,
-    zoomControl: true,
 };
 
 const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
 const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
 
-const Map = () => {
+const Map = (props) => {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: googleMapsApiKey,
         libraries,
     });
-    const [markers, setMarkers] = useState([]);
     const [dogParks, setDogParks] = useState([])
     const [selected, setSelected] = useState(null)
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
+    const [center, setCenter] = useState()
     
     useEffect(() => {
         (async() => {
@@ -44,15 +43,26 @@ const Map = () => {
     }, [])
 
     useEffect(() => {
-        if(lng) {
-            (async () => {
-                const tomtom = `https://api.tomtom.com/search/2/poiSearch/"dog%20parks".json?lat=${lat}&lon=${lng}&radius=5000&key=${tomtomApiKey}`
-                const res = await fetch(tomtom)
-                const {results} = await res.json();
-                setDogParks(results)
-            })();
-        }
-    }, [lng]);
+        !props.location &&
+        (async () => {
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${lat}&lon=${lng}&radius=2000&key=${tomtomApiKey}`
+            const res = await fetch(tomtom)
+            const {results} = await res.json();
+            setDogParks(results)
+        })();
+    }, [lat, lng]);
+
+    useEffect(() => {
+        props.location &&
+        (async () => {
+            const tomtom = `https://api.tomtom.com/search/2/poiSearch/%22dog%20parks%22.json?limit=100&lat=${props.location.lat}&lon=${props.location.lon}&radius=2000&key=${tomtomApiKey}`
+            const res = await fetch(tomtom)
+            const {results} = await res.json();
+            setDogParks(results)
+            setLat(props.location.lat)
+            setLng(props.location.lon)
+        })();
+    }, [props.location]);
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -73,7 +83,6 @@ const Map = () => {
                 options={options}
                 onLoad={onMapLoad}
             >
-
                 {dogParks?.map((park) => (
                     <Marker
                         key={park.id}

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {getPaginatedParks} from '../../../services/parkService'
+import { useHistory } from 'react-router-dom'
+import {getPaginatedParks, search} from '../../../services/parkService'
 import ResultCard from './ResultCard'
+import Search from './Search'
 
 const ResultMenu = (props) => {
     const [parkList, setParkList] = useState(props.parks)
@@ -18,8 +20,12 @@ const ResultMenu = (props) => {
             return <ResultCard park={park} />
         })
     }
+
     return (
             <div className="results">
+            <Search 
+                {...props}
+            />
             {parks}
             </div>
     );
