@@ -12,7 +12,7 @@ const SideMenu = (props) => {
         <div className="side-panel">
             { props.user &&
             <Button variant="outlined" color="primary" onClick={handleClick}>
-                Create Park
+                {props.toggleMap ? `Create Park` : 'Back to Map'}
             </Button>
             }           
         </div>

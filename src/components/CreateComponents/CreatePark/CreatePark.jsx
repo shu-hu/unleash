@@ -28,6 +28,7 @@ const CreatePark = (props) => {
     return (
         <div className={createParkStyles.background}>
             <ParkForm
+                {...props}
                 parkName = {parkName}
                 setParkName = {setParkName}
                 address = {address}

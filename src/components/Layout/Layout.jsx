@@ -1,6 +1,4 @@
 import React from 'react'
-
-
 import ResultMenu from './ResultMenu/ResultMenu'
 import SideMenu from './SideMenu/SideMenu'
 
@@ -11,7 +9,12 @@ const Layout = (props) => {
         <div className="home-page">
             <SideMenu {...props} />
             {children}
-            <ResultMenu handleUpdatePark={props.handleUpdatePark} {...props} location={props.location} setLocation={props.setLocation} handleSearch={props.handleSearch}/>
+            <ResultMenu 
+                {...props} 
+                handleUpdatePark={props.handleUpdatePark} 
+                location={props.location} 
+                setLocation={props.setLocation} 
+                handleSearch={props.handleSearch}/>
         </div>
     )
 }
