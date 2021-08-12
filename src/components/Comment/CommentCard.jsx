@@ -38,27 +38,26 @@ const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
 
-  const convertToArray = () => {
+  const convertFeatureTest = (arr) => {
+    let newArr = []
+    arr.map(feature => {
+        newArr.push(featuresConverter[feature])
+    })
+return newArr
+}
+  
+  const filterTrueFeatures = (arr) => {
     let array = []
-    props.comment.features.map(feature => {
+    arr.map(feature => {
         let featureArr = Object.entries(feature)
         return featureArr.map((feat, idx) => (
             feat[1] === true && array.push(feat[0])
         ))
     })
-    return array
+    return convertFeatureTest(array)
 }
 
-    const convert = (objChart) => {
-        let data = convertToArray()
-        let newArr = []
-        data.map(feature => {
-            newArr.push(objChart[feature])
-        })
-    return newArr
-}
 
-console.log(convert(featuresConverter))
 
     return (
         <div className="comment-card">
@@ -91,14 +90,10 @@ console.log(convert(featuresConverter))
                     </Typography>
 
                     <Box mt={2} >
-                        {props.comment.features.map(feature => {
-                            let featureArr = Object.entries(feature)
-                            return featureArr.map((feat, idx) => (
-                                feat[1] === true && <Chip label={feat[0]} key={idx}></Chip>
-                            ))
-                           
-                        })}
-
+                        { filterTrueFeatures(props.comment.features).map((feature, idx) => (
+                            <Chip label={feature} key={idx}></Chip>
+                        ))
+                        }
                     </Box>
 
                     <Box
