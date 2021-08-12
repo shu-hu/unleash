@@ -74,18 +74,19 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 
 ## Pseudocode and User Stories
 
-* AAU I should be able to set the parameters for which dog parks display based on city, state, etc..
-* AAU I want to be able to add park locations
-* AAU I want to be able to add comments on parks
-* AAU I want to be able to see a page of information about each park that I can click on from a result page
-* AAU I want map to center on my location on page load
+* AAU I want to be able to create an account and set up a profile for myself and my dogs.
+* AAU I want to be able to sign in and sign out.
+* AAU I want map to center on my location on page load.
 * AAU I want to be able to enter a location by name, keyword or address, and the map to recenter on desired location and plot the location of dog parks in the area.
-* AAU I want to be able to see a page of information about each park that I can click on from a result page
+* AAU I want to be able to see a page of information about each park that I can click on from a results page
+* AAU I want to be able to add dog park locations.
+* AAU I want to be able to add comments on the parks.
 * AAU I want to be able to add new park locations.
-* AAU I want to be able to edit parks I created
-* AAU I want to be able to add comments on parks
-* AAU I should be able to edit my comments about the park
-* Users can edit and delete comments they have left on parks other users have added.
+* AAU I want to be able to edit or delete parks I created.
+* AAU I want to be able to add comments on parks.
+* AAU I want be able to edit my comments about the park.
+* AAU I want be able to delete my comments on a park.
+* AAU I want to be able to edit and delete comments they have left on parks other users have added.
 
 ## Next Steps
 
