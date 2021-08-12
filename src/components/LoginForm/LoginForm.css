@@ -22,6 +22,7 @@
     align-items: center;
     max-width: 450px;
     border: 1px groove #90caf9;
+    box-shadow: rgba(245, 245, 102, 0.12) 0px 2px 4px 0px, rgba(245, 245, 242, 0.32) 0px 2px 16px 0px;
     border-radius: 10px;
     text-align: center;
 }
@@ -40,19 +41,23 @@
 }
 
 .login-form-container input {
-  border: 1px solid #292934;
-  border-radius: 7px;
-  background: #0B0B12;
-  align-self: flex-end;
+    border: 1px solid #292934;
+    border-radius: 7px;
+    background: #0B0B12;
 }
 
 .login-form-container label {
-    font-family: 'Signika', sans-serif;;
+    font-family: 'Signika', sans-serif;
+}
+
+.login-input-container {
+    align-self: flex-end;
+    margin-right: 20%;
 }
 
 #login-submit-button{
     margin: 22px 40px 0 15px;
-    background: #a6d4fa;
+    background: #2196f3;
     border: none;
     color: white;
     font-weight: 600;
@@ -62,19 +67,28 @@
 
 }
 
-#login-cancel-button {
-  margin-top: 16px;
-  background: #f6a5c0;
-  border: none;
-  color: white;
-  font-weight: 600;
-  border-radius: 7px;
-  padding: 10.2px;
-  font-size: 20px;
+#login-submit-button:hover{
+    background-color: #1976d2;
 }
 
+#login-cancel-button {
+    margin-top: 16px;
+    background: #f48fb1;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 7px;
+    padding: 10.2px;
+    font-size: 20px;
+}
+
+#login-cancel-button:hover {
+    background-color: #aa647b;
+}
+
+
 @media only screen and (max-width: 900px) {
-  .login-form-container {
+    .login-form-container {
         width: 75%;
-  }
+    }
 }

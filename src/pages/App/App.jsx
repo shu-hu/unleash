@@ -66,10 +66,10 @@ const App = () => {
 			</Route>
 
 			<Route exact path='/signup'>
-				{currentUser ? <Redirect to='/' /> : <Signup handleSignupOrLogin={handleSignupOrLogin} />}
+				{currentUser ? <Redirect to='/login' /> : <Signup handleSignupOrLogin={handleSignupOrLogin} />}
 			</Route>
 			<Route exact path='/login'>
-				{currentUser ? <Redirect to='/' /> : <Login handleSignupOrLogin={handleSignupOrLogin} />}
+				{currentUser ? <Redirect to='/home' /> : <Login handleSignupOrLogin={handleSignupOrLogin} />}
 			</Route>
 
 		</>

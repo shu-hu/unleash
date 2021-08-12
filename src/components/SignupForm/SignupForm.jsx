@@ -44,7 +44,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
     <div className='signup-form-container'>
 
       <div className="signup-title-container">
-        <h1>SignUp !</h1>
+        <h1>Sign Up</h1>
       </div>
 
       <form
@@ -52,7 +52,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
         onSubmit={handleSubmit}
         className="signup-register-form"
       >
-        <div>
+        <div className="signup-input-container">
           <label htmlFor="handle" className="label">
             Name
           </label>
@@ -65,7 +65,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="signup-inputContainer">
+        <div className="signup-input-container">
           <label htmlFor="email-input" className="signup-label">Email</label>
           <input
             type="text"
@@ -76,7 +76,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="signup-inputContainer">
+        <div className="signup-input-container">
           <label htmlFor="password-input" className="signup-label">
             Password
           </label>
@@ -89,7 +89,7 @@ const SignupForm = ({ handleSignupOrLogin, updateMessage }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="signup-inputContainer">
+        <div className="signup-input-container">
           <label htmlFor="confirm-input" className="signup-label">
             Confirm Password
           </label>

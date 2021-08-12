@@ -20,6 +20,7 @@
     align-items: center;
     max-width: 450px;
     border: 1px groove #90caf9;
+    box-shadow: rgba(245, 245, 102, 0.12) 0px 2px 4px 0px, rgba(245, 245, 242, 0.32) 0px 2px 16px 0px;
     border-radius: 10px;
     text-align: center;
 }
@@ -28,6 +29,13 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.signup-input-container {
+  align-self: flex-end;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: row;
 }
 
 .signup-form-container input, label{
@@ -74,7 +82,7 @@
 
 #signup-submit-button{
     margin: 22px 40px 0 15px;
-    background: #a6d4fa;
+    background: #2196f3;
     border: none;
     color: white;
     font-weight: 600;
@@ -84,15 +92,23 @@
 
 }
 
+#signup-submit-button:hover{
+  background-color: #1976d2;
+}
+
 #signup-cancel-button {
   margin-top: 22px;
-  background: #f6a5c0;
+  background: #f48fb1;
   border: none;
   color: white;
   font-weight: 600;
   border-radius: 7px;
   padding: 10.2px;
   font-size: 20px;
+}
+
+#signup-cancel-button:hover {
+  background-color: #aa647b;
 }
 
 @media only screen and (max-width: 900px) {
