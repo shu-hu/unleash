@@ -10,9 +10,11 @@ const SideMenu = (props) => {
 
     return (
         <div className="side-panel">
+            { props.user &&
             <Button variant="outlined" color="primary" onClick={handleClick}>
                 Create Park
             </Button>
+            }           
         </div>
     )
 }

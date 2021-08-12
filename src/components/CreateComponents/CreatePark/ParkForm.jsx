@@ -5,73 +5,87 @@ import * as createParkStyles from '../Create.module.css'
 
 const ParkForm = (props) => {
     return (
-            <form  className={createParkStyles.createForm} onSubmit={props.handleSubmit}>
+            <form  
+                className={createParkStyles.createForm} 
+                onSubmit={props.handleSubmit} 
+                noValidate
+                autoComplete='off'
+                >
 
-                <div className="add-park-prompt">
-                        <label>Add a Park</label>
+                <div>
+                    <label>Add a Park</label>
                 </div>
 
                 <div className={createParkStyles.border}></div>
                 
-                <label for="park-name">Park Name:</label>
-                <input
+                <TextField 
+                    color="primary"
+                    id="park-name" 
+                    label="Name" 
+                    fullWidth
                     required
-                    id="park-name"
-                    autoComplete='off'
-                    placeholder="Enter a name"
+                    autoComplete='off' 
+                    variant="outlined"
                     name="parkName"
                     value={props.parkName}
-                    onChange={(e) => props.setParkName(e.target.value)}>
-                </input>
-
-                <label for="address">Address:</label>
-                <input
+                    inputProps={{ style: { color: '#bdbdbd' }}}
+                    onChange={(e) => props.setParkName(e.target.value)}
+                /> 
+                
+                <TextField 
+                    color="primary"
+                    id="address" 
+                    label="Address" 
+                    fullWidth
                     required
-                    id="address"
-                    autoComplete='off'
-                    placeholder="Address"
+                    autoComplete='off' 
+                    variant="outlined"
                     name="address"
                     value={props.address}
-                    onChange={(e) => props.setAddress(e.target.value)}>
-                </input>
+                    inputProps={{ style: { color: '#bdbdbd' }}}
+                    onChange={(e) => props.setAddress(e.target.value)}
+                /> 
 
-                <label for="description">Description:</label>
-                <input
-                    required
-                    id="description"
-                    autoComplete='off'
-                    placeholder="What's the park like?"
+                <TextField 
+                    color="primary"
+                    id="desc" 
+                    label="Description"
+                    fullWidth
+                    autoComplete='off' 
+                    variant="outlined"
                     name="description"
                     value={props.description}
-                    onChange={(e) => props.setDescription(e.target.value)}>
-                </input>
+                    inputProps={{ style: { color: '#bdbdbd' }}}
+                    onChange={(e) => props.setDescription(e.target.value)}
+                />
+
             <div>
                     <TextField
+                        color="primary"
                         id="opens"
                         label="Opens"
                         type="time"
+                        variant="outlined"
                         value={props.openTime}
                         onChange={(e) => props.setOpenTime(e.target.value)}
                         InputLabelProps={{
                         shrink: true,
                         }}
-                        inputProps={{
-                        step: 300,
-                        }}
+                        inputProps={{ style: { color: '#bdbdbd' }, step: 300 }}
                     />
 
                     <TextField
+                        color="primary"
                         id="closes"
                         label="Closes"
                         type="time"
+                        variant="outlined"
                         value={props.closeTime}
                         onChange={(e) => props.setCloseTime(e.target.value)}
                         InputLabelProps={{
                         shrink: true,
                         }}
-                        inputProps={{
-                        step: 300,
-                        }}
+                        inputProps={{ style: { color: '#bdbdbd' }, step: 300 }}
                     />
         </div>
                 <div className={createParkStyles.border}></div>

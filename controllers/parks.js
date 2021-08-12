@@ -113,7 +113,10 @@ const deleteComment = async (req, res) => {
 
 const showPark = async (req, res) => {
     try {
-        const park = await Park.findById(req.params.park_id)
+        const park = await Park.findById(req.params.park_id).populate({ 
+            path: 'comments.author',
+            model: 'Profile'
+            })
         return res.status(200).json(park)
     } catch (error) {
         return res.status(500).send(error.message, 'Could not locate this park')

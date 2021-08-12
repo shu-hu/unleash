@@ -3,17 +3,17 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const featureSchema = new Schema({
-    fullyFenced: Boolean,
-    partFenced: Boolean,
-    offLeash: Boolean,
-    smDogArea: Boolean,
-    agility: Boolean,
-    swimming: Boolean,
-    dogWater: Boolean,
-    washStation: Boolean,
-    pooBags: Boolean,
-    trash: Boolean,
-    restrooms: Boolean,
+    fullyFenced: { type: Boolean, default: false },
+    partFenced: { type: Boolean, default: false },
+    offLeash: { type: Boolean, default: false },
+    smDogArea: { type: Boolean, default: false },
+    agility: { type: Boolean, default: false },
+    swimming: { type: Boolean, default: false },
+    dogWater: { type: Boolean, default: false },
+    washStation: { type: Boolean, default: false },
+    pooBags: { type: Boolean, default: false },
+    trash: { type: Boolean, default: false },
+    restrooms: { type: Boolean, default: false },
 }, {
     timestamps: true,
 })

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import * as ParkFormStyles from './Park.module.css'
 
 const ParkUpdateForm = (props) => {
     const [parkName, setParkName] = useState(props.park.parkName)
@@ -21,7 +23,7 @@ const ParkUpdateForm = (props) => {
     }
 
         return (
-            <form  className="create-form" onSubmit={handleSubmit}>
+            <form  className={[ParkFormStyles.createForm]} onSubmit={handleSubmit}>
 
                 <div className="add-park-prompt">
                         <label>Update Park</label>
@@ -53,26 +55,37 @@ const ParkUpdateForm = (props) => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}>
                 </input>
+            <div>
+                <TextField
+                        id="opens"
+                        label="Opens"
+                        type="time"
+                        varient="outlined"
+                        value={openTime}
+                        onChange={(e) => setOpenTime(e.target.value)}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        inputProps={{
+                        step: 300,
+                        }}
+                    />
 
-                <input
-                    required
-                    autoComplete='off'
-                    placeholder="OpenTime"
-                    name="openTime"
-                    value={openTime}
-                    onChange={(e) => setOpenTime(e.target.value)}>
-                </input>
-
-                <input
-                    required
-                    autoComplete='off'
-                    placeholder="CloseTime"
-                    name="closeTime"
-                    value={closeTime}
-                    onChange={(e) => setCloseTime(e.target.value)}>
-                </input>
-
-                
+                    <TextField
+                        id="closes"
+                        label="Closes"
+                        type="time"
+                        varient="outlined"
+                        value={closeTime}
+                        onChange={(e) => setCloseTime(e.target.value)}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        inputProps={{
+                        step: 300,
+                        }}
+                    />
+        </div>  
                 <div className="border"></div>
                 
                 <Button 

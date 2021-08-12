@@ -4,7 +4,6 @@ import {getPaginatedParks, search} from '../../../services/parkService'
 import ResultCard from './ResultCard'
 import Search from './Search'
 
-
 const ResultMenu = (props) => {
     const [parkList, setParkList] = useState(props.parks)
 

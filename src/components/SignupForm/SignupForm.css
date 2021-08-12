@@ -1,0 +1,118 @@
+.signup-title-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.signup-title-container h1 {
+    margin: 14px 0px 32px 15px;
+    font-weight: 600;
+    text-shadow: #64b5f6;
+    color: #ffb74d;
+    
+}
+
+.signup-form-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px;
+    border: 1px groove #90caf9;
+    box-shadow: rgba(245, 245, 102, 0.12) 0px 2px 4px 0px, rgba(245, 245, 242, 0.32) 0px 2px 16px 0px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signup-register-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.signup-input-container {
+  align-self: flex-end;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+.signup-form-container input, label{
+    padding: 16px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: rgb(200, 200, 200);
+}
+
+.signup-form-container input {
+  border: 1px solid #292934;
+  border-radius: 7px;
+  background: #0B0B12;
+  align-self: flex-end;
+}
+
+.signup-form-container label {
+    font-family: 'Signika', sans-serif;;
+}
+
+.signup-redirect-container{
+    display: flex;
+    opacity: .5;
+    color: rgb(235, 235, 235);
+    margin-top: 25px ;
+    align-items: flex-start;
+}
+
+.signup-redirect-container p {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.signup-redirect-link{
+    text-decoration: none;
+    padding-left: 6px;
+}
+
+#signup-link-login {
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+#signup-submit-button{
+    margin: 22px 40px 0 15px;
+    background: #2196f3;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+#signup-submit-button:hover{
+  background-color: #1976d2;
+}
+
+#signup-cancel-button {
+  margin-top: 22px;
+  background: #f48fb1;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 7px;
+  padding: 10.2px;
+  font-size: 20px;
+}
+
+#signup-cancel-button:hover {
+  background-color: #aa647b;
+}
+
+@media only screen and (max-width: 900px) {
+  .signup-form-container {
+    width: 75%;
+  }
+}

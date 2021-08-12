@@ -38,7 +38,7 @@ const Map = (props) => {
                     setLng(parseFloat(position.coords.longitude))
                 },
                 () => null
-                )
+            )
     })()
     }, [])
 
@@ -73,6 +73,7 @@ const Map = (props) => {
     if (!isLoaded) return "Loading...";
 
     return (
+        lng &&
         <>
             <GoogleMap
                 id="map"
@@ -99,6 +100,7 @@ const Map = (props) => {
                 ))}
             </GoogleMap>
         </>
+
     )
 }
 

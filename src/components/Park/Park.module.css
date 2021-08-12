@@ -1,0 +1,61 @@
+createForm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 8px 8px;
+    border: 1px solid #292934;
+    border-top: none;
+    background: #12121b;
+    padding: 12px;	
+    display: flex;
+    flex-direction: column;
+}
+
+.createForm input{
+    padding: 15px 10px 15px 10px;
+    border-radius: 8px;
+    border: 1px solid #292934;
+    color: rgb(200, 200, 200);
+    margin-bottom: 10px;
+    background: #0b0b12;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+div .featuresList {
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none; 
+    overflow-y: scroll; 
+    height: 90vh;
+    width: 30%;
+    padding: 12px;
+    background-color: #292934;
+}
+
+div .cardContainer {
+    width: 70%;
+    background-color: #292934;
+    border-radius: 1rem;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 3rem;
+    margin-top: 2rem;
+    width: 600px;
+}

@@ -68,6 +68,7 @@ export const getParkById = async id => {
     }
 }
 
+
 export const search = async (location) => {
     try {
         const res = await fetch(`${BASE_URL}search?keyword=${location}`, { mode: 'cors' })
