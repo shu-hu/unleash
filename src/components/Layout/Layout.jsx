@@ -6,7 +6,6 @@ const Layout = (props) => {
 
     return (
         <div className="home-page" style={{ backgroundColor: '#121212'}}>
-            {/* <SideMenu {...props} /> */}
             {children}
             <ResultMenu 
                 {...props} 

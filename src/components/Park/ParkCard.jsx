@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
-import ParkFeatureList from './ParkFeatureList'
+import ParkDetailCard from './ParkDetailCard'
 import Box from '@material-ui/core/Box'
-import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { updatePark, deletePark, getParkById } from '../../services/parkService'
@@ -56,19 +56,39 @@ const ParkCard = (props) => {
         setToggleUpdate(!toggleUpdate)
     }
 
+    const toRegularTime = (militaryTime) => {
+        const [hours, minutes, seconds] = militaryTime.split(':');
+        return `${(hours > 12) ? hours - 12 : hours}:${minutes}${seconds ? `:${seconds}` : ''} ${(hours >= 12) ? 'PM' : 'AM'}`;
+    }
+
     return (
         <main className={parkStyles.mainContainer}>
         { !toggleUpdate ?
             park &&
             <>
             <Box className={parkStyles.leftSide}>
-                <Box className={parkStyles.cardContainer} elevation={3}>
-                <Paper elevation={3}>
-                    <h1>{park.parkName}</h1>
-                    <h2>{park.address}</h2>
-                </Paper>
 
-                    <ParkFeatureList park={park}/>
+            <ParkDetailCard 
+                {...props} 
+                toRegularTime={toRegularTime}
+                handleClick={handleClick}
+                handleDeletePark={handleDeletePark}
+                />
+
+
+
+                <Box className={parkStyles.cardDetailsContainer} elevation={3}>
+                <h1>{park.parkName}</h1>
+                <h2>{park.address}</h2>
+            <Box className={parkStyles.timeContainer}>
+                <Typography variant="subtitle1" gutterBottom>
+                    Opens: {toRegularTime(park.openTime)}
+                </Typography>
+                <Box m={2}></Box>
+                <Typography varient="subtitle1" gutterBottom>
+                    Closes: {toRegularTime(park.closeTime)}
+                </Typography>
+            </Box>
                     { props.user &&
                     props.user.profile === park.added_by &&
                     <>
