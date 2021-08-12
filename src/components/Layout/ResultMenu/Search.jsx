@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Button from "@material-ui/core/Button"
+import SearchIcon from '@material-ui/icons/Search';
 import { useEffect } from 'react'
 
 
@@ -30,7 +31,7 @@ const Search = (props) => {
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" style={{color: '#2196f3'}} startIcon={<SearchIcon/>}>Submit</Button>
             </form>
         </div>
     )
