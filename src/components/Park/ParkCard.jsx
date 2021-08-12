@@ -3,6 +3,8 @@ import { useHistory, useParams } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
 import ParkFeatureList from './ParkFeatureList'
+import Box from '@material-ui/core/Box'
+import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -31,7 +33,6 @@ const ParkCard = (props) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
-            setCommentArray([...commentArray, updatedPark])
             setToggleUpdate(false)
         } catch (error) {
             throw error
@@ -56,26 +57,43 @@ const ParkCard = (props) => {
     }
 
     return (
-        !toggleUpdate ?
-        park &&
         <main className={parkStyles.mainContainer}>
-            <div className={parkStyles.cardContainer}>
-                <h1>{park.parkName}</h1>
-                <h2>{park.address}</h2>
-                <ParkFeatureList park={park}/>
-                { props.user &&
-                  props.user.profile === park.added_by &&
-                  <Button
-                  variant="contained"
-                  color="default"
-                  startIcon={<EditIcon />}
-                  onClick={handleClick}
-                    >
-                  Update
-                </Button>
-                }
-            </div>
-            <div className={parkStyles.featuresList}>
+        { !toggleUpdate ?
+            park &&
+            <>
+            <Box className={parkStyles.leftSide}>
+                <Box className={parkStyles.cardContainer} elevation={3}>
+                <Paper elevation={3}>
+                    <h1>{park.parkName}</h1>
+                    <h2>{park.address}</h2>
+                </Paper>
+
+                    <ParkFeatureList park={park}/>
+                    { props.user &&
+                    props.user.profile === park.added_by &&
+                    <>
+                        <Button
+                            variant="contained"
+                            color="default"
+                            startIcon={<EditIcon />}
+                            onClick={handleClick}
+                        >
+                            Update
+                        </Button>
+                    
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            startIcon={<DeleteIcon />}
+                            onClick={() => handleDeletePark(park._id)}
+                        >
+                            Delete
+                        </Button>
+                    </>
+                    }
+                </Box>
+            </Box>
+            <Box className={parkStyles.commentList}>
             <CommentSection
                     park={park}
                     setPark={setPark}
@@ -86,30 +104,18 @@ const ParkCard = (props) => {
                     toggleUpdateForm={toggleUpdateForm}
                     setToggleUpdateForm={setToggleUpdateForm}
                      />
-            </div>
-        </main>
-            :
-        park ?
-        <main className={parkStyles.mainContainer}>
-            <div className={parkStyles.container}>
+            </Box>
+            </>
+        :
+        park &&
                 <ParkUpdateForm 
                     park={park} 
-                    handleUpdatePark={handleUpdatePark}
                     commentArray={commentArray}
+                    handleUpdatePark={handleUpdatePark}
+                    setToggleUpdate={setToggleUpdate}
                 />
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<DeleteIcon />}
-                        onClick={() => handleDeletePark(park._id)}
-                        >
-                        Delete
-                    </Button>
-                
-                </div>
+        }
         </main>
-        :
-        <p>loading...</p>
     )
 }
 

@@ -42,7 +42,10 @@ const updatePark = async (req, res) => {
             req.params.park_id,
             req.body,
             { new: true }
-        )
+        ).populate({ 
+            path: 'comments.author',
+            model: 'Profile'
+        })
         return res.status(200).json(updatedPark)
     } catch (error) {
         throw error

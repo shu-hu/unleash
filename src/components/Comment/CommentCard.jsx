@@ -31,6 +31,8 @@ const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
 
+  console.log(props)
+
   const convertFeature = (arr) => (
     arr.reduce((acc, feature) => {
         acc.push(featuresConverter[feature])
@@ -54,11 +56,12 @@ const CommentCard = (props) => {
             <div className="card-header">
             </div>
             {!props.toggleUpdateForm ?
+                props.park &&
                 <Card elevation={5} style={{ background: '#F6F6FF'}}>
                     <CardContent className={cx(shadowStyles.root)}>
                         <Box className={gutterStyles.parent} display="flex">
                             <h3 style={{ display: 'inline' }}>
-                                {props.comment.author.name}
+                                {props.comment.author?.name}
                             </h3>
                         <Rating name={'rating'} value={props.comment.rating} size={'medium'} disabled/>
                         </Box>
