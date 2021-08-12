@@ -1,0 +1,24 @@
+.searchBar label {
+    color: white;
+}
+
+.searchBar input {
+    color: white;
+}
+
+.searchBarContainer {
+    border: 1px solid whitesmoke;
+}
+
+
+.searchBar input:focus {
+    border: none;
+}
+
+.searchForm {
+    border-radius: 1rem;
+}
+
+.searchContainer {
+    margin: 1rem;
+}

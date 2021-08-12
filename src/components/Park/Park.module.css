@@ -77,10 +77,29 @@
     width: 600px;
 }
 
+.cardDetailsContainer {
+    width: 80%;
+    background-color: white;
+    border-radius: .4rem;
+    padding: 2rem 2rem 0 2rem;
+    margin-top: 2rem;
+    width: 600px;
+    color: #292934;
+}
+
 .border {
     border-bottom: 1px solid #d6d6dd;
     width: 100%;
     height: 16px;
+}
+
+.timeContainer {
+    display: flex;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 label {

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import { getPaginatedParks, searchedParks } from '../../../services/parkService'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ResultCard from './ResultCard'
+import Box from '@material-ui/core/Box'
 import Search from './Search'
 
 const ResultMenu = (props) => {
