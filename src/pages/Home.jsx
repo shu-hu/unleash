@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getPaginatedParks, createPark} from '../services/parkService'
+import { getPaginatedParks, createPark } from '../services/parkService'
 import CreatePark from '../components/CreateComponents/CreatePark/CreatePark'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map/Map'
-import { searchTomTom } from '../services/parkService'
+import { searchTomTom, searchedParks } from '../services/parkService'
 
 
 const Home = (props) => {
@@ -34,11 +34,11 @@ const Home = (props) => {
             const newPark = await createPark(formData)
             newPark.added_by = props.user
             if (parks.length < 8) {
-                    setParks([newPark, ...parks])
+                setParks([newPark, ...parks])
             } else {
                 const duplicate = [...parks]
                 duplicate.splice(duplicate.length - 1, 1)
-                    setParks(() => [newPark, ...duplicate])
+                setParks(() => [newPark, ...duplicate])
             }
 
         } catch (error) {
@@ -49,10 +49,10 @@ const Home = (props) => {
     return (
         <Layout parks={parks} {...props} location={location} setLocation={setLocation} handleSearch={handleSearch}>
             <div className="layout">
-                {props.toggleMap ? 
-                <Map location={location} />
-                :
-                <CreatePark handleCreatePark={handleCreatePark} {...props} />
+                {props.toggleMap ?
+                    <Map location={location} />
+                    :
+                    <CreatePark handleCreatePark={handleCreatePark} {...props} />
                 }
             </div>
         </Layout>
