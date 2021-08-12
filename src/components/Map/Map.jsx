@@ -14,7 +14,6 @@ const mapContainerStyle = {
 const options = {
     styles: mapStyles,
     disableDefaultUI: true,
-    // zoomControl: false,
 };
 
 const googleMapsApiKey = process.env.REACT_APP_API_KEY_GOOGLE_MAPS
