@@ -18,16 +18,16 @@ const CommentActions = (props) => {
         <Box className={CommentActionStyles.commentActions}>
             {
                 props.user &&
-                props.user.profile === props.comment.author._id &&
-                <IconButton onClick={() => props.handleDeleteComment(props.comment._id)}>
-                    <DeleteIcon />
-                </IconButton>
-            }
-            {
-                props.user &&
                 props.user.profile === props.park.added_by &&
                 <IconButton onClick={handleClick}>
                     <EditIcon />
+                </IconButton>
+            }
+             {
+                props.user &&
+                props.user.profile === props.comment.author._id &&
+                <IconButton onClick={() => props.handleDeleteComment(props.comment._id)}>
+                    <DeleteIcon />
                 </IconButton>
             }
         </Box>
