@@ -31,7 +31,7 @@ const ParkCard = (props) => {
         try {
             const updatedPark = await updatePark(id, formData)
             updatedPark.added_by = props.user.profile._id
-            setCommentArray([...commentArray, updatedPark])
+            // setCommentArray([...commentArray, updatedPark])
             setToggleUpdate(false)
         } catch (error) {
             throw error
@@ -66,14 +66,25 @@ const ParkCard = (props) => {
                 <ParkFeatureList park={park}/>
                 { props.user &&
                   props.user.profile === park.added_by &&
-                  <Button
-                  variant="contained"
-                  color="default"
-                  startIcon={<EditIcon />}
-                  onClick={handleClick}
+                  <>
+                    <Button
+                        variant="contained"
+                        color="default"
+                        startIcon={<EditIcon />}
+                        onClick={handleClick}
                     >
-                  Update
-                </Button>
+                        Update
+                    </Button>
+                
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<DeleteIcon />}
+                        onClick={() => handleDeletePark(park._id)}
+                    >
+                        Delete
+                    </Button>
+                  </>
                 }
             </div>
             <div className={parkStyles.featuresList}>
@@ -91,22 +102,12 @@ const ParkCard = (props) => {
             </>
         :
         park &&
-            <>
                 <ParkUpdateForm 
                     park={park} 
                     commentArray={commentArray}
                     handleUpdatePark={handleUpdatePark}
                     setToggleUpdate={setToggleUpdate}
                 />
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<DeleteIcon />}
-                    onClick={() => handleDeletePark(park._id)}
-                    >
-                    Delete
-                </Button>
-            </>
         }
         </main>
     )
