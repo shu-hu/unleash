@@ -90,8 +90,9 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 
 ## Next Steps
 
-* 
-* 
+* Add light mode for users who prefer a bright screen.
+* Add the ability to create dog profiles for user's dogs, and the ability to see dog profiles on other user's profiles as well.
+* Add push notifications if profiles that users have favorited will be active nearby.
 
 <img src="public/images/readme-images/barksandrec2.png" width=100% height=auto>
 
