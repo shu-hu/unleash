@@ -4,12 +4,12 @@
 
 .searchBar input {
     color: white;
+}
+
+.searchBarContainer {
     border: 1px solid whitesmoke;
 }
 
-.searchBar input:hover {
-    border: 1px solid whitesmoke;
-}
 
 .searchBar input:focus {
     border: none;

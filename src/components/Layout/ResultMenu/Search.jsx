@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from "@material-ui/core/Button"
 import SearchIcon from '@material-ui/icons/Search'
 import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
 import TextField from '@material-ui/core/TextField'
 import { useEffect } from 'react'
 import * as searchStyles from './Search.module.css'
@@ -31,6 +32,7 @@ const Search = (props) => {
                     <SearchIcon size="large"/>
                 </Grid>
                 <Grid item>
+                    <Box className={searchStyles.searchBarContainer}>
                     <TextField 
                         className={searchStyles.searchBar}
                         variant="outlined"
@@ -41,6 +43,7 @@ const Search = (props) => {
                         InputProps={{style: { color: '#2196f3' }}}
                         onChange={(e) => setLocation(e.target.value)}
                     />
+                    </Box>
                 </Grid>
                 <Button type="submit" style={{color: '#2196f3'}}>Submit</Button>
             </Grid>
