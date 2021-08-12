@@ -1,4 +1,4 @@
-<img src="public/images/readme-images/unleshdark.png" width=100% height=auto>
+<img src="public/images/readme-images/unleash-logo-white.png" width=100% height=auto>
 
 UNleash is a MERN stack application designed to help people locate dog parks in their area and enables users to connect with the communities that exist in these dog friendly public spaces. 
 
