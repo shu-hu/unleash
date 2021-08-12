@@ -50,6 +50,8 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 * [React Google Maps API](https://www.npmjs.com/package/@react-google-maps/api)
 * [TomTom Geocode API](https://developer.tomtom.com/content/search-api-explorer#/Geocoding/get_search__versionNumber__geocode__query___ext_)
 * [TomTom Points of Interest Search API](https://developer.tomtom.com/content/search-api-explorer#/Search/get_search__versionNumber__poiSearch__query___ext_)
+* [TomTom Points of Interest Details API](https://developer.tomtom.com/search-api/search-api-documentation/points-of-interest-details)
+* [TomTom Points of Interest Photos API](https://developer.tomtom.com/search-api/search-api-documentation/points-of-interest-details)
 * [Material-UI](https://material-ui.com/)
 * [LottieFiles](https://lottiefiles.com/)
 
