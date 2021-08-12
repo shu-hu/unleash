@@ -31,6 +31,13 @@
     width: 100%;
 }
 
+.signup-input-container {
+  align-self: flex-end;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
 .signup-form-container input, label{
     padding: 16px;
     font-size: 16px;

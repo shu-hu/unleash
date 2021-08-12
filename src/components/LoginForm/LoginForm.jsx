@@ -34,7 +34,7 @@ const LoginForm = ({ handleSignupOrLogin }) => {
   return (
     <div className='login-form-container'>
       <div className="login-title-container">
-        <h1>LogIn !</h1>
+        <h1>Log In</h1>
       </div>
 
       {!authError ?
@@ -48,7 +48,7 @@ const LoginForm = ({ handleSignupOrLogin }) => {
         onSubmit={handleSubmit}
         className="login-register-form"
       >
-        <div>
+        <div className="login-input-container">
           <label htmlFor="email-input" className="login-label">
             Email
           </label>
@@ -61,7 +61,7 @@ const LoginForm = ({ handleSignupOrLogin }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="login-inputContainer">
+        <div className="login-input-container">
           <label htmlFor="password-input" className="login-label">
             Password
           </label>

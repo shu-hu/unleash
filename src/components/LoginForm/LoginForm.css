@@ -41,14 +41,18 @@
 }
 
 .login-form-container input {
-  border: 1px solid #292934;
-  border-radius: 7px;
-  background: #0B0B12;
-  align-self: flex-end;
+    border: 1px solid #292934;
+    border-radius: 7px;
+    background: #0B0B12;
 }
 
 .login-form-container label {
-    font-family: 'Signika', sans-serif;;
+    font-family: 'Signika', sans-serif;
+}
+
+.login-input-container {
+    align-self: flex-end;
+    margin-right: 20%;
 }
 
 #login-submit-button{
