@@ -33,6 +33,8 @@ const parkSchema = new Schema ({
     added_by: {type: Schema.Types.ObjectId, ref: "Profile"},
     parkName: {type: String, required: true},
     address: {type: String, required: true},
+    image: String,
+    details_id: String,
     description: String,
     openTime: String,
     closeTime: String,

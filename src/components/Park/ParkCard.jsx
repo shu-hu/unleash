@@ -86,6 +86,7 @@ const ParkCard = (props) => {
                     {park.description}
                 </Typography>
                 <Box m={2}></Box>
+            { park.openTime &&
             <Box className={parkStyles.timeContainer}>
                 <Typography variant="subtitle1" gutterBottom>
                     Opens: {toRegularTime(park.openTime)}
@@ -95,6 +96,7 @@ const ParkCard = (props) => {
                     Closes: {toRegularTime(park.closeTime)}
                 </Typography>
             </Box>
+            }
             <Box m={2}></Box>
                 { props.user &&
                     props.user.profile === park.added_by &&

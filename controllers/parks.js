@@ -1,15 +1,11 @@
 import { Park } from '../models/park.js'
 import { Profile } from '../models/profile.js'
 
-
-// const tomtomApiKey = process.env.REACT_APP_API_KEY_TOMTOM
-
-
 const createPark = async (req, res) => {
-    console.log('createPark!')
     try {
         const park = await new Park(req.body)
         park.added_by = req.user.profile
+        park.details_id = req.user.parkName.toLowerCase().replace(/[^A-Z0-9]+/ig,'')
         await park.save()
         await Profile.updateOne(
             { _id: req.user.profile },
@@ -20,6 +16,31 @@ const createPark = async (req, res) => {
         return res.status(500).json({ err: err.message })
     }
 }
+
+const createFromAPI = async (req, res) => {
+    try {
+        await Park.findOne({ details_id: req.body.details_id}, (err, found) => {
+            if (err) {console.log(err) }
+            if (!found) {
+                let newPark = new Park({
+                    details_id: req.body.details_id,
+                    parkName: req.body.parkName,
+                    description: '',
+                    address: req.body.address
+                })
+                newPark.save(err => {
+                    if (err) {console.log(err) }
+                })
+                return res.status(200).json(newPark._id)
+            } else {
+                return res.status(200).json(found._id)
+            }
+        })
+    } catch (err) {
+        return res.status(500).json({ err: err.message })
+}
+}
+
 
 const indexPark = async (req, res) => {
     const limitNum = 10
@@ -137,4 +158,6 @@ export {
     updateComment,
     deleteComment,
     showPark,
+
+    createFromAPI
 }
