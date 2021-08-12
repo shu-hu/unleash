@@ -4,3 +4,6 @@
     margin-bottom: 1rem;
 }
 
+.commentActions {
+    display: flex;
+}
