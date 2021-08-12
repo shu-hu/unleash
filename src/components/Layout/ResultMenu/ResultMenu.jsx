@@ -55,8 +55,8 @@ const ResultMenu = (props) => {
 
     let parks;
     if (parkList.length) {
-        parks = parkList.map(park => {
-            return <ResultCard park={park} />
+        parks = parkList.map((park, idx) => {
+            return <ResultCard park={park} key={idx} />
         })
     }
 
