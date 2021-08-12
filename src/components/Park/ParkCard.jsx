@@ -83,8 +83,9 @@ const ParkCard = (props) => {
                 </Typography>
                 <Box m={2}></Box>
                 <Typography variant="body1" gutterBottom>
-                    {park.genComments}
+                    {park.description}
                 </Typography>
+                <Box m={2}></Box>
             <Box className={parkStyles.timeContainer}>
                 <Typography variant="subtitle1" gutterBottom>
                     Opens: {toRegularTime(park.openTime)}
@@ -94,10 +95,10 @@ const ParkCard = (props) => {
                     Closes: {toRegularTime(park.closeTime)}
                 </Typography>
             </Box>
-            <Box m={4}></Box>
+            <Box m={2}></Box>
                 { props.user &&
                     props.user.profile === park.added_by &&
-                    <Box px={3} pb={3}>
+                    <Box px={3} pb={3} pr={0} className={parkStyles.btnContainer}>
                         <Button
                             variant="contained"
                             color="default"
@@ -106,7 +107,7 @@ const ParkCard = (props) => {
                         >
                             Update
                         </Button>
-                    
+                        <Box m={1}></Box>
                         <Button
                             variant="contained"
                             color="secondary"

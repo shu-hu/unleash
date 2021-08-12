@@ -81,7 +81,7 @@
     width: 80%;
     background-color: white;
     border-radius: .4rem;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     margin-top: 2rem;
     width: 600px;
     color: #292934;
@@ -95,6 +95,11 @@
 
 .timeContainer {
     display: flex;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 label {
