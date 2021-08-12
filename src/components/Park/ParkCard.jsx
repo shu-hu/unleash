@@ -62,7 +62,7 @@ const ParkCard = (props) => {
             park &&
             <>
             <Box className={parkStyles.leftSide}>
-                <Box className={parkStyles.cardContainer}>
+                <Box className={parkStyles.cardContainer} elevation={3}>
                 <Paper elevation={3}>
                     <h1>{park.parkName}</h1>
                     <h2>{park.address}</h2>
