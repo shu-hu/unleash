@@ -38,16 +38,15 @@ const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
 
-  const convertFeatureTest = (arr) => {
-    let newArr = []
-    arr.map(feature => {
-        newArr.push(featuresConverter[feature])
-    })
-return newArr
-}
+  const convertFeatureTest = (arr) => (
+    arr.reduce((acc, feature) => {
+        acc.push(featuresConverter[feature])
+        return acc
+    }, [])
+  )
   
   const filterTrueFeatures = (arr) => {
-    let array = []
+    let array = [];
     arr.map(feature => {
         let featureArr = Object.entries(feature)
         return featureArr.map((feat, idx) => (
