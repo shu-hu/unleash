@@ -33,7 +33,8 @@
     width: 100%;
 }
 
-.login-form-container input, label{
+.login-form-container input, 
+.login-form-container label{
     padding: 16px;
     font-size: 16px;
     margin-bottom: 16px;
