@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import * as ParkFormStyles from './Park.module.css'
-
+import CancelIcon from '@material-ui/icons/Cancel';
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 
 const ParkUpdateForm = (props) => {
@@ -38,6 +38,12 @@ const ParkUpdateForm = (props) => {
                     <Box m='auto'>
                         <Typography variant="h4" gutterBottom style={{ color: '#121212'}}>
                             Update Park <EditLocationIcon fontSize='large' color='primary' />
+                            <Button 
+                                color="secondary" 
+                                onClick={() => props.setToggleUpdate(false)}
+                            >
+                            Cancel <CancelIcon />
+                            </Button>
                         </Typography>
                     </Box>
                     <div className={ParkFormStyles.border}></div>

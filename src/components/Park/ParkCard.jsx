@@ -56,9 +56,10 @@ const ParkCard = (props) => {
     }
 
     return (
-        !toggleUpdate ?
-        park &&
         <main className={parkStyles.mainContainer}>
+        { !toggleUpdate ?
+            park &&
+            <>
             <div className={parkStyles.cardContainer}>
                 <h1>{park.parkName}</h1>
                 <h2>{park.address}</h2>
@@ -87,29 +88,27 @@ const ParkCard = (props) => {
                     setToggleUpdateForm={setToggleUpdateForm}
                      />
             </div>
-        </main>
-            :
-        park ?
-        <main className={parkStyles.mainContainer}>
-            <div className={parkStyles.container}>
+            </>
+        :
+        park &&
+            <>
                 <ParkUpdateForm 
                     park={park} 
-                    handleUpdatePark={handleUpdatePark}
                     commentArray={commentArray}
+                    handleUpdatePark={handleUpdatePark}
+                    setToggleUpdate={setToggleUpdate}
                 />
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<DeleteIcon />}
-                        onClick={() => handleDeletePark(park._id)}
-                        >
-                        Delete
-                    </Button>
-                
-                </div>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => handleDeletePark(park._id)}
+                    >
+                    Delete
+                </Button>
+            </>
+        }
         </main>
-        :
-        <p>loading...</p>
     )
 }
 

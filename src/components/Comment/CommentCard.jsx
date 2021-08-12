@@ -58,7 +58,7 @@ const CommentCard = (props) => {
                     <CardContent className={cx(shadowStyles.root)}>
                         <Box className={gutterStyles.parent} display="flex">
                             <h3 style={{ display: 'inline' }}>
-                                {props.comment.author.name}
+                                {props.comment.author?.name}
                             </h3>
                         <Rating name={'rating'} value={props.comment.rating} size={'medium'} disabled/>
                         </Box>
