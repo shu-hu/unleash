@@ -151,7 +151,11 @@ const CreateComment = (props) => {
                 disableRipple
               />
             </ListItemIcon>
-            <ListItemText id={labelId} primary={featureLabels[value]} />
+            <ListItemText 
+                id={labelId} 
+                primary={featureLabels[value].toUpperCase()}
+                className={CreateCommentStyles.listText}
+            />
           </ListItem>
                );
             })}

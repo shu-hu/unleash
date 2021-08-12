@@ -5,6 +5,7 @@ import CommentUpdateForm from './CommentUpdateForm'
 
 import Box from '@material-ui/core/Box'
 import Card from '@material-ui/core/Card'
+import Chip from '@material-ui/core/Chip'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import CardContent from '@material-ui/core/CardContent'
@@ -22,7 +23,7 @@ const CommentCard = (props) => {
             <div className="card-header">
             </div>
             {!props.toggleUpdateForm ?
-                <Card elevation={0}>
+                <Card elevation={5} style={{ background: '#F6F6FF'}}>
                     <CardContent className={cx(shadowStyles.root)}>
                         <Box className={gutterStyles.parent}>
                         <h3 style={{ display: 'inline' }}>{props.comment.author}</h3>
@@ -46,6 +47,20 @@ const CommentCard = (props) => {
                     <Typography color={'textSecondary'} variant={'body2'}>
                         {props.comment.genComments}
                     </Typography>
+
+                    <Box mt={2} >
+                        {props.comment.features.map(feature => {
+                            let featureArr = Object.entries(feature)
+                            return featureArr.map((feat, idx) => (
+                                feat[1] === true && <Chip label={feat[0]} key={idx}></Chip>
+                            ))
+                           
+                        })}
+
+                    </Box>
+
+
+
                     <Box
                         mt={2}
                         display={'flex'}
