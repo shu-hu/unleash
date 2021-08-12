@@ -1,21 +1,31 @@
-createForm {
+.createForm {
     display: flex;
+    gap: 1rem;
     flex-direction: column;
     border-radius: 0px 0px 8px 8px;
     border: 1px solid #292934;
     border-top: none;
-    background: #12121b;
-    padding: 12px;	
-    display: flex;
-    flex-direction: column;
 }
 
 .createForm input{
     padding: 15px 10px 15px 10px;
     border-radius: 8px;
-    border: 1px solid #292934;
+    background: none;
+    margin-top: 1rem;
+}
+
+.createForm text-area {
     color: rgb(200, 200, 200);
-    background: #0b0b12;
+    background: none;
+    margin-bottom: 2rem;
+}
+
+.createForm text-area:focus {
+    border: 1 px #bdbdbd;
+}
+
+.createForm input:focus {
+    border: 1 px #bdbdbd;
 }
 
 .createForm button {
@@ -37,5 +47,15 @@ createForm {
 
 label {
     margin: .5rem 0 .3rem 0;
-    color: whitesmoke;
+}
+
+.inputContainer {
+    background-color: #bdbdbd;
+    border-radius: 7px;
+    padding: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.listText {
+    color: #bdbdbd;
 }

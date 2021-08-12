@@ -9,11 +9,6 @@ const Home = (props) => {
     const [parks, setParks] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
 
-    // const changePage = (e) => {
-    //     e.preventDefault()
-    //     setCurrentPage(currentPage + parseInt(e.target.value))
-    // }
-
     useEffect(() => {
         const fetchPaginatedParks = async () => {
             const paginatedParks = await getPaginatedParks(currentPage)

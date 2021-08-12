@@ -1,14 +1,14 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import CommentList from './CommentList'
 import Button from '@material-ui/core/Button'
 import CommentIcon from '@material-ui/icons/Comment';
+import CancelIcon from '@material-ui/icons/Cancel';
 import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import { createComment, deleteComment, updateComment } from '../../services/commentService'
-import { useEffect } from 'react';
-
+import * as CommentSectionStyles from './CommentSection.module.css'
 
 const CommentSection = (props) => {
-    const [toggleNewComment, setToggleNewComment] = useState(false)
+    const [ toggleNewComment, setToggleNewComment ] = useState(false)
     const [ editing, setEditing ] = useState([props.park.comments])
 
     const handleCreateComment = async (formData) => {
@@ -48,23 +48,31 @@ const CommentSection = (props) => {
     }
 
     return (
-        <div className="comment-section">
-            <div className="header">
-                <h3>Comment Section</h3>
-                <div className="header-buttons">
+        <>
+        <div className={CommentSectionStyles.header}>
+                <h3>Comments</h3>
                     {props.user &&
+                        !props.toggleUpdateForm &&
+                            !toggleNewComment ?
                         <Button
-                        variant="contained"
-                        color="default"
+                        color="primary"
+                        size="small"
                         startIcon={<CommentIcon />}
                         onClick={() => setToggleNewComment(!toggleNewComment)}
                         >
                         New Comment
                         </Button>
+                        :
+                        <Button
+                        color="secondary"
+                        size="small"
+                        endIcon={<CancelIcon />}
+                        onClick={() => setToggleNewComment(!toggleNewComment)}
+                        >Cancel</Button>
                     }
-                </div>
             </div>
 
+        <div className="comment-section">
             {toggleNewComment &&
                 <CreateComment
                     {...props}
@@ -72,7 +80,8 @@ const CommentSection = (props) => {
                     setToggleNewComment={setToggleNewComment}
                 ></CreateComment>
             }
-
+            
+            {!toggleNewComment &&
             <CommentList
                 {...props} 
                 handleUpdateComment={handleUpdateComment} 
@@ -81,8 +90,9 @@ const CommentSection = (props) => {
                 setEditing={setEditing}
                 handleSetEditing={handleSetEditing}
              />
-
+            }
         </div>
+    </>
     )
 }
 

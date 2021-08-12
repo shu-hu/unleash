@@ -1,7 +1,9 @@
 import React from 'react'
 import IconButton from '@material-ui/core/IconButton'
-import DeleteIcon from '@material-ui/icons/Delete'
+import Box from '@material-ui/core/Box'
 import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
+import * as CommentActionStyles from './CommentSection.module.css'
 
 const CommentActions = (props) => {
 
@@ -13,10 +15,10 @@ const CommentActions = (props) => {
     return (
         props &&
         !props.toggleUpdateForm &&
-        <>
+        <Box className={CommentActionStyles.commentActions}>
             {
                 props.user &&
-                props.user.profile === props.comment.author &&
+                props.user.profile === props.comment.author._id &&
                 <IconButton onClick={() => props.handleDeleteComment(props.comment._id)}>
                     <DeleteIcon />
                 </IconButton>
@@ -28,7 +30,7 @@ const CommentActions = (props) => {
                     <EditIcon />
                 </IconButton>
             }
-        </>
+        </Box>
     );
 }
 

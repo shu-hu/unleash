@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button'
 import * as CreateCommentStyles from './CreateComment.module.css'
 import Rating from '@material-ui/lab/Rating'
 import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -90,52 +89,52 @@ const CreateComment = (props) => {
     return (
         <form className={CreateCommentStyles.createForm} onSubmit={handleSubmit}>
             <div className="question-prompt">
-                    <label>Enter Comment:</label>
+                    <label>New Comment</label>
             </div>
             <div className={CreateCommentStyles.formContainer}>
+                <div className={CreateCommentStyles.inputContainer}>
+                    <TextField
+                        required
+                        multiline
+                        fullWidth
+                        rows={4}
+                        variant="outlined"
+                        label="Comment"
+                        autoComplete='off'
+                        name="genComments"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                    />
+                    <Box m={1}></Box>
+                    <TextField
+                        fullWidth
+                        label="Likes"
+                        variant="outlined"
+                        autoComplete='off'
+                        name="likes"
+                        value={likes}
+                        onChange={(e) => setLikes(e.target.value)}
+                    />
+                    <Box m={1}></Box>
+                    <TextField
+                        fullWidth
+                        label="Dislikes" 
+                        variant="outlined" 
+                        autoComplete='off'
+                        name="dislikes"
+                        value={dislikes}
+                        onChange={(e) => setDislikes(e.target.value)}
+                    />
+                </div>
 
-            <TextField
-                required
-                multiline
-                fullWidth
-                maxRows={4}
-                variant="outlined"
-                label="Comment"
-                autoComplete='off'
-                name="genComments"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-
-            <TextField
-                fullWidth
-                label="Likes"
-                variant="outlined"
-                autoComplete='off'
-                name="likes"
-                value={likes}
-                onChange={(e) => setLikes(e.target.value)}
-            />
-
-            <TextField 
-                fullWidth
-                label="Dislikes" 
-                variant="outlined" 
-                autoComplete='off'
-                name="dislikes"
-                value={dislikes}
-                onChange={(e) => setDislikes(e.target.value)}
-            />
-
-            <Box component="fieldset" mb={3} borderColor="transparent">
-            <Typography component="legend">Rating:</Typography>
+            <Box component="fieldset" mt={3} borderColor="transparent" display="flex">
             <Rating
                 name="stars"
                 value={stars}
                 onChange={(event, newValue) => {setStars(newValue)}}
                 onChangeActive={(event, newHover) => {setHover(newHover);}}
             />
-            {stars !== null && <Box ml={2}>{labels[hover !== -1 ? hover : stars]}</Box>}
+            {stars !== null && <Box ml={2} mt={1.5}>{labels[hover !== -1 ? hover : stars]}</Box>}
             </Box>
 
             <List>
@@ -152,17 +151,20 @@ const CreateComment = (props) => {
                 disableRipple
               />
             </ListItemIcon>
-            <ListItemText id={labelId} primary={featureLabels[value]} />
+            <ListItemText 
+                id={labelId} 
+                primary={featureLabels[value].toUpperCase()}
+                className={CreateCommentStyles.listText}
+            />
           </ListItem>
                );
             })}
             </List>
             
             <div className={CreateCommentStyles.border}></div>
-            
-            <Button type="submit" color="primary"> 
-                Submit
-            </Button>
+                <Button type="submit" color="primary" variant="outlined" fullWidth> 
+                    Submit
+                </Button>
             </div>
         </form>
     )
