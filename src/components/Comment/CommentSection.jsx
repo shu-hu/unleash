@@ -80,7 +80,8 @@ const CommentSection = (props) => {
                     setToggleNewComment={setToggleNewComment}
                 ></CreateComment>
             }
-
+            
+            {!toggleNewComment &&
             <CommentList
                 {...props} 
                 handleUpdateComment={handleUpdateComment} 
@@ -89,7 +90,7 @@ const CommentSection = (props) => {
                 setEditing={setEditing}
                 handleSetEditing={handleSetEditing}
              />
-
+            }
         </div>
     </>
     )

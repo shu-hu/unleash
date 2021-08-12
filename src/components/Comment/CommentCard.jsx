@@ -39,7 +39,7 @@ const CommentCard = (props) => {
                         mb={1}
                         className={gutterStyles.parent}
                     >
-                        <Rating name={'rating'} value={props.comment.rating} size={'small'} />
+                        <Rating name={'rating'} value={props.comment.rating} size={'small'} disabled/>
                         <Typography variant={'body2'}>
                         {props.comment.rating}
                         </Typography>
