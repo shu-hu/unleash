@@ -16,7 +16,7 @@ const CommentActions = (props) => {
         <>
             {
                 props.user &&
-                props.user.profile === props.comment.author &&
+                props.user.profile === props.comment.author._id &&
                 <IconButton onClick={() => props.handleDeleteComment(props.comment._id)}>
                     <DeleteIcon />
                 </IconButton>
