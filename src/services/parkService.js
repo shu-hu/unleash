@@ -129,6 +129,7 @@ export const fetchUrl = async (id) => {
         const result = await photoId.json()
         const poiPhotoId = result.result.photos[0].id
         const tomtomImage = await fetch(`https://api.tomtom.com/search/2/poiPhoto?key=${tomtomApiKey}&id=${poiPhotoId}`)
+
         return tomtomImage.url
     } catch (error) {
         throw error

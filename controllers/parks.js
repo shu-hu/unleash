@@ -5,7 +5,7 @@ const createPark = async (req, res) => {
     try {
         const park = await new Park(req.body)
         park.added_by = req.user.profile
-        park.details_id = req.user.parkName.toLowerCase().replace(/[^A-Z0-9]+/ig,'')
+        park.details_id = req.body.parkName.toLowerCase().replace(/[^A-Z0-9]+/ig,'')
         await park.save()
         await Profile.updateOne(
             { _id: req.user.profile },

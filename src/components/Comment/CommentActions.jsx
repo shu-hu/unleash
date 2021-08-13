@@ -6,10 +6,10 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import * as CommentActionStyles from './CommentSection.module.css'
 
 const CommentActions = (props) => {
-
+    console.log(props.park)
     const handleClick = () => {
         props.setToggleUpdateForm(true)
-        props.handleSetEditing(props.comment._id)
+        props.handleSetEditing(props.comment?._id)
     }
 
     return (
