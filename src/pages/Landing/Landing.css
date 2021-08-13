@@ -10,7 +10,6 @@ body {
 .landing-page-container {
     display: flex;
     min-height: 100vh;
-
 }
 
 .landing-col {
