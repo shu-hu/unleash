@@ -24,7 +24,6 @@ const ParkCard = (props) => {
 
     useEffect(() => {
         (async() => {
-            console.log(params.park_id)
             const parkData = await getParkById(params.park_id)
             await setPark(parkData)
             setCommentArray(parkData.comments)
@@ -35,6 +34,7 @@ const ParkCard = (props) => {
     useEffect(() => {
         if(park) {
         (async() => {
+            console.log(park)
             if (park.details_id.slice(-1) === "=") {
                 const imageUrl = await fetchUrl(park.details_id)
                 setPhotoUrl(imageUrl)

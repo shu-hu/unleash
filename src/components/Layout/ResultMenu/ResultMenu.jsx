@@ -18,7 +18,7 @@ const ResultMenu = (props) => {
             const parks = await getPaginatedParks()
             setParkList(parks)
         })()
-    }, [])
+    }, [props.parks])
 
     const handleSearchedParks = async () => {
         if(props.location){

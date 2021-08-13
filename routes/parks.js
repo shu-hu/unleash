@@ -6,12 +6,12 @@ const router = Router()
 
 // ========= Public Routes ========= 
 router.get('/:page', parkCtrl.indexPark)
-
+router.get('/details/:park_id', parkCtrl.showPark)
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
 
-router.get('/details/:park_id', checkAuth, parkCtrl.showPark)
+
 router.post('/', checkAuth, parkCtrl.createPark)
 router.post('/create_api', checkAuth, parkCtrl.createFromAPI)
 router.get('/:park_id/comments', checkAuth, parkCtrl.indexComment)
