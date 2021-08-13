@@ -19,17 +19,20 @@ UNleash connects users with dog parks near their current location using the Goog
 
 ## Screenshots
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/landing-page-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/login-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/map-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/park-details-card-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/create-park-ss.png" width=100% height=auto>
+
+<img src="public/images/readme-images/comments-ss.png" width=100% height=auto>
+
 
 ## Getting Started
 
