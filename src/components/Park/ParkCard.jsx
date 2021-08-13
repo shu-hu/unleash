@@ -34,8 +34,12 @@ const ParkCard = (props) => {
     useEffect(() => {
         if(park) {
         (async() => {
-            const imageUrl = await fetchUrl(park.details_id)
-            setPhotoUrl(imageUrl)
+            if (park.details_id.slice(-1) === "=") {
+                const imageUrl = await fetchUrl(park.details_id)
+                setPhotoUrl(imageUrl)
+            } else {
+                setPhotoUrl('https://i.ytimg.com/vi/FHytoCvj90w/maxresdefault.jpg')
+            }
         })()
     }
     }, [park])
