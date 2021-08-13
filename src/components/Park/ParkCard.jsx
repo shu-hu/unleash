@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import CardMedia from '@material-ui/core/CardMedia';
-import { updatePark, deletePark, getParkById } from '../../services/parkService'
+import { updatePark, deletePark, getParkById, fetchUrl } from '../../services/parkService'
 import * as parkStyles from './Park.module.css'
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 
@@ -18,6 +18,7 @@ const ParkCard = (props) => {
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
     const [ park, setPark ] = useState(null)
     const [ commentArray, setCommentArray ] = useState([])
+    const [ photoUrl, setPhotoUrl ] = useState(null)
     const [ toggleUpdateForm, setToggleUpdateForm ] = useState(false)
     const wideCardMediaStyles = useWideCardMediaStyles();
 
@@ -29,8 +30,16 @@ const ParkCard = (props) => {
         })()
         return () => { setPark(null) }
     }, [toggleUpdate, id.park_id])
-    
 
+    useEffect(() => {
+        if(park) {
+        (async() => {
+            const imageUrl = await fetchUrl(park.details_id)
+            setPhotoUrl(imageUrl)
+        })()
+    }
+    }, [park])
+    
     const handleUpdatePark = async (id, formData) => {
         try {
             const updatedPark = await updatePark(id, formData)
@@ -40,6 +49,8 @@ const ParkCard = (props) => {
             throw error
         }
     }
+
+    console.log(photoUrl)
 
     const handleDeletePark = async (id) => {
         try {
@@ -72,7 +83,7 @@ const ParkCard = (props) => {
                 <Box className={parkStyles.cardDetailsContainer} elevation={3}>
                 <CardMedia
                     classes={wideCardMediaStyles}
-                    image={'https://image.freepik.com/free-photo/river-foggy-mountains-landscape_1204-511.jpg'}
+                    image={ photoUrl && photoUrl }
                 />
                 <Box m={2}></Box>
                 <Typography variant="h4" gutterBottom>
