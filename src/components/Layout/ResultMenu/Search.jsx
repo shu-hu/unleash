@@ -4,7 +4,6 @@ import SearchIcon from '@material-ui/icons/Search'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import TextField from '@material-ui/core/TextField'
-import { useEffect } from 'react'
 import * as searchStyles from './Search.module.css'
 
 
@@ -19,10 +18,6 @@ const Search = (props) => {
         }
         props.handleSearch(searchData)
     }
-
-    useEffect(() => {
-        console.log(location)
-    }, [location])
 
     return (
         <div className={searchStyles.searchContainer}>

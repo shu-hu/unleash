@@ -21,7 +21,7 @@ const LoginForm = ({ handleSignupOrLogin }) => {
     try {
       await login(formData)
       handleSignupOrLogin()
-      history.push('/home')
+      history.push('/')
     } catch (error) {
       setAuthError(error.message)
       setFormData({

@@ -9,7 +9,6 @@ const createJWT = (user) => {
 }
 
 const register = async (req, res) => {
-    console.log("this is test.....",req.body)
   const user = new User(req.body)
 
   const newProfile = new Profile({
