@@ -16,6 +16,7 @@ const CommentSection = (props) => {
             const newComment = await createComment(props.park._id, formData)
             newComment.author = props.user.profile
             props.setCommentArray([...props.commentArray, newComment])
+            props.handleMatchState(props.park._id)
         } catch (error) {
             throw error
         }

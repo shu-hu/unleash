@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import CommentSection from '../Comment/CommentSection'
 import ParkUpdateForm from '../Park/ParkUpdateForm'
+
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
-import CardMedia from '@material-ui/core/CardMedia';
+
 import { updatePark, deletePark, getParkById, fetchUrl } from '../../services/parkService'
 import * as parkStyles from './Park.module.css'
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
@@ -25,7 +28,7 @@ const ParkCard = (props) => {
     useEffect(() => {
         (async() => {
             const parkData = await getParkById(params.park_id)
-            await setPark(parkData)
+            setPark(parkData)
             setCommentArray(parkData.comments)
         })()
         return () => { setPark(null) }
@@ -64,14 +67,15 @@ const ParkCard = (props) => {
         }
     }
 
-    const handleToggle = () => {
-        setToggleUpdateForm(!toggleUpdateForm)
+    const handleMatchState = async(id) => {
+        const parkData = await getParkById(id)
+        setCommentArray(parkData.comments)
     }
 
-    const handleClick = () => {
-        setToggleUpdate(!toggleUpdate)
-    }
-
+    const handleToggle = () => setToggleUpdateForm(!toggleUpdateForm)
+    
+    const handleClick = () => setToggleUpdate(!toggleUpdate)
+    
     const toRegularTime = (militaryTime) => {
         const [hours, minutes, seconds] = militaryTime.split(':');
         return `${(hours > 12) ? hours - 12 : hours}:${minutes}${seconds ? `:${seconds}` : ''} ${(hours >= 12) ? 'PM' : 'AM'}`;
@@ -146,6 +150,7 @@ const ParkCard = (props) => {
                     handleToggle={handleToggle}
                     toggleUpdateForm={toggleUpdateForm}
                     setToggleUpdateForm={setToggleUpdateForm}
+                    handleMatchState={handleMatchState}
                      />
             </Box>
             </>
