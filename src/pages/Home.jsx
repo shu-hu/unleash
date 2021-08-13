@@ -14,7 +14,7 @@ const Home = (props) => {
     const handleSearch = async (searchData) => {
         try {
             const locationQuery = await searchTomTom(searchData.location)
-            await setLocation(locationQuery.results[0].position)
+            await setLocation(locationQuery.results?.[0]?.position)
         } catch (error) {
             throw error
         }
@@ -58,6 +58,5 @@ const Home = (props) => {
         </Layout>
     )
 }
-
 
 export default Home

@@ -37,6 +37,7 @@ const Search = (props) => {
                         className={searchStyles.searchBar}
                         variant="outlined"
                         label="Search"
+                        required
                         autoComplete="off"
                         name="location"
                         value={location}
