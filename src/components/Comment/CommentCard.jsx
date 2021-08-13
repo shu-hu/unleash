@@ -30,9 +30,7 @@ const featuresConverter = {
 const CommentCard = (props) => {
   const shadowStyles = useFadedShadowStyles()
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
-
-  console.log(props)
-
+  
   const convertFeature = (arr) => (
     arr.reduce((acc, feature) => {
         acc.push(featuresConverter[feature])

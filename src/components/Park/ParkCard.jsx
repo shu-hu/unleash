@@ -14,7 +14,7 @@ import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 
 const ParkCard = (props) => {
     const history = useHistory()
-    const id = useParams()
+    const params = useParams()
     const [ toggleUpdate, setToggleUpdate ] = useState(false)
     const [ park, setPark ] = useState(null)
     const [ commentArray, setCommentArray ] = useState([])
@@ -24,12 +24,13 @@ const ParkCard = (props) => {
 
     useEffect(() => {
         (async() => {
-            const parkData = await getParkById(id.park_id)
+            console.log(params.park_id)
+            const parkData = await getParkById(params.park_id)
             await setPark(parkData)
             setCommentArray(parkData.comments)
         })()
         return () => { setPark(null) }
-    }, [toggleUpdate, id.park_id])
+    }, [toggleUpdate])
 
     useEffect(() => {
         if(park) {
@@ -53,8 +54,6 @@ const ParkCard = (props) => {
             throw error
         }
     }
-
-    console.log(photoUrl)
 
     const handleDeletePark = async (id) => {
         try {
