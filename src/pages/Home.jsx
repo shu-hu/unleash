@@ -19,7 +19,7 @@ const Home = (props) => {
             throw error
         }
     }
-
+    
     useEffect(() => {
         const fetchPaginatedParks = async () => {
             const paginatedParks = await getPaginatedParks(currentPage)
@@ -58,5 +58,6 @@ const Home = (props) => {
         </Layout>
     )
 }
+
 
 export default Home

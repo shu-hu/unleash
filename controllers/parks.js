@@ -41,7 +41,6 @@ const createFromAPI = async (req, res) => {
 }
 }
 
-
 const indexPark = async (req, res) => {
     const limitNum = 10
     const skipCount = parseInt(req.params.page) * limitNum
