@@ -14,7 +14,7 @@ const NavBar = ({ user, handleLogout }) => {
 			</div>
 			{user ?
 				<div className="nav-bar-left">
-					<p>Welcome, {user.handle}</p>
+					Welcome, {user.handle}
 					<NavLink to="/" onClick={handleLogout}>Sign Out</NavLink>
 				</div>
 				:
