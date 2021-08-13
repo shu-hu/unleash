@@ -34,7 +34,7 @@
     width: 100%;
     height: calc(100vh - 90px);
     overflow: hidden;
-    position: relative; 
+    overflow-x: hidden;
   }
 
   .layout::-webkit-scrollbar {
@@ -47,7 +47,8 @@
     flex-direction: column;
     align-items: center;
     width: 30%;
-    overflow-y: auto;
+    height: calc(100vh - 90px);
+    overflow-y: scroll;
     background: #0b0b12;
     padding: 10px 10px 94px 0px;
   }
