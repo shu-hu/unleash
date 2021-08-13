@@ -9,7 +9,7 @@ body {
 
 .landing-page-container {
     display: flex;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 .landing-col {
@@ -80,7 +80,7 @@ body {
 .landing-imgs {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    /* min-height: 100%; */
 }
 
 .landing-one {
