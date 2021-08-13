@@ -12,7 +12,6 @@ const CreatePark = (props) => {
     const [closeTime, setCloseTime] = useState("22:00")
 
     const handleSubmit = (e) => {
-        console.log(openTime, closeTime)
         e.preventDefault()
         const formData = {
             parkName: parkName,
