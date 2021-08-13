@@ -25,8 +25,9 @@
 
 .mainContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    height: calc(100vh - 90px);
     width: 100%;
 }
 
