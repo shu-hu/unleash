@@ -23,7 +23,7 @@ UNleash connects users with dog parks near their current location using the Goog
 
 <img src="public/images/readme-images/login-ss.png" width=100% height=auto>
 
-<img src="public/images/readme-images/" width=100% height=auto>
+<img src="public/images/readme-images/landing-map-ss.png" width=100% height=auto>
 
 <img src="public/images/readme-images/map-ss.png" width=100% height=auto>
 
