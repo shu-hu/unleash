@@ -1,4 +1,4 @@
-<img src="public/images/readme-images/unleshdark.png" width=100% height=auto>
+<img src="public/images/readme-images/unleash-logo-white.png" width=100% height=auto>
 
 UNleash is a MERN stack application designed to help people locate dog parks in their area and enables users to connect with the communities that exist in these dog friendly public spaces. 
 
@@ -19,17 +19,20 @@ UNleash connects users with dog parks near their current location using the Goog
 
 ## Screenshots
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/landing-page-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/login-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/landing-map-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/map-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/park-details-card-ss.png" width=100% height=auto>
 
-<img src="" width=100% height=auto>
+<img src="public/images/readme-images/create-park-ss.png" width=100% height=auto>
+
+<img src="public/images/readme-images/comments-ss.png" width=100% height=auto>
+
 
 ## Getting Started
 
@@ -50,6 +53,8 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 * [React Google Maps API](https://www.npmjs.com/package/@react-google-maps/api)
 * [TomTom Geocode API](https://developer.tomtom.com/content/search-api-explorer#/Geocoding/get_search__versionNumber__geocode__query___ext_)
 * [TomTom Points of Interest Search API](https://developer.tomtom.com/content/search-api-explorer#/Search/get_search__versionNumber__poiSearch__query___ext_)
+* [TomTom Points of Interest Details API](https://developer.tomtom.com/search-api/search-api-documentation/points-of-interest-details)
+* [TomTom Points of Interest Photos API](https://developer.tomtom.com/search-api/search-api-documentation/points-of-interest-details)
 * [Material-UI](https://material-ui.com/)
 * [LottieFiles](https://lottiefiles.com/)
 
@@ -91,8 +96,10 @@ The UNleash app is deployed [HERE](https://barks-rec-unleash.herokuapp.com/)
 ## Next Steps
 
 * Add light mode for users who prefer a bright screen.
-* Add the ability to create dog profiles for user's dogs, and the ability to see dog profiles on other user's profiles as well.
+* Add the ability to create dog profiles for user's dogs, and the ability to see dog profiles on other user's profiles.
 * Add push notifications if profiles that users have favorited will be active nearby.
+* Switch from TomTom to Google Places API and Google Geocode API.
+* Build out fully optimized mobile UI. 
 
 <img src="public/images/readme-images/barksandrec2.png" width=100% height=auto>
 
