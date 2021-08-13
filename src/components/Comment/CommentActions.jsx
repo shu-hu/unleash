@@ -6,26 +6,25 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import * as CommentActionStyles from './CommentSection.module.css'
 
 const CommentActions = (props) => {
-    console.log(props.park)
+
     const handleClick = () => {
         props.setToggleUpdateForm(true)
-        props.handleSetEditing(props.comment?._id)
+        props.handleSetEditing(props.comment._id)
     }
 
     return (
         props &&
+        props.user &&
         !props.toggleUpdateForm &&
+        props.user.profile === props.comment.author?._id &&
+
         <Box className={CommentActionStyles.commentActions}>
-            {
-                props.user &&
-                props.user.profile === props.park.added_by &&
+            {  
                 <IconButton onClick={handleClick}>
                     <EditIcon />
                 </IconButton>
             }
              {
-                props.user &&
-                props.user.profile === props.comment.author._id &&
                 <IconButton onClick={() => props.handleDeleteComment(props.comment._id)}>
                     <DeleteIcon />
                 </IconButton>
